@@ -1,5 +1,7 @@
 <mvc:View controllerName="com.geonosis.shop.e.shop.geonosis.controller.Main"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}" showHeader="false">
     
@@ -9,51 +11,50 @@
     showPageIndicator="false"
     loop="true"
     pages="{view>/images}">
-    
-    <VBox id="vbox-carousel-imgs" renderType="Bare" height="100%">
-        <Image
-            id="carousel-imgs"
-            mode="Background"
-            backgroundPosition="center"
-            backgroundSize="contain"
-            src="{view>src}"
-            width="100%"
-            height="100%" />
-    </VBox>
+      <VBox id="vbox-carousel-imgs" renderType="Bare" height="100%">
+          <Image
+              id="carousel-imgs"
+              mode="Background"
+              backgroundPosition="center"
+              backgroundSize="contain"
+              src="{view>src}"
+              width="100%"
+              height="100%" />
+      </VBox>
     </Carousel>
 
-  <List id="productList" items="{productsModel>/products}">
-    <StandardListItem 
-      id="std-list"
-      title="{productsModel>name}" 
-      description="{productsModel>description}" 
-      info="{productsModel>price}" />
-  </List>
-
-
-    <!-- <List items="{/catalog/categories/0/subcategories/0/products}">
-        <CustomListItem>
-            <Panel headerText="{name}">
-                <content>
-                    <Image src="{image}" width="100px" height="100px"/>
-                    <Text text="{description}"/>
-                    <Text text="Precio: {price} {currency}"/>
-                </content>
-            </Panel>
-        </CustomListItem>
-    </List> -->
-
-    <!-- <Carousel id="main-carousel-item-cards"
-      height="30%"
+    <Carousel id="carousel-card-item"
+      height="25rem"
       showPageIndicator="false"
       loop="true"
-      >
+      pages="{productsModel>/products}">
       <customLayout>
-        <CarouselLayout id="car-layout" visiblePagesCount="6"/>
-      </customLayout>
-      
-    </Carousel> -->
-
+				<CarouselLayout id="carousel-layout-cards-main" visiblePagesCount="6"/>
+			</customLayout>
+      <f:Card id="card-item-carousel-main"
+        height="100%"
+        headerPosition="Bottom">
+        <f:header>
+          <card:Header id="card-item-header-main"
+						iconSrc="{productsModel>image}"
+						iconDisplayShape="Square"
+            iconFitType="Contain"
+            iconSize="XL"
+            class="card-item-header">
+          </card:Header>
+        </f:header>
+        <f:content>
+          <VBox id="vbox-card-item-content-main"
+            class="sapUiSmallMargin imageContainer"
+            >
+            <Image id="img-poly-card-item"
+              src="{productsModel>image}"
+              class="imageAdjust">
+            </Image>
+          </VBox>
+        </f:content>
+      </f:Card>
+    </Carousel>
 
     </Page>
 </mvc:View>

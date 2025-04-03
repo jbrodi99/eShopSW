@@ -1,1 +1,20 @@
 /* Enter your custom styles here */
+.card-item-header {
+  display: flex;
+  flex-direction: row;
+  place-content: center;
+}
+
+.imageContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageAdjust {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;  /* Opciones: contain | cover | fill | none | scale-down */
+}
