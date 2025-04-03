@@ -3,5 +3,35 @@
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}" showHeader="false">
     
+    <Carousel 
+    id="main-carousel-info-pictures"
+    height="40%"
+    showPageIndicator="false"
+    loop="true"
+    pages="{view>/images}">
+    
+    <VBox id="vbox-carousel-imgs" renderType="Bare" height="100%">
+        <Image
+            id="carousel-imgs"
+            mode="Background"
+            backgroundPosition="center"
+            backgroundSize="contain"
+            src="{view>src}"
+            width="100%"
+            height="100%" />
+    </VBox>
+    </Carousel>
+    
+    <Carousel id="main-carousel-item-cards"
+      height="30%"
+      showPageIndicator="false"
+      loop="true">
+      <customLayout>
+        <CarouselLayout id="car-layout" visiblePagesCount="6"/>
+      </customLayout>
+      
+    </Carousel>
+
+
     </Page>
 </mvc:View>
