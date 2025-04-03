@@ -22,6 +22,15 @@
     </VBox>
     </Carousel>
 
+  <List id="productList" items="{productsModel>/products}">
+    <StandardListItem 
+      id="std-list"
+      title="{productsModel>name}" 
+      description="{productsModel>description}" 
+      info="{productsModel>price}" />
+  </List>
+
+
     <!-- <List items="{/catalog/categories/0/subcategories/0/products}">
         <CustomListItem>
             <Panel headerText="{name}">
