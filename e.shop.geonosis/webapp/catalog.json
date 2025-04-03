@@ -70,6 +70,130 @@
                       "stock": 10
                     }
                   ]
+                },
+                {
+                  "id": "prod11",
+                  "name": "Luke Skywalker",
+                  "price": 79.99,
+                  "currency": "USD",
+                  "description": "Figura de acción detallada de Luke Skywalker con múltiples puntos de movilidad y accesorios intercambiables.",
+                  "image": "assets/images/luke.png",
+                  "stock": 25,
+                  "rating": 4.5,
+                  "details": {
+                    "height": "20 cm",
+                    "material": "PVC",
+                    "manufacturer": "Star Wars Collectibles",
+                    "weight": "0.5 kg"
+                  },
+                  "tags": ["figura", "Luke", "Star Wars", "coleccionable"],
+                  "variants": [
+                    {
+                      "variantId": "prod1-v1",
+                      "color": "Original",
+                      "price": 79.99,
+                      "stock": 15
+                    },
+                    {
+                      "variantId": "prod1-v2",
+                      "color": "Limited Edition",
+                      "price": 99.99,
+                      "stock": 10
+                    }
+                  ]
+                },
+                {
+                  "id": "prod22",
+                  "name": "Leia Organa",
+                  "price": 79.99,
+                  "currency": "USD",
+                  "description": "Figura de acción de Leia Organa con detalle en vestuario y accesorios característicos.",
+                  "image": "assets/images/leia.png",
+                  "stock": 30,
+                  "rating": 4.7,
+                  "details": {
+                    "height": "20 cm",
+                    "material": "PVC",
+                    "manufacturer": "Star Wars Collectibles",
+                    "weight": "0.45 kg"
+                  },
+                  "tags": ["figura", "Leia", "Star Wars", "coleccionable"],
+                  "variants": [
+                    {
+                      "variantId": "prod2-v1",
+                      "color": "Edición Clásica",
+                      "price": 79.99,
+                      "stock": 20
+                    },
+                    {
+                      "variantId": "prod2-v2",
+                      "color": "Edición Fan",
+                      "price": 89.99,
+                      "stock": 10
+                    }
+                  ]
+                },
+                {
+                  "id": "prod111",
+                  "name": "Luke Skywalker",
+                  "price": 79.99,
+                  "currency": "USD",
+                  "description": "Figura de acción detallada de Luke Skywalker con múltiples puntos de movilidad y accesorios intercambiables.",
+                  "image": "assets/images/luke.png",
+                  "stock": 25,
+                  "rating": 4.5,
+                  "details": {
+                    "height": "20 cm",
+                    "material": "PVC",
+                    "manufacturer": "Star Wars Collectibles",
+                    "weight": "0.5 kg"
+                  },
+                  "tags": ["figura", "Luke", "Star Wars", "coleccionable"],
+                  "variants": [
+                    {
+                      "variantId": "prod1-v1",
+                      "color": "Original",
+                      "price": 79.99,
+                      "stock": 15
+                    },
+                    {
+                      "variantId": "prod1-v2",
+                      "color": "Limited Edition",
+                      "price": 99.99,
+                      "stock": 10
+                    }
+                  ]
+                },
+                {
+                  "id": "prod222",
+                  "name": "Leia Organa",
+                  "price": 79.99,
+                  "currency": "USD",
+                  "description": "Figura de acción de Leia Organa con detalle en vestuario y accesorios característicos.",
+                  "image": "assets/images/leia.png",
+                  "stock": 30,
+                  "rating": 4.7,
+                  "details": {
+                    "height": "20 cm",
+                    "material": "PVC",
+                    "manufacturer": "Star Wars Collectibles",
+                    "weight": "0.45 kg"
+                  },
+                  "tags": ["figura", "Leia", "Star Wars", "coleccionable"],
+                  "variants": [
+                    {
+                      "variantId": "prod2-v1",
+                      "color": "Edición Clásica",
+                      "price": 79.99,
+                      "stock": 20
+                    },
+                    {
+                      "variantId": "prod2-v2",
+                      "color": "Edición Fan",
+                      "price": 89.99,
+                      "stock": 10
+                    }
+                  ]
                 }
               ]
             },
@@ -144,7 +268,7 @@
           ]
         },
         {
-          "id": "sabres",
+          "id": "sables",
           "name": "Réplicas de Sables de Luz",
           "subcategories": [
             {

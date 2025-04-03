@@ -51,6 +51,10 @@
         "settings": {
           "bundleName": "com.geonosis.shop.e.shop.geonosis.i18n.i18n"
         }
+      },
+      "catalog": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "catalog.json"
       }
     },
     "resources": {

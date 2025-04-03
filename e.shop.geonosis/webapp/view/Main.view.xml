@@ -21,16 +21,29 @@
             height="100%" />
     </VBox>
     </Carousel>
-    
-    <Carousel id="main-carousel-item-cards"
+
+    <!-- <List items="{/catalog/categories/0/subcategories/0/products}">
+        <CustomListItem>
+            <Panel headerText="{name}">
+                <content>
+                    <Image src="{image}" width="100px" height="100px"/>
+                    <Text text="{description}"/>
+                    <Text text="Precio: {price} {currency}"/>
+                </content>
+            </Panel>
+        </CustomListItem>
+    </List> -->
+
+    <!-- <Carousel id="main-carousel-item-cards"
       height="30%"
       showPageIndicator="false"
-      loop="true">
+      loop="true"
+      >
       <customLayout>
         <CarouselLayout id="car-layout" visiblePagesCount="6"/>
       </customLayout>
       
-    </Carousel>
+    </Carousel> -->
 
 
     </Page>
