@@ -23,38 +23,53 @@
       </VBox>
     </Carousel>
 
-    <Carousel id="carousel-card-item"
-      height="25rem"
-      showPageIndicator="false"
-      loop="true"
-      pages="{productsModel>/products}">
-      <customLayout>
-				<CarouselLayout id="carousel-layout-cards-main" visiblePagesCount="6"/>
-			</customLayout>
-      <f:Card id="card-item-carousel-main"
-        height="100%"
-        headerPosition="Bottom">
-        <f:header>
-          <card:Header id="card-item-header-main"
-						iconSrc="{productsModel>image}"
-						iconDisplayShape="Square"
-            iconFitType="Contain"
-            iconSize="XL"
-            class="card-item-header">
-          </card:Header>
-        </f:header>
-        <f:content>
-          <VBox id="vbox-card-item-content-main"
-            class="sapUiSmallMargin imageContainer"
-            >
-            <Image id="img-poly-card-item"
-              src="{productsModel>image}"
-              class="imageAdjust">
-            </Image>
-          </VBox>
-        </f:content>
-      </f:Card>
-    </Carousel>
+    <Panel id="panel-carousel-prods-main"
+    backgroundDesign="Transparent"
+    class="sapUiMediumMarginTopBottom">
+      <headerToolbar>
+        <OverflowToolbar id="panel-toolbar-carousel-prods-main" 
+          height="3rem" >
+          <Title id="panel-toolbar-title-carousel-prods-main" text="Products"/>
+          <ToolbarSpacer id="panel-space-center-prods-main"></ToolbarSpacer>
+          <HBox id="carousel-page-indicator" alignItems="Center"></HBox>
+        </OverflowToolbar>
+      </headerToolbar>
+      <content>
+        <Carousel id="carousel-card-item"
+          height="25rem"
+          showPageIndicator="false"
+          loop="true"
+          pages="{productsModel>/products}"
+          backgroundDesign="Solid"
 
+          beforePageChanged="onCarouselNavigate">
+          <customLayout>
+            <CarouselLayout id="carousel-layout-cards-main" visiblePagesCount="6"/>
+          </customLayout>
+          <f:Card id="card-item-carousel-main"
+            height="100%"
+            headerPosition="Bottom">
+            <f:content>
+              <VBox id="vbox-card-item-content-main"
+                class="imageContainer"
+                >
+                <Image id="img-poly-card-item"
+                  src="{productsModel>image}"
+                  height="200px"
+                  >
+                </Image>
+                <Text id="title-poly-card-item" text="{productsModel>name}"></Text>
+                <Text id="descr-poly-card-item" text="{productsModel>descrption}"></Text>
+                <Text id="price-poly-card-item" text="{productsModel>price}"></Text>
+                <Text id="curr-poly-card-item" text="{productsModel>currency}"></Text>
+                <Text id="stock-poly-card-item" text="{productsModel>stock}"></Text>
+                <Button id="btn-add-poly-card-item" text="Add to cart"></Button>
+                <Button id="btn-buy-poly-card-item" text="But now"></Button>
+              </VBox>
+            </f:content>
+          </f:Card>
+        </Carousel>
+      </content>
+    </Panel>
     </Page>
 </mvc:View>

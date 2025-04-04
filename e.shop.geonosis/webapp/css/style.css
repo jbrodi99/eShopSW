@@ -18,3 +18,9 @@
   height: 100%;
   object-fit: contain;  /* Opciones: contain | cover | fill | none | scale-down */
 }
+
+.carousel-indicator {
+  margin: 0 4px;  /* Espaciado entre los círculos */
+  transition: color 0.3s ease-in-out;  /* Transición suave al cambiar de página */
+  cursor: pointer; /* Opcional: Cambia el cursor si quieres que se puedan hacer clic */
+}
