@@ -6,7 +6,8 @@ sap.ui.define([
 
   return BaseController.extend("com.geonosis.shop.e.shop.geonosis.controller.App", {
       onInit() {
-        let sImagePath = "../assets/images/star-wars-seeklogo.png";
+        let sImagePath = "../assets/images/geo-logo.png";
+        // let sImagePath = "../assets/images/group.png";
         
         // Crear un modelo con la imagen
         let oImageModel = new JSONModel({

@@ -81,12 +81,13 @@
       </content>
     </Panel>
 
-      <VBox id="category-panels" items="{topSellingByCategoryModel>/categories}">
-        <Panel headerText="{topSellingByCategoryModel>name}" backgroundDesign="Transparent" class="sapUiSmallMarginTopBottom">
+      <VBox id="category-panels" items="{topSellingByCategoryModel>/categories}" class="sapUiNoMargin">
+        <Panel headerText="{topSellingByCategoryModel>name}" backgroundDesign="Transparent" >
           <Carousel
             height="25rem"
             showPageIndicator="false"
             loop="true"
+            backgroundDesign="Solid"
             pages="{topSellingByCategoryModel>topProducts}">
             <customLayout>
             <CarouselLayout  visiblePagesCount="5" scrollMode="VisiblePages"/>
@@ -126,9 +127,7 @@
           showPageIndicator="false"
           loop="false"
           pages="{productsModel>/products}"
-          backgroundDesign="Solid"
-
-          beforePageChanged="onCarouselNavigate">
+          backgroundDesign="Solid">
           <customLayout>
             <CarouselLayout  visiblePagesCount="5" scrollMode="VisiblePages"/>
           </customLayout>
