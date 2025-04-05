@@ -1,16 +1,21 @@
-<mvc:View controllerName="com.geonosis.shop.e.shop.geonosis.controller.Main"
+<mvc:View xmlns:layout="sap.ui.layout" controllerName="com.geonosis.shop.e.shop.geonosis.controller.Main"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:f="sap.f"
     xmlns:card="sap.f.cards"
+    xmlns:l="sap.ui.layout"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}" showHeader="false">
-    
+
+    <core:Fragment fragmentName="com.geonosis.shop.e.shop.geonosis.view.Header" type="XML" />
+
     <Carousel 
-    id="main-carousel-info-pictures"
-    height="40%"
-    showPageIndicator="false"
-    loop="true"
-    pages="{view>/images}">
+      id="main-carousel-info-pictures"
+      height="40%"
+      showPageIndicator="false"
+      loop="true"
+      pages="{view>/images}">
       <VBox id="vbox-carousel-imgs" renderType="Bare" height="100%">
           <Image
               id="carousel-imgs"
@@ -24,27 +29,27 @@
     </Carousel>
 
     <Panel id="panel-carousel-prods-main"
-    backgroundDesign="Transparent"
-    class="sapUiMediumMarginTopBottom">
+      backgroundDesign="Transparent"
+      class="sapUiSmallMarginTopBottom">
       <headerToolbar>
         <OverflowToolbar id="panel-toolbar-carousel-prods-main" 
           height="3rem" >
-          <Title id="panel-toolbar-title-carousel-prods-main" text="Products"/>
+          <Title id="panel-toolbar-title-carousel-prods-main" text="Feacture Products"/>
           <ToolbarSpacer id="panel-space-center-prods-main"></ToolbarSpacer>
-          <HBox id="carousel-page-indicator" alignItems="Center"></HBox>
+          <HBox  alignItems="Center"></HBox>
         </OverflowToolbar>
       </headerToolbar>
       <content>
-        <Carousel id="carousel-card-item"
+        <Carousel 
           height="25rem"
           showPageIndicator="false"
           loop="true"
-          pages="{productsModel>/products}"
+          pages="{feactureProductsModel>/products}"
           backgroundDesign="Solid"
 
           beforePageChanged="onCarouselNavigate">
           <customLayout>
-            <CarouselLayout id="carousel-layout-cards-main" visiblePagesCount="6"/>
+            <CarouselLayout id="carousel-layout-cards-main" visiblePagesCount="5" scrollMode="VisiblePages"/>
           </customLayout>
           <f:Card id="card-item-carousel-main"
             height="100%"
@@ -54,17 +59,98 @@
                 class="imageContainer"
                 >
                 <Image id="img-poly-card-item"
+                  src="{feactureProductsModel>image}"
+                  height="200px"
+                  >
+                </Image>
+                <Text id="title-poly-card-item" text="{feactureProductsModel>name}"></Text>
+                <Text id="descr-poly-card-item" text="{feactureProductsModel>descrption}"></Text>
+                <HBox >
+                <Text id="price-poly-card-item" text="{feactureProductsModel>price}"></Text>
+                <Text id="curr-poly-card-item" text="{feactureProductsModel>currency}"></Text>
+                </HBox>
+                <Text id="stock-poly-card-item" text="{feactureProductsModel>stock}"></Text>
+                <HBox >
+                <Button id="btn-add-poly-card-item" text="Add to cart"></Button>
+                <Button id="btn-buy-poly-card-item" text="But now"></Button>
+                </HBox>
+              </VBox>
+            </f:content>
+          </f:Card>
+        </Carousel>
+      </content>
+    </Panel>
+
+      <VBox id="category-panels" items="{topSellingByCategoryModel>/categories}">
+        <Panel headerText="{topSellingByCategoryModel>name}" backgroundDesign="Transparent" class="sapUiSmallMarginTopBottom">
+          <Carousel
+            height="25rem"
+            showPageIndicator="false"
+            loop="true"
+            pages="{topSellingByCategoryModel>topProducts}">
+            <customLayout>
+            <CarouselLayout  visiblePagesCount="5" scrollMode="VisiblePages"/>
+            </customLayout>
+            <f:Card height="100%" headerPosition="Bottom">
+              <f:content>
+                <VBox class="imageContainer">
+                  <Image src="{topSellingByCategoryModel>image}" height="200px"/>
+                  <Text text="{topSellingByCategoryModel>name}"/>
+                  <Text text="{topSellingByCategoryModel>descrption}"/>
+                  <Text text="{topSellingByCategoryModel>price}"/>
+                  <Text text="{topSellingByCategoryModel>currency}"/>
+                  <Text text="{topSellingByCategoryModel>stock}"/>
+                  <Button text="Add to cart"/>
+                  <Button text="Buy now"/>
+                </VBox>
+              </f:content>
+            </f:Card>
+          </Carousel>
+        </Panel>
+      </VBox>
+
+      <Panel 
+      backgroundDesign="Transparent"
+      class="sapUiSmallMarginTopBottom">
+      <headerToolbar>
+        <OverflowToolbar 
+          height="3rem" >
+          <Title  text="Products"/>
+          <ToolbarSpacer ></ToolbarSpacer>
+          <HBox id="carousel-page-indicator" alignItems="Center"></HBox>
+        </OverflowToolbar>
+      </headerToolbar>
+      <content>
+        <Carousel id="carousel-card-item"
+          height="25rem"
+          showPageIndicator="false"
+          loop="false"
+          pages="{productsModel>/products}"
+          backgroundDesign="Solid"
+
+          beforePageChanged="onCarouselNavigate">
+          <customLayout>
+            <CarouselLayout  visiblePagesCount="5" scrollMode="VisiblePages"/>
+          </customLayout>
+          <f:Card 
+            height="100%"
+            headerPosition="Bottom">
+            <f:content>
+              <VBox 
+                class="imageContainer"
+                >
+                <Image 
                   src="{productsModel>image}"
                   height="200px"
                   >
                 </Image>
-                <Text id="title-poly-card-item" text="{productsModel>name}"></Text>
-                <Text id="descr-poly-card-item" text="{productsModel>descrption}"></Text>
-                <Text id="price-poly-card-item" text="{productsModel>price}"></Text>
-                <Text id="curr-poly-card-item" text="{productsModel>currency}"></Text>
-                <Text id="stock-poly-card-item" text="{productsModel>stock}"></Text>
-                <Button id="btn-add-poly-card-item" text="Add to cart"></Button>
-                <Button id="btn-buy-poly-card-item" text="But now"></Button>
+                <Text  text="{productsModel>name}"></Text>
+                <Text  text="{productsModel>descrption}"></Text>
+                <Text  text="{productsModel>price}"></Text>
+                <Text  text="{productsModel>currency}"></Text>
+                <Text  text="{productsModel>stock}"></Text>
+                <Button  text="Add to cart"></Button>
+                <Button  text="But now"></Button>
               </VBox>
             </f:content>
           </f:Card>

@@ -1,7 +1,8 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/ui/model/json/JSONModel"
-], (Controller, JSONModel) => {
+    "sap/ui/model/json/JSONModel",
+    "com/geonosis/shop/e/shop/geonosis/model/products"
+], (Controller, JSONModel, products) => {
     "use strict";
 
     return Controller.extend("com.geonosis.shop.e.shop.geonosis.controller.Main", {
@@ -17,27 +18,17 @@ sap.ui.define([
           const oModelImgs = new JSONModel(oDataImgs);
           this.getView().setModel(oModelImgs, "view");
 
-          const oCatalogModel = this.getOwnerComponent().getModel("catalog");
-          const oCatalogData = oCatalogModel ? oCatalogModel.getData() : { catalog: { categories: [] } };
-          
-          const aProducts = this._extraxtProducts(oCatalogData.catalog.categories);
-
-          const oProductModel = new JSONModel ({products: aProducts});
+          let oProductModel = products.createProductsModel(this.getOwnerComponent());
+          let oFeactureProductsModel = products.createFeactureProductsModel(this.getOwnerComponent());
+          let oTopSellingByCategorie = products.createTopSellingByCategoryModel(this.getOwnerComponent());
 
           this.getView().setModel(oProductModel, "productsModel");
-          
+          this.getView().setModel(oFeactureProductsModel, "feactureProductsModel");
+          this.getView().setModel(oTopSellingByCategorie, "topSellingByCategoryModel");
+
           let oView = this.getView();
 
           this._updatePageIndicators(oView);
-        },
-
-        _extraxtProducts: (aCategories) => {
-          return aCategories.reduce((aProducts, category) => {
-            category.subcategories.forEach(subCategory => {
-              aProducts.push(...subCategory.products);
-            });
-            return aProducts;
-          }, []);
         },
 
         _updatePageIndicators: (oView) => {
@@ -80,7 +71,6 @@ sap.ui.define([
     
         // 🔹 Calcular el índice de la "página" actual
         let iCurrentPage = Math.floor(iCurrentIndex / n);
-        const iTotalPages = Math.ceil(iTotalItems / n);
     
         // 🔹 Actualizar indicadores
         let aIcons = oIndicatorBox.getItems();
@@ -88,6 +78,5 @@ sap.ui.define([
             oIcon.setColor(index === iCurrentPage ? "#0070f2" : "#bfbfbf");
         });
     }
-    
     });
 });

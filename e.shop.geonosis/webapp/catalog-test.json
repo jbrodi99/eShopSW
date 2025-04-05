@@ -17,6 +17,7 @@
                   "description": "Figura de acción detallada de Luke Skywalker con múltiples puntos de movilidad y accesorios intercambiables.",
                   "image": "assets/images/luke.png",
                   "stock": 25,
+                  "cantidadVendida": 120,
                   "rating": 4.5,
                   "details": {
                     "height": "20 cm",
@@ -48,6 +49,7 @@
                   "description": "Figura de acción de Leia Organa con detalle en vestuario y accesorios característicos.",
                   "image": "assets/images/luke.png",
                   "stock": 30,
+                  "cantidadVendida": 90,
                   "rating": 4.7,
                   "details": {
                     "height": "20 cm",
@@ -79,6 +81,7 @@
                   "description": "Figura de acción detallada de Luke Skywalker con múltiples puntos de movilidad y accesorios intercambiables.",
                   "image": "assets/images/luke.png",
                   "stock": 25,
+                  "cantidadVendida": 130,
                   "rating": 4.5,
                   "details": {
                     "height": "20 cm",
@@ -110,6 +113,7 @@
                   "description": "Figura de acción de Leia Organa con detalle en vestuario y accesorios característicos.",
                   "image": "assets/images/luke.png",
                   "stock": 30,
+                  "cantidadVendida": 40,
                   "rating": 4.7,
                   "details": {
                     "height": "20 cm",
@@ -141,6 +145,7 @@
                   "description": "Figura de acción detallada de Luke Skywalker con múltiples puntos de movilidad y accesorios intercambiables.",
                   "image": "assets/images/luke.png",
                   "stock": 25,
+                  "cantidadVendida": 200,
                   "rating": 4.5,
                   "details": {
                     "height": "20 cm",
@@ -172,6 +177,7 @@
                   "description": "Figura de acción de Leia Organa con detalle en vestuario y accesorios característicos.",
                   "image": "assets/images/luke.png",
                   "stock": 30,
+                  "cantidadVendida": 100,
                   "rating": 4.7,
                   "details": {
                     "height": "20 cm",
@@ -209,6 +215,7 @@
                   "description": "Figura imponente de Darth Vader con capa, máscara articulada y espada de luz.",
                   "image": "assets/images/luke.png",
                   "stock": 20,
+                  "cantidadVendida": 95,
                   "rating": 4.8,
                   "details": {
                     "height": "22 cm",
@@ -240,6 +247,7 @@
                   "description": "Figura de acción de Kylo Ren con detalles en su casco y capa, confeccionada con gran realismo.",
                   "image": "assets/images/luke.png",
                   "stock": 15,
+                  "cantidadVendida": 20,
                   "rating": 4.3,
                   "details": {
                     "height": "20 cm",
@@ -283,6 +291,7 @@
                   "description": "Réplica de sable de luz inspirada en el de Luke Skywalker, ideal para exhibición o coleccionismo.",
                   "image": "assets/images/luke.png",
                   "stock": 10,
+                  "cantidadVendida": 300,
                   "rating": 4.6,
                   "details": {
                     "length": "90 cm",
@@ -314,6 +323,7 @@
                   "description": "Réplica de sable de luz rojo, emblemática en la figura de Darth Vader.",
                   "image": "assets/images/luke.png",
                   "stock": 8,
+                  "cantidadVendida": 400,
                   "rating": 4.7,
                   "details": {
                     "length": "90 cm",
@@ -351,6 +361,7 @@
                   "description": "Poster de alta calidad con impresión de una épica batalla espacial en el universo Star Wars.",
                   "image": "assets/images/luke.png",
                   "stock": 50,
+                  "cantidadVendida": 10,
                   "rating": 4.2,
                   "details": {
                     "dimensions": "60x90 cm",
@@ -393,6 +404,7 @@
                   "description": "Taza temática con diseños icónicos de Star Wars para los fans más apasionados.",
                   "image": "assets/images/luke.png",
                   "stock": 100,
+                  "cantidadVendida": 1200,
                   "rating": 4.0,
                   "details": {
                     "capacity": "350 ml",
@@ -424,6 +436,7 @@
                   "description": "Llavero con el emblema del Imperio. Un accesorio pequeño pero lleno de identidad.",
                   "image": "assets/images/luke.png",
                   "stock": 150,
+                  "cantidadVendida": 1500,
                   "rating": 4.3,
                   "details": {
                     "material": "Metal y plástico",
@@ -452,6 +465,7 @@
                   "description": "Modelo a escala del icónico caza estelar X-Wing con detalles precisos y partes móviles.",
                   "image": "assets/images/luke.png",
                   "stock": 5,
+                  "cantidadVendida": 7,
                   "rating": 4.8,
                   "details": {
                     "scale": "1:72",
@@ -476,6 +490,7 @@
                   "description": "Magnífico modelo a escala del Destructor Estelar con múltiples detalles, ideal para los coleccionistas.",
                   "image": "assets/images/luke.png",
                   "stock": 3,
+                  "cantidadVendida": 5,
                   "rating": 4.9,
                   "details": {
                     "scale": "1:144",

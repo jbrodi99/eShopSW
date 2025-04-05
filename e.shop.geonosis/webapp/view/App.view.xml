@@ -3,30 +3,8 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
     
-    <Toolbar id="toolbar-header-app" height="10%">
-    
-      <Image id="img-logo" src="{logoModel>/logo}" width="100px" />
-    
-      <ToolbarSpacer id="toolbar-spacer-header-left" />
-
-      <SearchField 
-          id="search-field-nav-bar" 
-          width="40%" 
-          placeholder="Buscar productos..." 
-          liveChange="onSearch">
-      </SearchField>
-
-      <!-- Espaciador para empujar iconos a la derecha -->
-      <ToolbarSpacer id="toolbar-spacer-header-right" />
-
-      <!-- Icono de usuario -->
-      <Button id="btn-nav-bar-menu" icon="sap-icon://menu2" tooltip="Mi cuenta" press="onProfilePress" width="3rem"/>
-
-      <!-- Icono de carrito -->
-      <Button id="btn-nav-bar-cart" icon="sap-icon://cart" tooltip="Mi carrito" press="onCartPress" width="3rem"/>
-    
-    </Toolbar>
-
-    <App id="app">
+    <App id="app"
+    height="100%"
+    >
     </App>
 </mvc:View>
