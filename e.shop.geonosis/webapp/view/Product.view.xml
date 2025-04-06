@@ -1,4 +1,0 @@
-<mvc:View controllerName="com.geonosis.shop.e.shop.geonosis.controller.Main"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-</mvc:View>

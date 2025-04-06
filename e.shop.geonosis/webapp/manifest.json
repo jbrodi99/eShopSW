@@ -86,13 +86,27 @@
           "target": [
             "TargetMain"
           ]
+        },
+        {
+          "name": "products",
+          "pattern": "products/{subcategory}",
+          "target": "TargetProducts"
         }
       ],
       "targets": {
         "TargetMain": {
-          "id": "Main",
-          "name": "Main"
+          "id": "Categories",
+          "name": "Categories"
+        },
+        "TargetProducts": {
+          "name": "Products",
+          "id": "products",
+          "viewLevel": 2,
+          "controlAggregation": "pages",
+          "controlId": "app",
+          "viewType": "XML"
         }
+
       }
     },
     "rootView": {

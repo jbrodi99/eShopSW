@@ -1,0 +1,19 @@
+<mvc:View controllerName="com.geonosis.shop.e.shop.geonosis.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+  <Page title="Productos filtrados">
+    <content>
+      <List
+        items="{
+          path: 'products>/products'
+        }">
+        <StandardListItem
+          title="{products>name}"
+          description="{products>price}"
+          icon="{products>image}"
+          iconDensityAware="false"
+          iconInset="false" />
+      </List>
+    </content>
+  </Page>
+</mvc:View>

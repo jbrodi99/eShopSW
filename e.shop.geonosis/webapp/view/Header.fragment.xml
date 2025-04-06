@@ -1,10 +1,6 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:tnt="sap.tnt" xmlns:core="sap.ui.core">
-    <tnt:ToolHeader height="5rem" >
-      <Image id="img-logo" src="{logoModel>/logo}" width="100px" height="40px">
-        <layoutData>
-          <OverflowToolbarLayoutData priority="NeverOverflow" />
-        </layoutData>
-      </Image>
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.f" xmlns:core="sap.ui.core">
+    <Toolbar height="5rem">
+      <Image id="img-logo" src="{logoModel>/logo}" width="100px" height="40px"></Image>
       <ToolbarSpacer id="toolbar-spacer-header-left" />
       <SearchField 
           id="search-field-nav-bar" 
@@ -16,33 +12,9 @@
           </layoutData>
       </SearchField>
       <ToolbarSpacer id="toolbar-spacer-header-right" />
-      <MenuButton text="Categorias">
-        <menu>
-          <Menu>
-            <MenuItem text="basic" icon="sap-icon://chalkboard">
-              <items>
-                <MenuItem text="add" icon="sap-icon://add" />
-                <MenuItem text="subtract" icon="sap-icon://less" />
-                <MenuItem text="multiply" icon="sap-icon://decline" />
-              </items>
-            </MenuItem>
-            <MenuItem text="complex" icon="sap-icon://display">
-              <items>
-                <MenuItem text="square" icon="sap-icon://status-completed" />
-              </items>
-            </MenuItem>
-          </Menu>
-        </menu>
-		  </MenuButton>
-      <Button id="btn-nav-bar-menu" icon="sap-icon://menu2" tooltip="Mi cuenta" press="onProfilePress" width="3rem">
-          <!-- <layoutData>
-          <OverflowToolbarLayoutData priority="NeverOverflow" />
-          </layoutData> -->
-      </Button>
-      <Button id="btn-nav-bar-cart" icon="sap-icon://cart" tooltip="Mi carrito" press="onCartPress" width="3rem"> 
-          <!-- <layoutData>
-          <OverflowToolbarLayoutData priority="NeverOverflow" />
-          </layoutData> -->
-      </Button>
-    </tnt:ToolHeader>
+
+      <Button text="Categorias"/>
+      <!-- <Button id="btn-nav-bar-menu" icon="sap-icon://menu2" tooltip="Mi cuenta" press="onProfilePress" width="3rem"/> -->
+      <Button id="btn-nav-bar-cart" icon="sap-icon://cart" tooltip="Mi carrito" press="onCartPress" width="3rem" /> 
+    </Toolbar>
 </core:FragmentDefinition>

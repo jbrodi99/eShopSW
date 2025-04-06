@@ -8,6 +8,7 @@
             {
               "id": "personajes",
               "name": "Personajes Principales",
+              "image": "assets/images/sable-luz.png",
               "products": [
                 {
                   "id": "prod1",
@@ -206,6 +207,7 @@
             {
               "id": "villanos",
               "name": "Antagonistas y Villanos",
+              "image": "assets/images/sable-luz.png",
               "products": [
                 {
                   "id": "prod3",
@@ -278,10 +280,12 @@
         {
           "id": "sables",
           "name": "Réplicas de Sables de Luz",
+          "image": "assets/images/sable-luz.png",
           "subcategories": [
             {
               "id": "sables-luz",
               "name": "Sables de Luz",
+              "image": "assets/images/sable-luz.png",
               "products": [
                 {
                   "id": "prod5",
@@ -348,10 +352,12 @@
         {
           "id": "accesorios",
           "name": "Accesorios y Merchandising",
+          "image": "assets/images/sable-luz.png",
           "subcategories": [
             {
               "id": "posters",
               "name": "Posters y Arte",
+              "image": "assets/images/sable-luz.png",
               "products": [
                 {
                   "id": "prod7",
@@ -395,6 +401,7 @@
             {
               "id": "accesorios-varios",
               "name": "Accesorios Varios",
+              "image": "assets/images/sable-luz.png",
               "products": [
                 {
                   "id": "prod9",
@@ -452,10 +459,12 @@
         {
           "id": "naves",
           "name": "Naves y Modelos",
+          "image": "assets/images/sable-luz.png",
           "subcategories": [
             {
               "id": "cazas",
               "name": "Cazas Estelares",
+              "image": "assets/images/sable-luz.png",
               "products": [
                 {
                   "id": "prod11",
@@ -481,6 +490,7 @@
             {
               "id": "imperiales",
               "name": "Naves Imperiales",
+              "image": "assets/images/sable-luz.png",
               "products": [
                 {
                   "id": "prod12",

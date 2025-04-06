@@ -45,6 +45,25 @@ sap.ui.define([
       return new JSONModel({ categories: aCategoryTopSellers });
     },
 
+    createFilteredProductsModel: function (oComponent, subcategoryId) {
+      const oCatalogModel = oComponent.getModel("catalog");
+      const oCatalogData = oCatalogModel?.getData();
+
+      let aFilteredProducts = [];
+
+      if (oCatalogData && oCatalogData.categories) {
+        for (const category of oCatalogData.categories) {
+          const oSubcategory = category.subcategories.find(sub => sub.id === subcategoryId);
+          if (oSubcategory) {
+            aFilteredProducts = oSubcategory.products || [];
+            break; // ya encontramos la subcategoría
+          }
+        }
+      }
+
+      return new JSONModel({ products: aFilteredProducts });
+    },
+
     _getAllProducts: (oComponent) => {
       let oCatalogModel = oComponent.getModel("catalog");
       let oCatalogData = oCatalogModel ? oCatalogModel.getData() : { catalog: { categories: [] } };

@@ -25,3 +25,17 @@
   transition: color 0.3s ease-in-out;  /* Transición suave al cambiar de página */
   cursor: pointer; /* Opcional: Cambia el cursor si quieres que se puedan hacer clic */
 }
+
+.subcategoryBox {
+  padding: 1rem;
+  margin: 0.5rem;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.subcategoryBox:hover {
+  transform: scale(1.03);
+}
