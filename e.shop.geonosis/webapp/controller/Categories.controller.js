@@ -11,15 +11,15 @@ sap.ui.define([
         },
 
         onSubcategoryPress: function(oEvent) {
-          let oRouter = this.getOwnerComponent().getRouter();
+          // let oRouter = this.getOwnerComponent().getRouter();
         
-          let oBindingContext = oEvent.getSource().getBindingContext("categoryAndSubcategorieModel");
-          let sCategoryName = oBindingContext.getProperty("id"); // nombre de la subcategoría
+          // let oBindingContext = oEvent.getSource().getBindingContext("categoryAndSubcategorieModel");
+          // let sCategoryName = oBindingContext.getProperty("id"); // nombre de la subcategoría
         
-          // Navegar a la vista "Products", pasando la subcategoría como parámetro
-          oRouter.navTo("products", {
-            subcategory: encodeURIComponent(sCategoryName)
-          });
+          // // Navegar a la vista "Products", pasando la subcategoría como parámetro
+          // oRouter.navTo("products", {
+          //   subcategory: encodeURIComponent(sCategoryName)
+          // });
         }
     });
   });
