@@ -1,4 +1,38 @@
-<mvc:View controllerName="com.geonosis.shop.e.shop.geonosis.controller.Main"
+<mvc:View controllerName="com.geonosis.shop.e.shop.geonosis.controller.Cart"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:cssgrid="sap.ui.layout.cssgrid">
+
+  <Page showHeader="false">
+    <content>
+
+      <core:Fragment fragmentName="com.geonosis.shop.e.shop.geonosis.view.Header" type="XML" />
+
+      <cssgrid:CSSGrid
+        gridTemplateColumns="{layoutModel>/gridTemplateColumns}"
+        gridGap="1rem"
+        width="100%">
+
+        <!-- Panel izquierdo: productos -->
+        <VBox >
+          <Panel headerText="Productos en el carrito" >
+            <List items="{products>/products}">
+              <StandardListItem title="{products>name}" description="{products>description}" />
+            </List>
+          </Panel>
+        </VBox>
+
+        <!-- Panel derecho: resumen -->
+        <VBox >
+          <Panel headerText="Resumen de compra" >
+            <Text text="Total: $999" />
+            <Button text="Finalizar compra" type="Emphasized" />
+          </Panel>
+        </VBox>
+
+      </cssgrid:CSSGrid>
+
+    </content>
+  </Page>
 </mvc:View>
