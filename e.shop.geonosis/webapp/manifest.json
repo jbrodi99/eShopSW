@@ -91,16 +91,29 @@
           "name": "products",
           "pattern": "products/{subcategory}",
           "target": "TargetProducts"
+        },
+        {
+          "name": "products-test",
+          "pattern": "products/",
+          "target": "TargetProductsTest"
         }
       ],
       "targets": {
         "TargetMain": {
-          "id": "Main",
-          "name": "Main"
+          "id": "Products",
+          "name": "Products"
         },
         "TargetProducts": {
           "name": "Products",
           "id": "products",
+          "viewLevel": 2,
+          "controlAggregation": "pages",
+          "controlId": "app",
+          "viewType": "XML"
+        },
+        "TargetProductsTest": {
+          "name": "ProductsTest",
+          "id": "productsTest",
           "viewLevel": 2,
           "controlAggregation": "pages",
           "controlId": "app",
