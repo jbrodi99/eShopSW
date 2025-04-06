@@ -1,19 +1,50 @@
-<mvc:View controllerName="com.geonosis.shop.e.shop.geonosis.controller.Main"
+<mvc:View controllerName="com.geonosis.shop.e.shop.geonosis.controller.Products"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-  <Page title="Productos filtrados">
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:grid="sap.ui.layout.cssgrid"
+    xmlns:f="sap.f">
+  <Page showHeader="false">
     <content>
-      <List
-        items="{
-          path: 'products>/products'
-        }">
-        <StandardListItem
-          title="{products>name}"
-          description="{products>price}"
-          icon="{products>image}"
-          iconDensityAware="false"
-          iconInset="false" />
-      </List>
+
+      <core:Fragment fragmentName="com.geonosis.shop.e.shop.geonosis.view.Header" type="XML" />
+
+      <Panel id="panelForGridList" backgroundDesign="Transparent">
+        <headerToolbar>
+          <Toolbar height="3rem">
+            <Title text="Producto por categoria" />
+            <Text text="xx productos"></Text>
+            <ToolbarSpacer ></ToolbarSpacer>
+            <Button text="filtrar"></Button>
+            <Button text="ordenarBy"></Button>
+          </Toolbar>
+        </headerToolbar>
+
+        <!-- Envolver en HBox para centrar -->
+        <HBox justifyContent="Center" >
+          <!-- VBox con ancho limitado -->
+          <VBox width="80%">
+            <f:GridList
+              id="gridList"
+              items="{products>/products}">
+              <f:customLayout>
+                <grid:GridBoxLayout boxMinWidth="30rem" />
+              </f:customLayout>
+
+              <f:GridListItem>
+                <VBox class="sapUiSmallMargin" height="15rem">
+                  <layoutData>
+                    <FlexItemData growFactor="1" shrinkFactor="0" />
+                  </layoutData>
+                  <Title text="{products>name}" wrapping="true" />
+                  <Label text="{products>description}" wrapping="true" />
+                </VBox>
+              </f:GridListItem>
+            </f:GridList>
+          </VBox>
+        </HBox>
+      </Panel>
+
     </content>
   </Page>
 </mvc:View>
