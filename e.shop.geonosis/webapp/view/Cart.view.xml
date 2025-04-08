@@ -5,10 +5,11 @@
     xmlns:cssgrid="sap.ui.layout.cssgrid">
 
   <Page showHeader="false">
-    <content>
-
+   
       <core:Fragment fragmentName="com.geonosis.shop.e.shop.geonosis.view.Header" type="XML" />
-
+   
+      <content>
+   
       <cssgrid:CSSGrid
         gridTemplateColumns="{layoutModel>/gridTemplateColumns}"
         gridGap="1rem"
@@ -24,13 +25,14 @@
         </VBox>
 
         <!-- Panel derecho: resumen -->
-        <VBox >
-          <Panel headerText="Resumen de compra" >
-            <Text text="Total: $999" />
-            <Button text="Finalizar compra" type="Emphasized" />
-          </Panel>
-        </VBox>
-
+        <ScrollContainer class="mySticky">
+          <VBox >
+            <Panel headerText="Resumen de compra" >
+              <Text text="Total: $999" />
+              <Button text="Finalizar compra" type="Emphasized" />
+            </Panel>
+          </VBox>
+        </ScrollContainer>
       </cssgrid:CSSGrid>
 
     </content>

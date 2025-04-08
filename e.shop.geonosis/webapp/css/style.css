@@ -39,3 +39,9 @@
 .subcategoryBox:hover {
   transform: scale(1.03);
 }
+
+.mySticky {
+  position: sticky;
+  top: 0;
+  z-index: 100; 
+}
