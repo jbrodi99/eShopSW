@@ -1,0 +1,64 @@
+<mvc:View controllerName="com.geonosis.shop.e.shop.geonosis.controller.Detail"
+    displayBlock="true"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:uxap="sap.uxap"
+    xmlns:layout="sap.ui.layout"
+    xmlns="sap.m">
+    <Page showHeader="false">
+
+    <core:Fragment fragmentName="com.geonosis.shop.e.shop.geonosis.view.fragments.Header" type="XML" />
+
+
+    <content>
+      <VBox >
+        <Panel >
+          <HBox >
+            <VBox >
+              <List items="{product>/product/image}">
+                <CustomListItem>
+                  <Image src="{product>}" width="72px" />
+                </CustomListItem>
+              </List>
+            </VBox>
+            <VBox >
+              <Image src="{product>/product/mainImage}" width="20rem" ></Image>
+            </VBox>
+            <VBox width="55%">
+              <Title text="{product>/product/name}"></Title>
+              <Text text="{product>/product/description}"></Text>
+              <HBox >
+                 <RatingIndicator value="{product>/product/rating}" maxValue="5" iconSize="1.5rem"/>
+                  <Text text="{= '(' + ${product>/product/rating} + ')' }" />
+              </HBox>
+              <Text text="$ {product>/product/price} {product>/product/currency}"></Text>
+              <Table items="{product>/product/detailsArray}" >
+                <columns>
+                  <Column><Text text="Caracteristicas" /></Column>
+                  <Column><Text text="" /></Column>
+                </columns>
+                <items>
+                  <ColumnListItem>
+                    <Text text="{product>key}" />
+                    <Text text="{product>value}" />
+                  </ColumnListItem>
+                </items>
+              </Table>
+              <!-- ACA iria carousel de productos recomendados por tags-->
+              <!-- ACA irian variantes-->
+
+            </VBox>
+
+            <VBox class="productBuyBox" >
+              <Text text="stock disponible"></Text>
+              <Text text="Cantidad: 1 '(' {product>/product/stock} disponibles')' "></Text>
+              <Button text="Comprar Ahora"></Button>
+              <Button text="Agregar al carrito"></Button>
+            </VBox>
+          </HBox>
+        </Panel>
+      </VBox>
+    </content>
+
+  </Page>
+</mvc:View>

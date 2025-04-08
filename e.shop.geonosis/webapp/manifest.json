@@ -41,7 +41,8 @@
         "sap.ui.core": {},
         "sap.f": {},
         "sap.ui.layout": {},
-        "sap.tnt": {}
+        "sap.tnt": {},
+        "sap.uxap": {}
       }
     },
     "contentDensities": {
@@ -100,8 +101,8 @@
       ],
       "targets": {
         "TargetMain": {
-          "id": "Cart",
-          "name": "Cart"
+          "id": "Detail",
+          "name": "Detail"
         },
         "TargetProducts": {
           "name": "Products",
