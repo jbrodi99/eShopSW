@@ -1,40 +1,75 @@
 <mvc:View controllerName="com.geonosis.shop.e.shop.geonosis.controller.Cart"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"
-    xmlns="sap.m"
-    xmlns:cssgrid="sap.ui.layout.cssgrid">
+    xmlns="sap.m">
 
   <Page showHeader="false">
    
-      <core:Fragment fragmentName="com.geonosis.shop.e.shop.geonosis.view.Header" type="XML" />
+      <core:Fragment fragmentName="com.geonosis.shop.e.shop.geonosis.view.fragments.Header" type="XML" />
    
       <content>
-   
-      <cssgrid:CSSGrid
-        gridTemplateColumns="{layoutModel>/gridTemplateColumns}"
-        gridGap="1rem"
-        width="100%">
+        <VBox justifyContent="Center" alignItems="Center">
+          <HBox width="70%">
+            <FlexBox 
+              direction="{layoutModel>/flexDirection}" 
+              width="100%"
+              class="relativeParent">
+              
+              <VBox>
+                <layoutData>
+                  <FlexItemData growFactor="{layoutModel>/growLeft}" />
+                </layoutData>
+                <Panel headerText="Carrito" >
+                  <List items="{products>/products}">
+                      <CustomListItem class="sapUiSmallMargin">
+                        <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiSmallMargin" height="10rem">
+                          
+                          <!-- Imagen -->
+                          <Image src="{products>image}" width="120px" height="120px" class="productImage" />
 
-        <!-- Panel izquierdo: productos -->
-        <VBox >
-          <Panel headerText="Productos en el carrito" >
-            <List items="{products>/products}">
-              <StandardListItem title="{products>name}" description="{products>description}" />
-            </List>
-          </Panel>
+                          <!-- Título y acciones -->
+                          <VBox width="40%">
+                            <Title text="{products>name}" wrapping="true" level="H5" class="sapUiSmallMarginBottom"/>
+                            <HBox class="sapUiSmallMarginTop" >
+                              <Link class="sapUiSmallMarginEnd" text="Eliminar" press=".onRemoveItem" />
+                              <Link class="sapUiSmallMarginBeginEnd" text="Guardar" press=".onSaveItem" />
+                              <Link class="sapUiSmallMarginBegin" text="Comprar ahora" press=".onBuyNow" />
+                            </HBox>
+                          </VBox>
+
+                          <!-- Selector de cantidad -->
+                          <VBox alignItems="Center">
+                            <HBox class="quantityBox" alignItems="Center">
+                              <Button icon="sap-icon://less" press=".onDecreaseQuantity" />
+                              <Input value="{products>quantity}" width="2.5rem" textAlign="Center" editable="false" />
+                              <Button icon="sap-icon://add" press=".onIncreaseQuantity" />
+                            </HBox>
+                            <Text text="{= 'Disponible: ' + ${products>stock} }" />
+                          </VBox>
+
+                          <!-- Precio -->
+                          <Text text="{= '$ ' + ${products>price} }" class="productPrice" />
+                        </HBox>
+                      </CustomListItem>
+                  </List>
+                </Panel>
+              </VBox>
+
+
+              <ScrollContainer id="myScrollContainer" width="100%">
+                <layoutData>
+                  <FlexItemData growFactor="{layoutModel>/growRight}" />
+                </layoutData>
+                <VBox width="100%">
+                  <Panel headerText="Resumen de compra" >
+                    <Text text="Total: $999" />
+                    <Button text="Finalizar compra" type="Emphasized" />
+                  </Panel>
+                </VBox>
+              </ScrollContainer>
+            </FlexBox>
+          </HBox>
         </VBox>
-
-        <!-- Panel derecho: resumen -->
-        <ScrollContainer class="mySticky">
-          <VBox >
-            <Panel headerText="Resumen de compra" >
-              <Text text="Total: $999" />
-              <Button text="Finalizar compra" type="Emphasized" />
-            </Panel>
-          </VBox>
-        </ScrollContainer>
-      </cssgrid:CSSGrid>
-
-    </content>
+      </content>
   </Page>
 </mvc:View>

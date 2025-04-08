@@ -45,3 +45,38 @@
   top: 0;
   z-index: 100; 
 }
+
+.stickyTop {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Celular: sticky abajo */
+.stickyBottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  background: white;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  z-index: 100;
+}
+
+.fullWidthPanel {
+  width: 100% !important;
+}
+
+/* Para vista en fila (desktop) */
+.leftPanel {
+  width: 70% !important; /* o 70% si querés más espacio */
+}
+
+.rightPanel {
+  width: 30% !important;
+}
+
+.relativeParent {
+  position: relative;
+}

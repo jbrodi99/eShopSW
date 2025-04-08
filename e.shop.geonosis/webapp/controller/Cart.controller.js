@@ -11,17 +11,23 @@ sap.ui.define([
         let oProductsModel = products.createProductsModel(this.getOwnerComponent());
         this.getView().setModel(oProductsModel, "products");
 
-        let sGridLayout;
+        let sDirection;
+
+        let oView = this.getView();
+        let oScrollContainer = oView.byId("myScrollContainer");
       
         if (Device.system.desktop) {
-          sGridLayout = "2fr 1fr"; // Dos columnas
+          sDirection = "Row"; // Dos columnas
+          oScrollContainer.addStyleClass("stickyTop");
         } else {
-          sGridLayout = "1fr"; // Una sola columna en dispositivos móviles o tablets
+          sDirection = "Column"; // Una sola columna en dispositivos móviles o tablets
+          oScrollContainer.addStyleClass("stickyBottom");
         }
         
-        console.log(sGridLayout);
-        var oLayoutModel = new JSONModel({
-          gridTemplateColumns: sGridLayout
+        let oLayoutModel = new JSONModel({
+          flexDirection: sDirection,
+          growLeft: Device.system.desktop ? 6 : 1,
+          growRight: Device.system.desktop ? 4 : 1,
         });
   
         // Asignar el modelo a la vista
