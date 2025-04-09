@@ -101,8 +101,8 @@
       ],
       "targets": {
         "TargetMain": {
-          "id": "Detail",
-          "name": "Detail"
+          "id": "Cart",
+          "name": "Cart"
         },
         "TargetProducts": {
           "name": "Products",

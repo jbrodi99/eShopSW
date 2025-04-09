@@ -7,7 +7,7 @@
   <Page showHeader="false">
     <content>
 
-      <core:Fragment fragmentName="com.geonosis.shop.e.shop.geonosis.view.Header" type="XML" />
+      <core:Fragment fragmentName="com.geonosis.shop.e.shop.geonosis.view.fragments.Header" type="XML" />
 
       <Panel id="panelForGridList" backgroundDesign="Transparent">
         <headerToolbar>
