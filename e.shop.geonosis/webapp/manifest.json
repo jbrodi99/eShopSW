@@ -101,26 +101,49 @@
       ],
       "targets": {
         "TargetMain": {
-          "id": "Cart",
-          "name": "Cart"
+          "id": "Main",
+          "name": "Main"
         },
         "TargetProducts": {
           "name": "Products",
-          "id": "products",
+          "id": "Products",
           "viewLevel": 2,
           "controlAggregation": "pages",
           "controlId": "app",
           "viewType": "XML"
         },
-        "TargetProductsTest": {
-          "name": "ProductsTest",
-          "id": "productsTest",
+        "TargetCategories": {
+          "name": "Categories",
+          "id": "Categories",
+          "viewLevel": 2,
+          "controlAggregation": "pages",
+          "controlId": "app",
+          "viewType": "XML"
+        },
+        "TargetCart": {
+          "name": "Cart",
+          "id": "Cart",
+          "viewLevel": 2,
+          "controlAggregation": "pages",
+          "controlId": "app",
+          "viewType": "XML"
+        },
+        "TargetDetail": {
+          "name": "Detail",
+          "id": "Detail",
+          "viewLevel": 2,
+          "controlAggregation": "pages",
+          "controlId": "app",
+          "viewType": "XML"
+        },
+        "TargetNotFound": {
+          "name": "NotFound",
+          "id": "NotFound",
           "viewLevel": 2,
           "controlAggregation": "pages",
           "controlId": "app",
           "viewType": "XML"
         }
-
       }
     },
     "rootView": {
