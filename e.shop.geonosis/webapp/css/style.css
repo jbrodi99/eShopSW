@@ -95,3 +95,19 @@
 .myCarouselItemWidth {
   height: 15rem; /* o el valor que quieras */
 }
+
+
+
+.categoryPopover .sapMNav {
+  height: auto !important;
+}
+
+.categoryPopover .popoverPage {
+  height: auto !important;
+  min-height: 1px;
+}
+
+.categoryPopover .sapMScrollCont {
+  max-height: 400px;
+  overflow-y: auto;
+}

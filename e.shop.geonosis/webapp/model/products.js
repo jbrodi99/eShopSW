@@ -4,6 +4,7 @@ sap.ui.define([
   "use strict";
 
   return {
+
     createProductsModel: function(oComponent) {
       let aProducts = this._getAllProducts(oComponent);
       let oProductModel = new JSONModel({ products: aProducts });

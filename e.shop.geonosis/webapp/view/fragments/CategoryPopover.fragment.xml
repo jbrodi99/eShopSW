@@ -1,0 +1,37 @@
+<!-- view/fragment/CategoryPopover.fragment.xml -->
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Popover
+		id="categoryPopover"
+		showHeader="false"
+		placement="Bottom"
+		contentWidth="300px"
+        >
+		
+		<NavContainer id="navContainer">
+			<pages>
+				<Page id="categoryPage" title="Categorías" showNavButton="false">
+					<List
+						items="{
+							path: 'catalog>/catalog/categories'
+						}"
+						itemPress=".onCategoryPress"
+                        growing="true"
+                        width="100%">
+						<StandardListItem title="{catalog>name}" icon="sap-icon://folder" type="Active" />
+					</List>
+				</Page>
+
+				<Page id="subcategoryPage" title="Subcategorías" showNavButton="true" navButtonPress=".onSubcategoryBack">
+					<List
+						id="subcategoryList"
+						items="{
+							path: 'catalog>subcategories'
+						}"
+						itemPress=".onSubcategoryNavigation">
+						<StandardListItem title="{catalog>name}" icon="sap-icon://product" type="Active" />
+					</List>
+				</Page>
+			</pages>
+		</NavContainer>
+	</Popover>
+</core:FragmentDefinition>

@@ -1,7 +1,9 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/Fragment",
-  ], function(Controller, Fragment) {
+    "sap/m/MenuItem",
+    "sap/m/Menu"
+  ], function(Controller, Fragment, MenuItem, Menu) {
     "use strict";
   
     return Controller.extend("com.geonosis.shop.e.shop.geonosis.controller.BaseController", {
@@ -43,21 +45,28 @@ sap.ui.define([
         oRouter.navTo("Cart");
       },
 
-      onSubcategoryNavigation: function (oEvent) {
-        let oItem = oEvent.getSource();
+      onSubcategoryNavigation: function (oSubcategory) {
         let oRouter = this.getRouter();
-        let oContext = oItem.getBindingContext("catalog");
-        let sSubcategoryId = oContext.getProperty("id");
+        // let oContext = oItem.getBindingContext("catalog");
+        // let sSubcategoryId = oContext.getProperty("id");
   
         oRouter.navTo("Products", {
-          subcategory: encodeURIComponent(sSubcategoryId)
+          subcategory: encodeURIComponent(oSubcategory.id)
         });
       },
 
       onOpenMenu: function (oEvent) {
-        if (!this._pMenu) {
+        const bIsMobile = sap.ui.Device.system.phone || sap.ui.Device.system.tablet;
+      
+        if (this._pMenu) {
+          this._pMenu.destroy(); // destruir para regenerar según el device
+          this._pMenu = null;
+        }
+      
+        if (bIsMobile) {
+          // Mobile: Cargar menú sin submenús, se crearán dinámicamente
           Fragment.load({
-            name: "com.geonosis.shop.e.shop.geonosis.view.fragments.Menu",
+            name: "com.geonosis.shop.e.shop.geonosis.view.fragments.MenuMobile",
             controller: this
           }).then(function (oMenu) {
             this._pMenu = oMenu;
@@ -65,8 +74,44 @@ sap.ui.define([
             oMenu.openBy(oEvent.getSource());
           }.bind(this));
         } else {
-          this._pMenu.openBy(oEvent.getSource());
+          // Desktop: Menú con binding completo (categoría + subcategorías)
+          Fragment.load({
+            name: "com.geonosis.shop.e.shop.geonosis.view.fragments.MenuDesktop",
+            controller: this
+          }).then(function (oMenu) {
+            this._pMenu = oMenu;
+            this.getView().addDependent(oMenu);
+            oMenu.openBy(oEvent.getSource());
+          }.bind(this));
         }
+      },
+
+      onCategoryMenuPress: function (oEvent) {
+        const oItem = oEvent.getSource();
+        const oContext = oItem.getBindingContext("catalog");
+        const aSubcategories = oContext.getProperty("subcategories");
+        if (aSubcategories && aSubcategories.length > 0) {
+          const oSubMenu = new Menu({
+            items: aSubcategories.map(sub => new MenuItem({
+              text: sub.name,
+              icon: "sap-icon://product",
+              press: () => this.onSubcategoryNavigation(sub) // o navegación
+            }))
+          });
+      
+          oSubMenu.openBy(oItem);
+        }
+      },
+
+      onSubcategoryMenuPress: function (oEvent) {
+        let oItem = oEvent.getSource();
+        let oRouter = this.getRouter();
+        let oContext = oItem.getBindingContext("catalog");
+        let sSubcategoryId = oContext.getProperty("id");
+
+        oRouter.navTo("Products", {
+          subcategory: encodeURIComponent(sSubcategoryId)
+        });
       }
   
     });
