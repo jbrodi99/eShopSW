@@ -1,0 +1,23 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:f="sap.f"
+  xmlns:core="sap.ui.core">
+  <f:Card height="100%" headerPosition="Bottom" >
+    <f:content>
+      <VBox class="imageContainer">
+        <Image src="{model>/image}" height="200px" />
+        <Text text="{model>/name}" />
+        <Text text="{model>/descrption}" />
+        <HBox>
+          <Text text="{model>/price}" />
+          <Text text="{model>/currency}" />
+        </HBox>
+        <Text text="{model>/stock}" />
+        <HBox>
+          <Button text="Add to cart" />
+          <Button text="Buy now" />
+        </HBox>
+      </VBox>
+    </f:content>
+  </f:Card>
+</core:FragmentDefinition>

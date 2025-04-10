@@ -87,3 +87,11 @@
   padding: 1rem;
   margin: 1rem;
 }
+
+.myGridItemFixedHeight {
+  height: 25rem; /* o el valor que quieras */
+}
+
+.myCarouselItemWidth {
+  height: 15rem; /* o el valor que quieras */
+}

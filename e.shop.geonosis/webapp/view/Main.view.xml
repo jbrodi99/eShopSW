@@ -36,76 +36,42 @@
           height="3rem" >
           <Title id="panel-toolbar-title-carousel-prods-main" text="Feacture Products"/>
           <ToolbarSpacer id="panel-space-center-prods-main"></ToolbarSpacer>
-          <HBox  alignItems="Center"></HBox>
+          <HBox  alignItems="Center" class="carousel-indicator-box"></HBox>
         </OverflowToolbar>
       </headerToolbar>
       <content>
-        <Carousel 
+        <Carousel
+          id="carousel-feature-products"
           height="25rem"
           showPageIndicator="false"
           loop="true"
-          pages="{feactureProductsModel>/products}"
-          backgroundDesign="Solid"
-
-          beforePageChanged="onCarouselNavigate">
+          backgroundDesign="Solid">
           <customLayout>
-            <CarouselLayout id="carousel-layout-cards-main" visiblePagesCount="5" scrollMode="VisiblePages"/>
+            <CarouselLayout visiblePagesCount="{settings>/carouselItemsPerPage}" scrollMode="VisiblePages"/>
           </customLayout>
-          <f:Card id="card-item-carousel-main"
-            height="100%"
-            headerPosition="Bottom">
-            <f:content>
-              <VBox id="vbox-card-item-content-main"
-                class="imageContainer"
-                >
-                <Image id="img-poly-card-item"
-                  src="{feactureProductsModel>image}"
-                  height="200px"
-                  >
-                </Image>
-                <Text id="title-poly-card-item" text="{feactureProductsModel>name}"></Text>
-                <Text id="descr-poly-card-item" text="{feactureProductsModel>descrption}"></Text>
-                <HBox >
-                <Text id="price-poly-card-item" text="{feactureProductsModel>price}"></Text>
-                <Text id="curr-poly-card-item" text="{feactureProductsModel>currency}"></Text>
-                </HBox>
-                <Text id="stock-poly-card-item" text="{feactureProductsModel>stock}"></Text>
-                <HBox >
-                <Button id="btn-add-poly-card-item" text="Add to cart"></Button>
-                <Button id="btn-buy-poly-card-item" text="But now"></Button>
-                </HBox>
-              </VBox>
-            </f:content>
-          </f:Card>
         </Carousel>
       </content>
     </Panel>
 
       <VBox id="category-panels" items="{topSellingByCategoryModel>/categories}" class="sapUiNoMargin">
         <Panel headerText="{topSellingByCategoryModel>name}" backgroundDesign="Transparent" >
+          <headerToolbar>
+            <OverflowToolbar 
+              height="3rem" >
+              <Title  text="{topSellingByCategoryModel>name}"/>
+              <ToolbarSpacer ></ToolbarSpacer>
+              <HBox  alignItems="Center" class="carousel-indicator-box"></HBox>
+            </OverflowToolbar>
+          </headerToolbar>
           <Carousel
             height="25rem"
             showPageIndicator="false"
             loop="true"
-            backgroundDesign="Solid"
-            pages="{topSellingByCategoryModel>topProducts}">
+            backgroundDesign="Solid">
             <customLayout>
-            <CarouselLayout  visiblePagesCount="5" scrollMode="VisiblePages"/>
+            <CarouselLayout  visiblePagesCount="{settings>/carouselItemsPerPage}" scrollMode="VisiblePages"/>
             </customLayout>
-            <f:Card height="100%" headerPosition="Bottom">
-              <f:content>
-                <VBox class="imageContainer">
-                  <Image src="{topSellingByCategoryModel>image}" height="200px"/>
-                  <Text text="{topSellingByCategoryModel>name}"/>
-                  <Text text="{topSellingByCategoryModel>descrption}"/>
-                  <Text text="{topSellingByCategoryModel>price}"/>
-                  <Text text="{topSellingByCategoryModel>currency}"/>
-                  <Text text="{topSellingByCategoryModel>stock}"/>
-                  <Button text="Add to cart"/>
-                  <Button text="Buy now"/>
-                </VBox>
-              </f:content>
-            </f:Card>
+            
           </Carousel>
         </Panel>
       </VBox>
@@ -118,7 +84,7 @@
           height="3rem" >
           <Title  text="Products"/>
           <ToolbarSpacer ></ToolbarSpacer>
-          <HBox id="carousel-page-indicator" alignItems="Center"></HBox>
+          <HBox id="carousel-page-indicator" alignItems="Center" class="carousel-indicator-box"></HBox>
         </OverflowToolbar>
       </headerToolbar>
       <content>
@@ -126,33 +92,10 @@
           height="25rem"
           showPageIndicator="false"
           loop="false"
-          pages="{productsModel>/products}"
           backgroundDesign="Solid">
           <customLayout>
-            <CarouselLayout  visiblePagesCount="5" scrollMode="VisiblePages"/>
+            <CarouselLayout  visiblePagesCount="{settings>/carouselItemsPerPage}" scrollMode="VisiblePages"/>
           </customLayout>
-          <f:Card 
-            height="100%"
-            headerPosition="Bottom">
-            <f:content>
-              <VBox 
-                class="imageContainer"
-                >
-                <Image 
-                  src="{productsModel>image}"
-                  height="200px"
-                  >
-                </Image>
-                <Text  text="{productsModel>name}"></Text>
-                <Text  text="{productsModel>descrption}"></Text>
-                <Text  text="{productsModel>price}"></Text>
-                <Text  text="{productsModel>currency}"></Text>
-                <Text  text="{productsModel>stock}"></Text>
-                <Button  text="Add to cart"></Button>
-                <Button  text="But now"></Button>
-              </VBox>
-            </f:content>
-          </f:Card>
         </Carousel>
       </content>
     </Panel>

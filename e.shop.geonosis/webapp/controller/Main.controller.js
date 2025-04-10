@@ -1,8 +1,9 @@
 sap.ui.define([
     "com/geonosis/shop/e/shop/geonosis/controller/BaseController",
     "sap/ui/model/json/JSONModel",
+    "sap/ui/core/Fragment",
     "com/geonosis/shop/e/shop/geonosis/model/products"
-], (BaseController, JSONModel, products, categories) => {
+], (BaseController, JSONModel, Fragment, products) => {
     "use strict";
 
     return BaseController.extend("com.geonosis.shop.e.shop.geonosis.controller.Main", {
@@ -18,6 +19,23 @@ sap.ui.define([
           const oModelImgs = new JSONModel(oDataImgs);
           this.setModel(oModelImgs, "view");
 
+          const sInitialMedia = sap.ui.Device.media.getCurrentRange("Std").name; // "Phone", "Tablet", "Desktop"
+          const iItemsPerPage = sInitialMedia === "Desktop" ? 4 :
+                                sInitialMedia === "Tablet" ? 2 : 1;
+          
+          const oSettingsModel = new JSONModel({
+            carouselItemsPerPage: iItemsPerPage
+          });
+          this.setModel(oSettingsModel, "settings");
+
+          sap.ui.Device.media.attachHandler((oEvent) => {
+            const sMedia = oEvent.name; // "Phone", "Tablet", "Desktop"
+            const iNewItems = sMedia === "Desktop" ? 4 :
+                              sMedia === "Tablet"  ? 2 : 1;
+        
+            this.getModel("settings").setProperty("/carouselItemsPerPage", iNewItems);
+          });
+
           let oProductModel = products.createProductsModel(this.getOwnerComponent());
           let oFeactureProductsModel = products.createFeactureProductsModel(this.getOwnerComponent());
           let oTopSellingByCategorie = products.createTopSellingByCategoryModel(this.getOwnerComponent());
@@ -26,58 +44,95 @@ sap.ui.define([
           this.setModel(oFeactureProductsModel, "feactureProductsModel");
           this.setModel(oTopSellingByCategorie, "topSellingByCategoryModel");
           
+      
 
           // let oView = this.getView();
 
           // this._updatePageIndicators(oView);
+          this._loadFeatureProductCards();
+          this._loadCategoryProductCards();
+          this._loadAllProducts();
+
+       
+        },
+
+        _loadFeatureProductCards: async function () {
+          const oView = this.getView();
+          const oCarousel = oView.byId("carousel-feature-products");
+    
+          // Obtener productos del modelo
+          const aProducts = oView.getModel("feactureProductsModel").getProperty("/products");
+    
+          for (const oProduct of aProducts) {
+            const oFragment = await Fragment.load({
+              name: "com.geonosis.shop.e.shop.geonosis.view.fragments.ProductCard",
+              type: "XML",
+              controller: this
+            });
+    
+            // Crear modelo individual con alias "model"
+            const oProductModel = new JSONModel(oProduct);
+            oFragment.setModel(oProductModel, "model");
+
+
+    
+            // Agregar al carousel
+            oCarousel.addPage(oFragment);
+          }
+        },
+
+        _loadCategoryProductCards: async function () {
+          const oView = this.getView();
+          const oVBox = oView.byId("category-panels");
+          const aPanels = oVBox.getItems();
+        
+          for (let i = 0; i < aPanels.length; i++) {
+            const oPanel = aPanels[i];
+            const oContext = oPanel.getBindingContext("topSellingByCategoryModel");
+            const aTopProducts = oContext.getProperty("topProducts");
+        
+            const oCarousel = oPanel.getContent()[0]; // Primer y único contenido: el carousel
+        
+            for (const oProduct of aTopProducts) {
+              const oFragment = await Fragment.load({
+                name: "com.geonosis.shop.e.shop.geonosis.view.fragments.ProductCard",
+                type: "XML",
+                controller: this
+              });
+        
+              const oModel = new JSONModel(oProduct);
+              oFragment.setModel(oModel, "model"); // Usamos alias 'model'
+        
+              oCarousel.addPage(oFragment);
+            }
+          }
+        },
+
+        _loadAllProducts: async function () {
+          const oView = this.getView();
+          const oCarousel = oView.byId("carousel-card-item");
+        
+          // Limpiar páginas anteriores (opcional si se recarga varias veces)
+          oCarousel.removeAllPages();
+        
+          // Obtener productos del modelo
+          const aProducts = oView.getModel("productsModel").getProperty("/products");
+        
+          for (const oProduct of aProducts) {
+            const oFragment = await Fragment.load({
+              name: "com.geonosis.shop.e.shop.geonosis.view.fragments.ProductCard",
+              type: "XML",
+              controller: this
+            });
+        
+            // Asignar modelo individual con alias "model"
+            const oProductModel = new JSONModel(oProduct);
+            oFragment.setModel(oProductModel, "model");
+        
+            // Agregar el fragmento al carousel
+            oCarousel.addPage(oFragment);
+          }
         }
 
-      //   _updatePageIndicators: (oView) => {
-      //     let oCarousel = oView.byId("carousel-card-item");
-      //     let oLayout = oCarousel.getCustomLayout();
-      //     let oIndicatorBox = oView.byId("carousel-page-indicator");
-      
-      //     // Obtener cantidad de productos y calcular páginas
-      //     let oModel = oView.getModel("productsModel");
-      //     let aProducts = oModel.getProperty("/products");
-      //     let iPages = Math.ceil(aProducts.length / oLayout.getVisiblePagesCount());
-          
-      //     // Limpiar indicadores previos
-      //     oIndicatorBox.removeAllItems();
-      
-      //     // Crear indicadores dinámicamente
-      //     for (let i = 0; i < iPages - 1; i++) {
-      //         let oIcon = new sap.ui.core.Icon({
-      //             src: "sap-icon://circle-task-2",
-      //             size: "0.75rem",
-      //             color: i === 0 ? "#0070f2" : "#bfbfbf"  // Azul para la página activa
-      //         }).addStyleClass("carousel-indicator");
-              
-      //         oIndicatorBox.addItem(oIcon);
-      //     }
-      // },
-
-    //   onCarouselNavigate: function (oEvent) {
-    //     let oCarousel = oEvent.getSource();
-    //     let oLayout = oCarousel.getCustomLayout();
-    //     let oIndicatorBox = this.getView().byId("carousel-page-indicator");
-    
-    //     const n = oLayout.getVisiblePagesCount(); // Número de productos por "página"
-    //     const aPages = oCarousel.getPages();
-    //     const iTotalItems = aPages.length;
-    
-    //     // 🔹 Obtener el índice del producto actual
-    //     const sCurrentPageId = oCarousel.getActivePage();
-    //     let iCurrentIndex = aPages.findIndex(page => page.getId() === sCurrentPageId);
-    
-    //     // 🔹 Calcular el índice de la "página" actual
-    //     let iCurrentPage = Math.floor(iCurrentIndex / n);
-    
-    //     // 🔹 Actualizar indicadores
-    //     let aIcons = oIndicatorBox.getItems();
-    //     aIcons.forEach((oIcon, index) => {
-    //         oIcon.setColor(index === iCurrentPage ? "#0070f2" : "#bfbfbf");
-    //     });
-    // }
     });
 });
