@@ -51,8 +51,8 @@ sap.ui.define([
 
       let aFilteredProducts = [];
 
-      if (oCatalogData && oCatalogData.categories) {
-        for (const category of oCatalogData.categories) {
+      if (oCatalogData && oCatalogData.catalog.categories) {
+        for (const category of oCatalogData.catalog.categories) {
           const oSubcategory = category.subcategories.find(sub => sub.id === subcategoryId);
           if (oSubcategory) {
             aFilteredProducts = oSubcategory.products || [];
@@ -60,6 +60,8 @@ sap.ui.define([
           }
         }
       }
+
+      
 
       return new JSONModel({ products: aFilteredProducts });
     },

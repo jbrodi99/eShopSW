@@ -11,7 +11,8 @@ sap.ui.define([
 
         let oRouter = this.getRouter();
 			  oRouter.getRoute("Products").attachPatternMatched(this._onObjectMatched, this);
-      
+    
+
         let oProductsModel = products.createProductsModel(this.getOwnerComponent());
         this.getView().setModel(oProductsModel, "products");
       },
@@ -20,21 +21,11 @@ sap.ui.define([
         let oArgs = oEvent.getParameter("arguments");
 
         let sSubcategoryId = decodeURIComponent(oArgs.subcategory); // ← nombre del segmento en el manifest
-    
-        // Aquí podés guardar, filtrar productos, cargar datos, etc.
-        console.log("Subcategoría recibida:", sSubcategoryId);
 
-        // Aplicar el filtro al GridList
-        let oGridList = this.byId("gridList");
-        let oBinding = oGridList.getBinding("items");
+        let oFilteredProducts = products.createFilteredProductsModel(this.getOwnerComponent(),sSubcategoryId);
 
-        if (oBinding) {
-          let oFilter = new Filter("subcategoryId", FilterOperator.EQ, sSubcategoryId);
-          oBinding.filter([oFilter]);
-          console.log(oBinding);
-        } else {
-          console.warn("No se pudo obtener el binding de gridList.");
-        }
+        this.setModel(oFilteredProducts, "filteredProducts");
+
       }
 
     });

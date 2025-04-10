@@ -24,20 +24,18 @@
         <HBox justifyContent="Center" >
           <!-- VBox con ancho limitado -->
           <VBox width="80%">
-            <f:GridList
-              id="gridList"
-              items="{products>/products}">
+            <f:GridList id="gridList" items="{filteredProducts>/products}">
               <f:customLayout>
-                <grid:GridBoxLayout boxMinWidth="30rem" />
+                <grid:GridBoxLayout boxMinWidth="18rem" />
               </f:customLayout>
 
               <f:GridListItem>
-                <VBox class="sapUiSmallMargin" height="15rem">
+                <VBox class="sapUiSmallMargin" height="28rem">
                   <layoutData>
                     <FlexItemData growFactor="1" shrinkFactor="0" />
                   </layoutData>
-                  <Title text="{products>name}" wrapping="true" />
-                  <Label text="{products>description}" wrapping="true" />
+                  <Title text="{filteredProducts>name}" wrapping="true" />
+                  <Label text="{filteredProducts>description}" wrapping="true" />
                 </VBox>
               </f:GridListItem>
             </f:GridList>
