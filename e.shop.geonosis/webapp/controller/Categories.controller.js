@@ -1,10 +1,10 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
+    "com/geonosis/shop/e/shop/geonosis/controller/BaseController",
     "com/geonosis/shop/e/shop/geonosis/model/categories"
-  ], (Controller, categories) => {
+  ], (BaseController, categories) => {
     "use strict";
   
-    return Controller.extend("com.geonosis.shop.e.shop.geonosis.controller.Categories", {
+    return BaseController.extend("com.geonosis.shop.e.shop.geonosis.controller.Categories", {
         onInit() {
             let oCategories = categories.createCategoriesModel(this.getOwnerComponent());
             this.getView().setModel(oCategories, "categoryAndSubcategorieModel");

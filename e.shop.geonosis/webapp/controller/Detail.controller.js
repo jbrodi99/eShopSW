@@ -1,10 +1,10 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
+    "com/geonosis/shop/e/shop/geonosis/controller/BaseController",
     "sap/ui/model/json/JSONModel"
-  ], (Controller, JSONModel) => {
+  ], (BaseController, JSONModel) => {
     "use strict";
   
-    return Controller.extend("com.geonosis.shop.e.shop.geonosis.controller.Detail", {
+    return BaseController.extend("com.geonosis.shop.e.shop.geonosis.controller.Detail", {
       onInit: function() {
 
         let mockProduct = {

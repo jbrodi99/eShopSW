@@ -1,0 +1,13 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Menu items="{
+		path: 'catalog>/catalog/categories'
+	}">
+		<MenuItem text="{catalog>name}" icon="sap-icon://folder" items="{
+			path: 'catalog>subcategories'
+		}">
+			<items>
+				<MenuItem text="{catalog>name}" icon="sap-icon://product" press="onSubcategoryNavigation"/>
+			</items>
+		</MenuItem>
+	</Menu>
+</core:FragmentDefinition>

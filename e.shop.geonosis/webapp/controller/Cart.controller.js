@@ -1,12 +1,12 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
+    "com/geonosis/shop/e/shop/geonosis/controller/BaseController",
     "com/geonosis/shop/e/shop/geonosis/model/products",
      "sap/ui/model/json/JSONModel",
     "sap/ui/Device",
-  ], (Controller, products,JSONModel, Device) => {
+  ], (BaseController, products,JSONModel, Device) => {
     "use strict";
   
-    return Controller.extend("com.geonosis.shop.e.shop.geonosis.controller.Cart", {
+    return BaseController.extend("com.geonosis.shop.e.shop.geonosis.controller.Cart", {
       onInit: function() {
         let oProductsModel = products.createProductsModel(this.getOwnerComponent());
         this.getView().setModel(oProductsModel, "products");

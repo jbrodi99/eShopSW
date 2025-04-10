@@ -89,14 +89,29 @@
           ]
         },
         {
-          "name": "products",
+          "name": "Products",
           "pattern": "products/{subcategory}",
           "target": "TargetProducts"
         },
         {
-          "name": "products-test",
-          "pattern": "products/",
-          "target": "TargetProductsTest"
+          "name": "Cart",
+          "pattern": "cart",
+          "target": "TargetCart"
+        },
+        {
+          "name": "Categories",
+          "pattern": "categories",
+          "target": "TargetCategories"
+        },
+        {
+          "name": "Detail",
+          "pattern": "detail",
+          "target": "TargetDetail"
+        },
+        {
+          "name": "NotFound",
+          "pattern": "notFound",
+          "target": "TargetNotFound"
         }
       ],
       "targets": {

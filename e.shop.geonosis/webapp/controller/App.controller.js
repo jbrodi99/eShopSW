@@ -1,5 +1,5 @@
 sap.ui.define([
-  "sap/ui/core/mvc/Controller",
+  "com/geonosis/shop/e/shop/geonosis/controller/BaseController",
   "sap/ui/model/json/JSONModel"
 ], (BaseController,JSONModel) => {
   "use strict";

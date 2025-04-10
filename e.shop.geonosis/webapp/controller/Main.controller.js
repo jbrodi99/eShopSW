@@ -1,11 +1,11 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
+    "com/geonosis/shop/e/shop/geonosis/controller/BaseController",
     "sap/ui/model/json/JSONModel",
     "com/geonosis/shop/e/shop/geonosis/model/products"
-], (Controller, JSONModel, products, categories) => {
+], (BaseController, JSONModel, products, categories) => {
     "use strict";
 
-    return Controller.extend("com.geonosis.shop.e.shop.geonosis.controller.Main", {
+    return BaseController.extend("com.geonosis.shop.e.shop.geonosis.controller.Main", {
         onInit() {
           const oDataImgs = {
             images: [
@@ -16,18 +16,18 @@ sap.ui.define([
           };
 
           const oModelImgs = new JSONModel(oDataImgs);
-          this.getView().setModel(oModelImgs, "view");
+          this.setModel(oModelImgs, "view");
 
           let oProductModel = products.createProductsModel(this.getOwnerComponent());
           let oFeactureProductsModel = products.createFeactureProductsModel(this.getOwnerComponent());
           let oTopSellingByCategorie = products.createTopSellingByCategoryModel(this.getOwnerComponent());
           
-          this.getView().setModel(oProductModel, "productsModel");
-          this.getView().setModel(oFeactureProductsModel, "feactureProductsModel");
-          this.getView().setModel(oTopSellingByCategorie, "topSellingByCategoryModel");
+          this.setModel(oProductModel, "productsModel");
+          this.setModel(oFeactureProductsModel, "feactureProductsModel");
+          this.setModel(oTopSellingByCategorie, "topSellingByCategoryModel");
           
 
-          let oView = this.getView();
+          // let oView = this.getView();
 
           // this._updatePageIndicators(oView);
         }

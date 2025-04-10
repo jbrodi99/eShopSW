@@ -13,7 +13,7 @@
       </SearchField>
       <ToolbarSpacer id="toolbar-spacer-header-right" />
 
-      <Button text="Categorias"/>
+      <Button text="Categorias" press="onOpenMenu"/>
       <!-- <Button id="btn-nav-bar-menu" icon="sap-icon://menu2" tooltip="Mi cuenta" press="onProfilePress" width="3rem"/> -->
       <Button id="btn-nav-bar-cart" icon="sap-icon://cart" tooltip="Mi carrito" press="onCartPress" width="3rem" /> 
     </Toolbar>
