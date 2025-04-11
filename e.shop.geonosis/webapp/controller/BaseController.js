@@ -2,12 +2,15 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/Fragment",
     "sap/m/MenuItem",
-    "sap/m/Menu"
-  ], function(Controller, Fragment, MenuItem, Menu) {
+    "sap/m/Menu",
+    "sap/ui/Device"
+  ], function(Controller, Fragment, MenuItem, Menu, Device) {
     "use strict";
   
     return Controller.extend("com.geonosis.shop.e.shop.geonosis.controller.BaseController", {
       
+
+
       // Acceso rápido al router
       getRouter: function () {
         return this.getOwnerComponent().getRouter();
@@ -112,8 +115,58 @@ sap.ui.define([
         oRouter.navTo("Products", {
           subcategory: encodeURIComponent(sSubcategoryId)
         });
-      }
+      },
   
+      _initializeBase: function () {
+        this._attachDeviceMediaHeaderHandler();
+      },
+
+      _getHeaderFragment: function () {
+        return this._oHeaderFragment;
+      },
+
+      _attachDeviceMediaHeaderHandler: function () {
+        // Actualiza el modelo "device" ante cambios de tamaño
+        Device.media.attachHandler(function (oEvent) {
+          const bPhone = oEvent.name === "Phone";
+          
+          const oView = this.getView();
+        
+          const oHeader = this._getHeaderFragment();
+          
+          // console.log(oView);
+          const oButtonCategories = oHeader.getContent().find(c => c.getId().includes("btn-nav-categories"));
+
+          const oButtonCart = oHeader.getContent().find(c => c.getId().includes("btn-nav-cart"));
+
+          const oButtonMenu = oHeader.getContent().find(c => c.getId().includes("btn-nav-menu"));
+        
+          // console.log(oButtonCategories && oButtonCart)
+          if (oButtonCategories && oButtonCart) {
+            oButtonCategories.setVisible(!bPhone);
+            oButtonCart.setVisible(!bPhone);
+            oButtonMenu.setVisible(bPhone);
+          }
+        }.bind(this));
+      },
+
+      onHamburgerPress: function (oEvent) {
+        const oView = this.getView();
+      
+        if (!this._pHamburgerPopover) {
+          this._pHamburgerPopover = Fragment.load({
+            name: "com.geonosis.shop.e.shop.geonosis.view.fragments.HamburgerMenu",
+            controller: this
+          }).then(function (oPopover) {
+            oView.addDependent(oPopover);
+            return oPopover;
+          });
+        }
+      
+        this._pHamburgerPopover.then(function (oPopover) {
+          oPopover.openBy(oEvent.getSource());
+        });
+      }
     });
   });
   

@@ -8,6 +8,19 @@ sap.ui.define([
 
     return BaseController.extend("com.geonosis.shop.e.shop.geonosis.controller.Main", {
         onInit() {
+          this._initializeBase();
+
+          Fragment.load({
+            name: "com.geonosis.shop.e.shop.geonosis.view.fragments.Header",
+            controller: this
+          }).then(function (oFragment) {
+            
+            this._oHeaderFragment = oFragment;
+            this.getView().addDependent(oFragment);
+
+            this.getView().byId("headerContainer").addContent(oFragment);
+          }.bind(this));
+
           const oDataImgs = {
             images: [
               { src: "../assets/images/banner-1-sw.png" },

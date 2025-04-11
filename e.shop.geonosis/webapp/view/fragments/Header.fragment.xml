@@ -1,4 +1,4 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.f" xmlns:core="sap.ui.core">
+<core:FragmentDefinition id="header-fragment" xmlns="sap.m" xmlns:f="sap.f" xmlns:core="sap.ui.core">
     <Toolbar height="5rem">
       <Image id="img-logo" src="{logoModel>/logo}" width="100px" height="40px"></Image>
       <ToolbarSpacer id="toolbar-spacer-header-left" />
@@ -6,15 +6,33 @@
           id="search-field-nav-bar" 
           width="40%" 
           placeholder="Buscar productos..." 
-          liveChange="onSearch">
+          liveChange="onSearch"
+          >
           <layoutData>
           <OverflowToolbarLayoutData priority="NeverOverflow" />
           </layoutData>
       </SearchField>
       <ToolbarSpacer id="toolbar-spacer-header-right" />
 
-      <Button text="Categorias" press=".onOpenMenu"/>
-      <!-- <Button id="btn-nav-bar-menu" icon="sap-icon://menu2" tooltip="Mi cuenta" press="onProfilePress" width="3rem"/> -->
-      <Button id="btn-nav-bar-cart" icon="sap-icon://cart" tooltip="Mi carrito" press="onCartPress" width="3rem" /> 
+      <Button 
+        id="btn-nav-categories"
+        text="Categorias"
+        press=".onOpenMenu"
+        visible="{= !${device>/system/phone} }"
+        />
+      <Button id="btn-nav-cart"
+        icon="sap-icon://cart" 
+        tooltip="Mi carrito" 
+        press="onCartPress" 
+        width="3rem" 
+        visible="{= !${device>/system/phone} }"
+        /> 
+      <Button id="btn-nav-menu"
+      icon="sap-icon://menu" 
+      tooltip="Menu" 
+      press="onHamburgerPress" 
+      width="3rem" 
+      visible="{= ${device>/system/phone} }"
+      /> 
     </Toolbar>
 </core:FragmentDefinition>
