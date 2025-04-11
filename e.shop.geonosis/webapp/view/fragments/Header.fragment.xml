@@ -1,6 +1,6 @@
 <core:FragmentDefinition id="header-fragment" xmlns="sap.m" xmlns:f="sap.f" xmlns:core="sap.ui.core">
     <Toolbar height="5rem">
-      <Image id="img-logo" src="{logoModel>/logo}" width="100px" height="40px"></Image>
+      <Image src="{logoModel>/logo}" width="100px" height="40px"></Image>
       <ToolbarSpacer id="toolbar-spacer-header-left" />
       <SearchField 
           id="search-field-nav-bar" 

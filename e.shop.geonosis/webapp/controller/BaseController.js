@@ -1,16 +1,17 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
-    "sap/ui/core/Fragment",
-    "sap/m/MenuItem",
-    "sap/m/Menu",
-    "sap/ui/Device"
-  ], function(Controller, Fragment, MenuItem, Menu, Device) {
-    "use strict";
+  "sap/ui/core/mvc/Controller",
+  "sap/ui/core/Fragment",
+  "sap/m/MenuItem",
+  "sap/m/Menu",
+  "sap/ui/Device"
+], function(Controller, Fragment, MenuItem, Menu, Device) {
+  "use strict";
   
-    return Controller.extend("com.geonosis.shop.e.shop.geonosis.controller.BaseController", {
-      
-
-
+  return Controller.extend("com.geonosis.shop.e.shop.geonosis.controller.BaseController", {
+    
+      _initializeBase: function () {
+        this._attachDeviceMediaHeaderHandler();
+      },
       // Acceso rápido al router
       getRouter: function () {
         return this.getOwnerComponent().getRouter();
@@ -117,12 +118,9 @@ sap.ui.define([
         });
       },
   
-      _initializeBase: function () {
-        this._attachDeviceMediaHeaderHandler();
-      },
 
       _getHeaderFragment: function () {
-        return this._oHeaderFragment;
+        return this.getOwnerComponent()._oHeaderFragment;
       },
 
       _attachDeviceMediaHeaderHandler: function () {

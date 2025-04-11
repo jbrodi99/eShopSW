@@ -5,18 +5,18 @@
     xmlns:grid="sap.ui.layout.cssgrid"
     xmlns:f="sap.f">
   <Page showHeader="false">
+    
+    <ScrollContainer id="headerProdContainer"></ScrollContainer>
     <content>
 
-      <core:Fragment fragmentName="com.geonosis.shop.e.shop.geonosis.view.fragments.Header" type="XML" />
 
       <Panel id="panelForGridList" backgroundDesign="Transparent">
         <headerToolbar>
           <Toolbar height="3rem">
-            <Title text="Producto por categoria" />
-            <Text text="xx productos"></Text>
+            <Title text="{filteredProducts>/subcategory}" />
+            <Text text="{filteredProducts>/totalStock} productos disponibles"></Text>
             <ToolbarSpacer ></ToolbarSpacer>
-            <Button text="filtrar"></Button>
-            <Button text="ordenarBy"></Button>
+            <Button icon="sap-icon://filter" press="onFilterPress"></Button>
           </Toolbar>
         </headerToolbar>
 

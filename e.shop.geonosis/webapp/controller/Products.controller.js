@@ -8,10 +8,68 @@ sap.ui.define([
   
     return BaseController.extend("com.geonosis.shop.e.shop.geonosis.controller.Products", {
       onInit: function() {
+        this._initializeBase();
+
+        const oTargets = this.getOwnerComponent().getRouter().getTargets();
+        console.log(oTargets);
+        oTargets.getTarget("TargetProducts").attachDisplay(function (oEvent) {
+          this._onViewDisplayed(); // tu lógica personalizada
+        }, this);
+
+      //   if(!this.getOwnerComponent()._oHeaderFragment){
+      //   if (this._oHeaderFragment) {
+      //     this._oHeaderFragment.destroy(true);
+      //   }
+      //   Fragment.load({
+      //     name: "com.geonosis.shop.e.shop.geonosis.view.fragments.Header",
+      //     controller: this
+      //   }).then(function (oFragment) {
+          
+      //     this.getOwnerComponent()._oHeaderFragment = oFragment;
+      //     this.getView().addDependent(oFragment);
+
+      //     this.getView().byId("headerProdContainer").addContent(oFragment);
+      //   }.bind(this));
+      // }else{
+      //   // Fragment ya existe, lo reusamos
+      //     const oFragment = this.getOwnerComponent()._oHeaderFragment;
+
+      //     this.getView().addDependent(oFragment);
+      //     this.getView().byId("headerProdContainer").addContent(oFragment);
+      //   }
+
 
         let oRouter = this.getRouter();
 			  oRouter.getRoute("Products").attachPatternMatched(this._onObjectMatched, this);
 
+      },
+
+      _onViewDisplayed() {
+        if(!this.getOwnerComponent()._oHeaderFragment){
+          if (this._oHeaderFragment) {
+            this._oHeaderFragment.destroy(true);
+          }
+          Fragment.load({
+            name: "com.geonosis.shop.e.shop.geonosis.view.fragments.Header",
+            controller: this
+          }).then(function (oFragment) {
+            
+            this.getOwnerComponent()._oHeaderFragment = oFragment;
+            this.getView().addDependent(oFragment);
+  
+            this.getView().byId("headerProdContainer").addContent(oFragment);
+          }.bind(this));
+        }else{
+          // Fragment ya existe, lo reusamos
+            const oFragment = this.getOwnerComponent()._oHeaderFragment;
+  
+            this.getView().addDependent(oFragment);
+            this.getView().byId("headerProdContainer").addContent(oFragment);
+          }
+      },
+
+      onFilterPress: function (oEvent) {
+        
       },
 
       _onObjectMatched: function (oEvent) {
@@ -19,8 +77,19 @@ sap.ui.define([
 
         let sSubcategoryId = decodeURIComponent(oArgs.subcategory); // ← nombre del segmento en el manifest
 
+        
         let oFilteredProducts = products.createFilteredProductsModel(this.getOwnerComponent(),sSubcategoryId);
-
+        
+        
+        let aFilteredProducts = oFilteredProducts.getProperty("/products");
+        
+        let iTotalStock = aFilteredProducts.reduce(function (sum, product) {
+          return sum + (product.stock || 0);
+        }, 0);
+        
+        oFilteredProducts.setProperty("/subcategory", sSubcategoryId.toUpperCase());
+        oFilteredProducts.setProperty("/totalStock", iTotalStock);
+        
         this.setModel(oFilteredProducts, "filteredProducts");
 
         this._loadFilteredProductCards();
