@@ -13,7 +13,7 @@ sap.ui.define([
         const oTargets = this.getOwnerComponent().getRouter().getTargets();
         console.log(oTargets);
         oTargets.getTarget("TargetProducts").attachDisplay(function (oEvent) {
-          this._onViewDisplayed(); // tu lógica personalizada
+          this._onViewDisplayed();
         }, this);
 
       //   if(!this.getOwnerComponent()._oHeaderFragment){
