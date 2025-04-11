@@ -13,30 +13,8 @@ sap.ui.define([
           const oTargets = this.getOwnerComponent().getRouter().getTargets();
           console.log(oTargets);
           oTargets.getTarget("TargetMain").attachDisplay(function (oEvent) {
-            this._onViewDisplayed(); // tu lógica personalizada
+            this._onViewDisplayed(); 
           }, this);
-
-          // if(!this.getOwnerComponent()._oHeaderFragment){
-          //   Fragment.load({
-          //     name: "com.geonosis.shop.e.shop.geonosis.view.fragments.Header",
-          //     controller: this
-          //   }).then(function (oFragment) {
-              
-          //     this.getOwnerComponent()._oHeaderFragment = oFragment;
-          //     this.getView().addDependent(oFragment);
-  
-          //     this.getView().byId("headerContainer").addContent(oFragment);
-          //   }.bind(this));
-          // }else{
-          // // Fragment ya existe, lo reusamos
-          //   const oFragment = this.getOwnerComponent()._oHeaderFragment;
-
-          //   // Nos aseguramos de que no esté ya agregado a esta vista
-          
-          //   this.getView().addDependent(oFragment);
-          //   this.getView().byId("headerContainer").addContent(oFragment);
-          //   console.log("deberia cargarme en el main");
-          // }
 
           const oDataImgs = {
             images: [
@@ -96,14 +74,12 @@ sap.ui.define([
               
               this.getOwnerComponent()._oHeaderFragment = oFragment;
               this.getView().addDependent(oFragment);
-  
+              
+
               this.getView().byId("headerContainer").addContent(oFragment);
             }.bind(this));
           }else{
-          // Fragment ya existe, lo reusamos
             const oFragment = this.getOwnerComponent()._oHeaderFragment;
-
-            // Nos aseguramos de que no esté ya agregado a esta vista
           
             this.getView().addDependent(oFragment);
             this.getView().byId("headerContainer").addContent(oFragment);

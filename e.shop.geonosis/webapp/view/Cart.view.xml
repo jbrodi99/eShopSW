@@ -5,7 +5,8 @@
 
   <Page showHeader="false">
    
-      <core:Fragment fragmentName="com.geonosis.shop.e.shop.geonosis.view.fragments.Header" type="XML" />
+      <ScrollContainer id="cart-header-container" class="mySticky"></ScrollContainer>
+      <!-- <core:Fragment fragmentName="com.geonosis.shop.e.shop.geonosis.view.fragments.Header" type="XML" /> -->
    
       <content>
         <VBox justifyContent="Center" alignItems="Center">

@@ -6,7 +6,7 @@
     xmlns:f="sap.f">
   <Page showHeader="false">
     
-    <ScrollContainer id="headerProdContainer"></ScrollContainer>
+    <ScrollContainer id="headerProdContainer" class="mySticky"></ScrollContainer>
     <content>
 
 

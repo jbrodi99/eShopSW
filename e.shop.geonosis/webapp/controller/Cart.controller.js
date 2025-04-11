@@ -8,6 +8,16 @@ sap.ui.define([
   
     return BaseController.extend("com.geonosis.shop.e.shop.geonosis.controller.Cart", {
       onInit: function() {
+
+        this._initializeBase();
+
+        const oTargets = this.getOwnerComponent().getRouter().getTargets();
+     
+        oTargets.getTarget("TargetCart").attachDisplay(function (oEvent) {
+          this._onViewDisplayed(); 
+        }, this);
+
+
         let oProductsModel = products.createProductsModel(this.getOwnerComponent());
         this.getView().setModel(oProductsModel, "products");
 
@@ -17,10 +27,10 @@ sap.ui.define([
         let oScrollContainer = oView.byId("myScrollContainer");
       
         if (Device.system.desktop) {
-          sDirection = "Row"; // Dos columnas
+          sDirection = "Row"; 
           oScrollContainer.addStyleClass("stickyTop");
         } else {
-          sDirection = "Column"; // Una sola columna en dispositivos móviles o tablets
+          sDirection = "Column";
           oScrollContainer.addStyleClass("stickyBottom");
         }
         
@@ -30,8 +40,31 @@ sap.ui.define([
           growRight: Device.system.desktop ? 4 : 1,
         });
   
-        // Asignar el modelo a la vista
+        
         this.getView().setModel(oLayoutModel, "layoutModel");
+      },
+
+      _onViewDisplayed: function (oEvent) {
+        
+        if(!this.getOwnerComponent()._oHeaderFragment){
+          Fragment.load({
+            name: "com.geonosis.shop.e.shop.geonosis.view.fragments.Header",
+            controller: this
+          }).then(function (oFragment) {
+            
+            this.getOwnerComponent()._oHeaderFragment = oFragment;
+            this.getView().addDependent(oFragment);
+
+            this.getView().byId("headerContainer").addContent(oFragment);
+          }.bind(this));
+        }else{
+
+          const oFragment = this.getOwnerComponent()._oHeaderFragment;
+        
+          this.getView().addDependent(oFragment);
+          this.getView().byId("cart-header-container").addContent(oFragment);
+          
+        }
       }
     });
   });
