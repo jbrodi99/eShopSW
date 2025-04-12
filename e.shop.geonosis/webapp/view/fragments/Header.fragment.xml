@@ -18,21 +18,21 @@
         id="btn-nav-categories"
         text="Categorias"
         press=".onOpenMenu"
-        visible="{= !${device>/system/phone} }"
+        class="sapUiVisibleOnlyOnDesktop"
         />
       <Button id="btn-nav-cart"
         icon="sap-icon://cart" 
         tooltip="Mi carrito" 
         press="onCartPress" 
         width="3rem" 
-        visible="{= !${device>/system/phone} }"
+        class="sapUiVisibleOnlyOnDesktop"
         /> 
       <Button id="btn-nav-menu"
       icon="sap-icon://menu" 
       tooltip="Menu" 
       press="onHamburgerPress" 
       width="3rem" 
-      visible="{= ${device>/system/phone} }"
+      class="sapUiHideOnDesktop"
       /> 
     </Toolbar>
 </core:FragmentDefinition>

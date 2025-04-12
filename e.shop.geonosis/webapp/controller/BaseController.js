@@ -1,35 +1,34 @@
 sap.ui.define([
   "sap/ui/core/mvc/Controller",
-  "sap/ui/core/Fragment",
   "sap/m/MenuItem",
   "sap/m/Menu",
   "sap/ui/Device",
-  "com/geonosis/shop/e/shop/geonosis/model/models"
-], function(Controller, Fragment, MenuItem, Menu, Device, models) {
+
+], function(Controller, MenuItem, Menu, Device) {
   "use strict";
   
   return Controller.extend("com.geonosis.shop.e.shop.geonosis.controller.BaseController", {
     
-      _initializeBase: function () {
-        models.onMediaChange(function (oEvent) {
-          const bPhone = oEvent.name === "Phone";
+      // _initializeBase: function () {
+      //   models.onMediaChange(function (oEvent) {
+      //     const bPhone = oEvent.name === "Phone";
           
-          const oHeader = this._getHeaderFragment();
+      //     const oHeader = this._getHeaderFragment();
           
-          const oButtonCategories = oHeader.getContent().find(c => c.getId().includes("btn-nav-categories"));
+      //     const oButtonCategories = oHeader.getContent().find(c => c.getId().includes("btn-nav-categories"));
           
-          const oButtonCart = oHeader.getContent().find(c => c.getId().includes("btn-nav-cart"));
+      //     const oButtonCart = oHeader.getContent().find(c => c.getId().includes("btn-nav-cart"));
           
-          const oButtonMenu = oHeader.getContent().find(c => c.getId().includes("btn-nav-menu"));
+      //     const oButtonMenu = oHeader.getContent().find(c => c.getId().includes("btn-nav-menu"));
           
-          // console.log(oButtonCategories && oButtonCart)
-          if (oButtonCategories && oButtonCart) {
-            oButtonCategories.setVisible(!bPhone);
-            oButtonCart.setVisible(!bPhone);
-            oButtonMenu.setVisible(bPhone);
-          }
-         })
-      },
+      //     // console.log(oButtonCategories && oButtonCart)
+      //     if (oButtonCategories && oButtonCart) {
+      //       oButtonCategories.setVisible(!bPhone);
+      //       oButtonCart.setVisible(!bPhone);
+      //       oButtonMenu.setVisible(bPhone);
+      //     }
+      //    }.bind(this))
+      // },
 
       getRouter: function () {
         return this.getOwnerComponent().getRouter();
@@ -68,43 +67,25 @@ sap.ui.define([
         this.getRouter().navTo("Cart");
       },
 
-      onSubcategoryNavigation: function (oSubcategory) {
+      onSubcategoryNavigation: function (sSubcategory) {
         let oRouter = this.getRouter();
-  
+
         oRouter.navTo("Products", {
-          subcategory: encodeURIComponent(oSubcategory.id)
+          subcategory: encodeURIComponent(sSubcategory)
         });
       },
 
       onOpenMenu: function (oEvent) {
-        const bIsMobile = sap.ui.Device.system.phone || sap.ui.Device.system.tablet;
-      
-        if (this._pMenu) {
-          this._pMenu.destroy(); // destruir para regenerar según el device
-          this._pMenu = null;
-        }
+        const sCurrentMedia = sap.ui.Device.media.getCurrentRange("Std").name;
+        const bIsMobile = sCurrentMedia === "Phone" || sCurrentMedia === "Tablet";
+        
+        let sPath = "MenuDesktop";
       
         if (bIsMobile) {
-          // Mobile: Cargar menú sin submenús, se crearán dinámicamente
-          Fragment.load({
-            name: "com.geonosis.shop.e.shop.geonosis.view.fragments.MenuMobile",
-            controller: this
-          }).then(function (oMenu) {
-            this._pMenu = oMenu;
-            this.getView().addDependent(oMenu);
-            oMenu.openBy(oEvent.getSource());
-          }.bind(this));
-        } else {
-          // Desktop: Menú con binding completo (categoría + subcategorías)
-          Fragment.load({
-            name: "com.geonosis.shop.e.shop.geonosis.view.fragments.MenuDesktop",
-            controller: this
-          }).then(function (oMenu) {
-            this._pMenu = oMenu;
-            this.getView().addDependent(oMenu);
-            oMenu.openBy(oEvent.getSource());
-          }.bind(this));
-        }
+          sPath = "MenuMobile";
+        } 
+        
+        this.loadMenu(sPath, oEvent);
       },
 
       onCategoryMenuPress: function (oEvent) {
@@ -116,7 +97,7 @@ sap.ui.define([
             items: aSubcategories.map(sub => new MenuItem({
               text: sub.name,
               icon: "sap-icon://product",
-              press: () => this.onSubcategoryNavigation(sub) // o navegación
+              press: () => this.onSubcategoryNavigation(sub.id) // o navegación
             }))
           });
       
@@ -126,31 +107,17 @@ sap.ui.define([
 
       onSubcategoryMenuPress: function (oEvent) {
         let oItem = oEvent.getSource();
-        let oRouter = this.getRouter();
         let oContext = oItem.getBindingContext("catalog");
         let sSubcategoryId = oContext.getProperty("id");
 
-        oRouter.navTo("Products", {
-          subcategory: encodeURIComponent(sSubcategoryId)
-        });
+        this.onSubcategoryNavigation(sSubcategoryId);
       },
       
       onHamburgerPress: function (oEvent) {
-        const oView = this.getView();
+
+        let sPath = "HamburgerMenu";
         
-        if (!this._pHamburgerPopover) {
-          this._pHamburgerPopover = Fragment.load({
-            name: "com.geonosis.shop.e.shop.geonosis.view.fragments.HamburgerMenu",
-            controller: this
-          }).then(function (oPopover) {
-            oView.addDependent(oPopover);
-            return oPopover;
-          });
-        }
-        
-        this._pHamburgerPopover.then(function (oPopover) {
-          oPopover.openBy(oEvent.getSource());
-        });
+        this.loadMenu(sPath, oEvent);
       },
 
 
@@ -161,6 +128,17 @@ sap.ui.define([
           id: sView
         }).then(function(oFragment) {
           this.getView().byId(sContainer).addContent(oFragment);
+        }.bind(this));
+      },
+
+      loadMenu: function (sMenu, oEvent) {
+        let sPath = "com.geonosis.shop.e.shop.geonosis.view.fragments." + sMenu;
+
+        this.loadFragment({
+          name: sPath,
+          id: sPath
+        }).then(function (oFragment) {
+          oFragment.openBy(oEvent.getSource());
         }.bind(this));
       }
     });

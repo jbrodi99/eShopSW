@@ -19,9 +19,9 @@ sap.ui.define([
 
             // set the device model
             this.setModel(models.createDeviceModel(), "device");
-
-            this.setModel(models.createResponsiveModel(), "settingsResponsive");
-
+         
+            this.setModel(models.createResponsiveModel(this), "settingsResponsive");
+            
             this.getModel("catalog").attachRequestCompleted(() => {
                 this.setModel(products.createProductsModel(this, "products"), "products");
             });

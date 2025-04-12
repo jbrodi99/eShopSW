@@ -16,7 +16,7 @@ sap.ui.define([
                 return oModel;
             },
 
-            createResponsiveModel: function () {
+            createResponsiveModel: function (oComponent) {
                 let sInitialMedia = sap.ui.Device.media.getCurrentRange("Std").name;
                 let iItemsPerPage = sInitialMedia === "Desktop" ? 4 :
                                     sInitialMedia === "Tablet" ? 2 : 1;
@@ -29,8 +29,8 @@ sap.ui.define([
                     const sMedia = oEvent.name; 
                     const iNewItems = sMedia === "Desktop" ? 4 :
                                       sMedia === "Tablet"  ? 2 : 1;
-                
-                    this.getModel("settings").setProperty("/carouselItemsPerPage", iNewItems);
+                                      
+                    oComponent.getModel("settingsResponsive").setProperty("/carouselItemsPerPage", iNewItems);
                 });
 
                 oSettingsModel.setDefaultBindingMode("OneWay");
