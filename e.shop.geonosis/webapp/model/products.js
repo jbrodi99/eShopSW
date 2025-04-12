@@ -6,8 +6,8 @@ function (JSONModel) {
 
     return {
 
-      createProductsModel: function(oModel) {
-        let aProducts = this._getAllProducts(oModel);
+      createProductsModel: function(oComponent) {
+        let aProducts = this._getAllProducts(oComponent);
         let oProductModel = new JSONModel({ products: aProducts });
         return oProductModel;
       },
@@ -46,21 +46,22 @@ function (JSONModel) {
         return aFilteredProducts;
       },
 
-      _getAllProducts: (oModel) => {
-        let oCatalogData = oModel ? oModel.getData() : { catalog: { categories: [] } };
-  
+      _getAllProducts: (oComponent) => {
+        let oCatalogModel = oComponent.getModel("catalog");
+        let oCatalogData = oCatalogModel?.getData?.(); // <- correctamente accediendo a oData
+
+        let aCategories = oCatalogData?.catalog?.categories || []; // <- defensivo
+
         let extractedProduct = (aCategories) => {
           return aCategories.reduce((aProducts, category) => {
-            category.subcategories.forEach(subCategory => {
+            category.subcategories?.forEach(subCategory => {
               aProducts.push(...subCategory.products);
             });
             return aProducts;
           }, []);
         };
-  
-        let aProducts = extractedProduct(oCatalogData.catalog.categories);
         
-        return aProducts;
+        return extractedProduct(aCategories);
       }
     };
 

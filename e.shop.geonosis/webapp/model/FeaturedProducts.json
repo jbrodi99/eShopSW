@@ -1,0 +1,32 @@
+{
+    "featured": [
+        {
+            "ProductId": "prod1",
+            "Type": "Promoted"
+        },
+        {
+            "ProductId": "prod1",
+            "Type": "Viewed"
+        },
+        {
+            "ProductId": "prod1",
+            "Type": "Favorited"
+        },
+        {
+            "ProductId": "prod2",
+            "Type": "Favorited"
+        },
+        {
+            "ProductId": "prod11",
+            "Type": "Favorited"
+        },
+        {
+            "ProductId": "prod12",
+            "Type": "Favorited"
+        },
+        {
+            "ProductId": "prod111",
+            "Type": "Favorited"
+        }
+    ]
+}

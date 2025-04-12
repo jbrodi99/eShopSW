@@ -58,7 +58,15 @@
       },
       "catalog": {
         "type": "sap.ui.model.json.JSONModel",
-        "uri": "./model/catalog-test.json"
+        "uri": "./model/Catalog-test.json"
+      },
+      "welcome": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "./model/Welcome.json"
+      },
+      "featured": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "./model/FeaturedProducts.json"
       }
     },
     "resources": {

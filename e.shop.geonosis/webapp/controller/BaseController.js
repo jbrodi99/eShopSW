@@ -11,7 +11,7 @@ sap.ui.define([
   return Controller.extend("com.geonosis.shop.e.shop.geonosis.controller.BaseController", {
     
       _initializeBase: function () {
-        this.models.onMediaChange(function (oEvent) {
+        models.onMediaChange(function (oEvent) {
           const bPhone = oEvent.name === "Phone";
           
           const oHeader = this._getHeaderFragment();
@@ -38,7 +38,11 @@ sap.ui.define([
       getModel: function (sName) {
         return this.getView().getModel(sName);
       },
-  
+
+      getComponentModel: function (sName) {
+        return this.getOwnerComponent().getModel(sName);
+      },
+
       setModel: function (oModel, sName) {
         return this.getView().setModel(oModel, sName);
       },
@@ -149,8 +153,15 @@ sap.ui.define([
         });
       },
 
-      _getHeaderFragment: function () {
-        return this.getOwnerComponent()._oHeaderFragment;
+
+      loadHeader: function (sView, sContainer) {
+        
+        this.loadFragment({
+          name: "com.geonosis.shop.e.shop.geonosis.view.fragments.Header",
+          id: sView
+        }).then(function(oFragment) {
+          this.getView().byId(sContainer).addContent(oFragment);
+        }.bind(this));
       }
     });
   });

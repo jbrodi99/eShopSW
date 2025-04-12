@@ -11,6 +11,8 @@ sap.ui.define([
           let testModel = products.createProductsModel(this.getOwnerComponent().getModel("catalog"));
           console.log(testModel);
           this.getView().setModel(testModel, "products");
+
+          this.loadHeader(this.getView().getViewName(), "headerTestContainer");
         },
 
         onFilter: function (oEvent) {

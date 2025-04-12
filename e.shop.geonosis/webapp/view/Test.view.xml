@@ -7,6 +7,8 @@
     xmlns="sap.m">
     <Page showHeader="false">
 
+    <ScrollContainer id="headerTestContainer" class="mySticky"></ScrollContainer>
+
         <SearchField liveChange=".onFilter"
                     width="25rem"
                     id="searchField"></SearchField>

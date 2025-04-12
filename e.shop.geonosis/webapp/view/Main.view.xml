@@ -12,17 +12,17 @@
 
     <Carousel 
       id="main-carousel-info-pictures"
-      height="40%"
+      height="23rem"
       showPageIndicator="false"
       loop="true"
-      pages="{view>/images}">
+      pages="{welcome>/imagesUrl}">
       <VBox id="vbox-carousel-imgs" renderType="Bare" height="100%">
           <Image
               id="carousel-imgs"
               mode="Background"
               backgroundPosition="center"
               backgroundSize="contain"
-              src="{view>src}"
+              src="{welcome>src}"
               width="100%"
               height="100%" />
       </VBox>
@@ -34,72 +34,81 @@
       <headerToolbar>
         <OverflowToolbar id="panel-toolbar-carousel-prods-main" 
           height="3rem" >
-          <Title id="panel-toolbar-title-carousel-prods-main" text="Feacture Products"/>
+          <Title id="panel-toolbar-title-carousel-prods-main" text="Favoritos"/>
           <ToolbarSpacer id="panel-space-center-prods-main"></ToolbarSpacer>
           <HBox  alignItems="Center" class="carousel-indicator-box"></HBox>
-          <Button press="onTestPress"></Button>
+
         </OverflowToolbar>
       </headerToolbar>
       <content>
         <Carousel
-          id="carousel-feature-products"
+          id="Favorited"
           height="25rem"
           showPageIndicator="false"
           loop="true"
           backgroundDesign="Solid">
           <customLayout>
-            <CarouselLayout visiblePagesCount="{settings>/carouselItemsPerPage}" scrollMode="VisiblePages"/>
+            <CarouselLayout visiblePagesCount="{settingsResponsive>/carouselItemsPerPage}" scrollMode="VisiblePages"/>
           </customLayout>
+          
         </Carousel>
       </content>
     </Panel>
 
-      <VBox id="category-panels" items="{topSellingByCategoryModel>/categories}" class="sapUiNoMargin">
-        <Panel headerText="{topSellingByCategoryModel>name}" backgroundDesign="Transparent" >
-          <headerToolbar>
-            <OverflowToolbar 
-              height="3rem" >
-              <Title  text="{topSellingByCategoryModel>name}"/>
-              <ToolbarSpacer ></ToolbarSpacer>
-              <HBox  alignItems="Center" class="carousel-indicator-box"></HBox>
-            </OverflowToolbar>
-          </headerToolbar>
-          <Carousel
-            height="25rem"
-            showPageIndicator="false"
-            loop="true"
-            backgroundDesign="Solid">
-            <customLayout>
-            <CarouselLayout  visiblePagesCount="{settings>/carouselItemsPerPage}" scrollMode="VisiblePages"/>
-            </customLayout>
-            
-          </Carousel>
-        </Panel>
-      </VBox>
-
-      <Panel 
+    <Panel 
       backgroundDesign="Transparent"
       class="sapUiSmallMarginTopBottom">
       <headerToolbar>
         <OverflowToolbar 
           height="3rem" >
-          <Title  text="Products"/>
+          <Title  text="Vistos ultimamente"/>
           <ToolbarSpacer ></ToolbarSpacer>
-          <HBox id="carousel-page-indicator" alignItems="Center" class="carousel-indicator-box"></HBox>
+          <HBox  alignItems="Center" class="carousel-indicator-box"></HBox>
         </OverflowToolbar>
       </headerToolbar>
       <content>
-        <Carousel id="carousel-card-item"
+        <Carousel
+          id="Viewed"
           height="25rem"
           showPageIndicator="false"
-          loop="false"
+          loop="true"
           backgroundDesign="Solid">
           <customLayout>
-            <CarouselLayout  visiblePagesCount="{settings>/carouselItemsPerPage}" scrollMode="VisiblePages"/>
+            <CarouselLayout visiblePagesCount="{settingsResponsive>/carouselItemsPerPage}" scrollMode="VisiblePages"/>
           </customLayout>
+          
         </Carousel>
       </content>
     </Panel>
+
+    <Panel 
+      backgroundDesign="Transparent"
+      class="sapUiSmallMarginTopBottom">
+      <headerToolbar>
+        <OverflowToolbar 
+          height="3rem" >
+          <Title  text="Promocionados"/>
+          <ToolbarSpacer ></ToolbarSpacer>
+          <HBox  alignItems="Center" class="carousel-indicator-box"></HBox>
+        </OverflowToolbar>
+      </headerToolbar>
+      <content>
+        <Carousel
+          id="Promoted"
+          height="25rem"
+          showPageIndicator="false"
+          loop="true"
+          backgroundDesign="Solid">
+          <customLayout>
+            <CarouselLayout visiblePagesCount="{settingsResponsive>/carouselItemsPerPage}" scrollMode="VisiblePages"/>
+          </customLayout>
+          
+        </Carousel>
+      </content>
+    </Panel>
+
+
+
     </content>
     </Page>
 </mvc:View>

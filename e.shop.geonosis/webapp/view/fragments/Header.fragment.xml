@@ -1,4 +1,4 @@
-<core:FragmentDefinition id="header-fragment" xmlns="sap.m" xmlns:f="sap.f" xmlns:core="sap.ui.core">
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.f" xmlns:core="sap.ui.core">
     <Toolbar height="5rem">
       <Image src="{logoModel>/logo}" width="100px" height="40px"></Image>
       <ToolbarSpacer id="toolbar-spacer-header-left" />
