@@ -37,6 +37,7 @@
           <Title id="panel-toolbar-title-carousel-prods-main" text="Feacture Products"/>
           <ToolbarSpacer id="panel-space-center-prods-main"></ToolbarSpacer>
           <HBox  alignItems="Center" class="carousel-indicator-box"></HBox>
+          <Button press="onTestPress"></Button>
         </OverflowToolbar>
       </headerToolbar>
       <content>

@@ -163,6 +163,10 @@ sap.ui.define([
             // Agregar el fragmento al carousel
             oCarousel.addPage(oFragment);
           }
+        },
+
+        onTestPress: function () {
+          this.getRouter().navTo("Test");
         }
 
     });

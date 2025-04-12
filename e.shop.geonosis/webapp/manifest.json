@@ -58,7 +58,7 @@
       },
       "catalog": {
         "type": "sap.ui.model.json.JSONModel",
-        "uri": "catalog-test.json"
+        "uri": "./model/catalog-test.json"
       }
     },
     "resources": {
@@ -112,6 +112,11 @@
           "name": "NotFound",
           "pattern": "notFound",
           "target": "TargetNotFound"
+        },
+        {
+          "name": "Test",
+          "pattern": "Test",
+          "target": "TargetTest"
         }
       ],
       "targets": {
@@ -154,6 +159,14 @@
         "TargetNotFound": {
           "name": "NotFound",
           "id": "NotFound",
+          "viewLevel": 2,
+          "controlAggregation": "pages",
+          "controlId": "app",
+          "viewType": "XML"
+        },
+        "TargetTest": {
+          "name": "Test",
+          "id": "Test",
           "viewLevel": 2,
           "controlAggregation": "pages",
           "controlId": "app",

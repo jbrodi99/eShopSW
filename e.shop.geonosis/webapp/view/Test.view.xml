@@ -1,0 +1,38 @@
+<mvc:View controllerName="com.geonosis.shop.e.shop.geonosis.controller.Test"
+    displayBlock="true"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:uxap="sap.uxap"
+    xmlns:layout="sap.ui.layout"
+    xmlns="sap.m">
+    <Page showHeader="false">
+
+        <SearchField liveChange=".onFilter"
+                    width="25rem"
+                    id="searchField"></SearchField>
+
+        <!-- <List id="list" items="{catalog>/catalog/categories}" >
+        <CustomListItem >
+            <VBox >
+            <Text text="{catalog>name}" />
+            <List id="list-sub" items="{catalog>subcategories}">
+                <CustomListItem>
+                <VBox>
+                    <Text text="{catalog>name}" />
+                    <List items="{catalog>products}">
+                    <StandardListItem title="{catalog>name}"/>
+                    </List>
+                </VBox>
+                </CustomListItem>
+            </List>
+            </VBox>
+        </CustomListItem>
+        </List> -->
+
+        <List id="list" items="{products>/products}" >
+        <CustomListItem >
+            <Text text="{products>name}" />
+        </CustomListItem>
+        </List>
+    </Page>
+</mvc:View>
