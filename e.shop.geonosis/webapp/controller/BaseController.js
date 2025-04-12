@@ -3,36 +3,50 @@ sap.ui.define([
   "sap/ui/core/Fragment",
   "sap/m/MenuItem",
   "sap/m/Menu",
-  "sap/ui/Device"
-], function(Controller, Fragment, MenuItem, Menu, Device) {
+  "sap/ui/Device",
+  "com/geonosis/shop/e/shop/geonosis/model/models"
+], function(Controller, Fragment, MenuItem, Menu, Device, models) {
   "use strict";
   
   return Controller.extend("com.geonosis.shop.e.shop.geonosis.controller.BaseController", {
     
       _initializeBase: function () {
-        this._attachDeviceMediaHeaderHandler();
+        this.models.onMediaChange(function (oEvent) {
+          const bPhone = oEvent.name === "Phone";
+          
+          const oHeader = this._getHeaderFragment();
+          
+          const oButtonCategories = oHeader.getContent().find(c => c.getId().includes("btn-nav-categories"));
+          
+          const oButtonCart = oHeader.getContent().find(c => c.getId().includes("btn-nav-cart"));
+          
+          const oButtonMenu = oHeader.getContent().find(c => c.getId().includes("btn-nav-menu"));
+          
+          // console.log(oButtonCategories && oButtonCart)
+          if (oButtonCategories && oButtonCart) {
+            oButtonCategories.setVisible(!bPhone);
+            oButtonCart.setVisible(!bPhone);
+            oButtonMenu.setVisible(bPhone);
+          }
+         })
       },
-      // Acceso rápido al router
+
       getRouter: function () {
         return this.getOwnerComponent().getRouter();
       },
   
-      // Acceso a un modelo por nombre
       getModel: function (sName) {
         return this.getView().getModel(sName);
       },
   
-      // Setear un modelo a la vista
       setModel: function (oModel, sName) {
         return this.getView().setModel(oModel, sName);
       },
   
-      // Acceso al ResourceBundle (i18n)
       getResourceBundle: function () {
         return this.getOwnerComponent().getModel("i18n").getResourceBundle();
       },
   
-      // Navegación con historial
       onNavBack: function () {
         let oHistory = sap.ui.core.routing.History.getInstance();
         let sPreviousHash = oHistory.getPreviousHash();
@@ -44,15 +58,14 @@ sap.ui.define([
         }
       },
 
+      //Fragment Header Methods
+
       onCartPress: function () {
-        let oRouter = this.getRouter();
-        oRouter.navTo("Cart");
+        this.getRouter().navTo("Cart");
       },
 
       onSubcategoryNavigation: function (oSubcategory) {
         let oRouter = this.getRouter();
-        // let oContext = oItem.getBindingContext("catalog");
-        // let sSubcategoryId = oContext.getProperty("id");
   
         oRouter.navTo("Products", {
           subcategory: encodeURIComponent(oSubcategory.id)
@@ -117,40 +130,10 @@ sap.ui.define([
           subcategory: encodeURIComponent(sSubcategoryId)
         });
       },
-  
-
-      _getHeaderFragment: function () {
-        return this.getOwnerComponent()._oHeaderFragment;
-      },
-
-      _attachDeviceMediaHeaderHandler: function () {
-        // Actualiza el modelo "device" ante cambios de tamaño
-        Device.media.attachHandler(function (oEvent) {
-          const bPhone = oEvent.name === "Phone";
-          
-          const oView = this.getView();
-        
-          const oHeader = this._getHeaderFragment();
-          
-          // console.log(oView);
-          const oButtonCategories = oHeader.getContent().find(c => c.getId().includes("btn-nav-categories"));
-
-          const oButtonCart = oHeader.getContent().find(c => c.getId().includes("btn-nav-cart"));
-
-          const oButtonMenu = oHeader.getContent().find(c => c.getId().includes("btn-nav-menu"));
-        
-          // console.log(oButtonCategories && oButtonCart)
-          if (oButtonCategories && oButtonCart) {
-            oButtonCategories.setVisible(!bPhone);
-            oButtonCart.setVisible(!bPhone);
-            oButtonMenu.setVisible(bPhone);
-          }
-        }.bind(this));
-      },
-
+      
       onHamburgerPress: function (oEvent) {
         const oView = this.getView();
-      
+        
         if (!this._pHamburgerPopover) {
           this._pHamburgerPopover = Fragment.load({
             name: "com.geonosis.shop.e.shop.geonosis.view.fragments.HamburgerMenu",
@@ -160,10 +143,14 @@ sap.ui.define([
             return oPopover;
           });
         }
-      
+        
         this._pHamburgerPopover.then(function (oPopover) {
           oPopover.openBy(oEvent.getSource());
         });
+      },
+
+      _getHeaderFragment: function () {
+        return this.getOwnerComponent()._oHeaderFragment;
       }
     });
   });
