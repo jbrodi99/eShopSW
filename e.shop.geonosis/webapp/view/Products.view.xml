@@ -13,10 +13,10 @@
       <Panel id="panelForGridList" backgroundDesign="Transparent">
         <headerToolbar>
           <Toolbar height="3rem">
-            <Title text="{filteredProducts>/subcategory}" />
             <Text text="{filteredProducts>/totalStock} productos disponibles"></Text>
             <ToolbarSpacer ></ToolbarSpacer>
-            <Button icon="sap-icon://filter" press="onFilterPress"></Button>
+            <Button icon="sap-icon://filter" press="onFilterPress"/>
+            <Button icon="sap-icon://sort" press="onSortPress"/>
           </Toolbar>
         </headerToolbar>
 

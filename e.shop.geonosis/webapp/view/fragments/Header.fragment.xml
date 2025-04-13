@@ -6,7 +6,7 @@
           id="search-field-nav-bar" 
           width="40%" 
           placeholder="Buscar productos..." 
-          liveChange="onSearch"
+          search="onSearch"
           >
           <layoutData>
           <OverflowToolbarLayoutData priority="NeverOverflow" />

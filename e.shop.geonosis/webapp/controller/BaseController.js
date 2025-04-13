@@ -8,30 +8,13 @@ sap.ui.define([
   "use strict";
   
   return Controller.extend("com.geonosis.shop.e.shop.geonosis.controller.BaseController", {
-    
-      // _initializeBase: function () {
-      //   models.onMediaChange(function (oEvent) {
-      //     const bPhone = oEvent.name === "Phone";
-          
-      //     const oHeader = this._getHeaderFragment();
-          
-      //     const oButtonCategories = oHeader.getContent().find(c => c.getId().includes("btn-nav-categories"));
-          
-      //     const oButtonCart = oHeader.getContent().find(c => c.getId().includes("btn-nav-cart"));
-          
-      //     const oButtonMenu = oHeader.getContent().find(c => c.getId().includes("btn-nav-menu"));
-          
-      //     // console.log(oButtonCategories && oButtonCart)
-      //     if (oButtonCategories && oButtonCart) {
-      //       oButtonCategories.setVisible(!bPhone);
-      //       oButtonCart.setVisible(!bPhone);
-      //       oButtonMenu.setVisible(bPhone);
-      //     }
-      //    }.bind(this))
-      // },
 
       getRouter: function () {
         return this.getOwnerComponent().getRouter();
+      },
+
+      getRouteFor: function (sRoute) {
+        return this.getRouter().getRoute(sRoute);
       },
   
       getModel: function (sName) {
@@ -67,11 +50,11 @@ sap.ui.define([
         this.getRouter().navTo("Cart");
       },
 
-      onSubcategoryNavigation: function (sSubcategory) {
+      onSearchNavigation: function (sSearchQuery) {
         let oRouter = this.getRouter();
 
         oRouter.navTo("Products", {
-          subcategory: encodeURIComponent(sSubcategory)
+          query: encodeURIComponent(sSearchQuery)
         });
       },
 
@@ -97,7 +80,7 @@ sap.ui.define([
             items: aSubcategories.map(sub => new MenuItem({
               text: sub.name,
               icon: "sap-icon://product",
-              press: () => this.onSubcategoryNavigation(sub.id) // o navegación
+              press: () => this.onSearchNavigation(sub.id) // o navegación
             }))
           });
       
@@ -109,8 +92,8 @@ sap.ui.define([
         let oItem = oEvent.getSource();
         let oContext = oItem.getBindingContext("catalog");
         let sSubcategoryId = oContext.getProperty("id");
-
-        this.onSubcategoryNavigation(sSubcategoryId);
+        
+        this.onSearchNavigation(sSubcategoryId);
       },
       
       onHamburgerPress: function (oEvent) {
@@ -140,6 +123,11 @@ sap.ui.define([
         }).then(function (oFragment) {
           oFragment.openBy(oEvent.getSource());
         }.bind(this));
+      },
+
+      onSearch: function (oEvent) {
+        let sSearchQuery = oEvent.getSource().getValue();
+        this.onSearchNavigation(sSearchQuery);
       }
     });
   });

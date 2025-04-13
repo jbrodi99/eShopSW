@@ -9,7 +9,7 @@ sap.ui.define([
     return BaseController.extend("com.geonosis.shop.e.shop.geonosis.controller.Cart", {
       onInit: function() {
 
-        this._initializeBase();
+        
 
         const oTargets = this.getOwnerComponent().getRouter().getTargets();
      

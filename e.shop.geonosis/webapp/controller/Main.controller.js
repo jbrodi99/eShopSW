@@ -9,7 +9,6 @@ sap.ui.define([
 
     return BaseController.extend("com.geonosis.shop.e.shop.geonosis.controller.Main", {
         onInit() {
-          // this._initializeBase();
 
           this.loadHeader(this.getView().getViewName(), "headerContainer");
 

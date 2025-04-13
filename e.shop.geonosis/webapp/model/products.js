@@ -12,38 +12,56 @@ function (JSONModel) {
         return oProductModel;
       },
 
-      getFilteredProducts: function (oCatalogModel, sQuery) {
-        let oCatalogData = oCatalogModel?.getData();
-
-        let aFilteredProducts = [];
-        
+      getFilteredProducts: function (oComponent, sQuery) {
+        const oCatalogModel = oComponent.getModel("catalog");
+        const oCatalogData = oCatalogModel?.getData();
+        const aFilteredProducts = [];
+        const sQueryLower = sQuery.toLowerCase();
+        console.log(sQueryLower);
+      
         if (oCatalogData && oCatalogData.catalog.categories) {
-          const sQueryLower = sQuery.toLowerCase();
-  
+          let bFound = false;
+      
           for (const category of oCatalogData.catalog.categories) {
             const bCategoryMatch = category.id?.toLowerCase().includes(sQueryLower) ||
                                    category.name?.toLowerCase().includes(sQueryLower);
-  
+      
             if (bCategoryMatch) {
               for (const sub of category.subcategories || []) {
                 aFilteredProducts.push(...(sub.products || []));
               }
+              bFound = true;
               break;
             }
-  
+      
             const oSubcategory = category.subcategories.find(sub =>
               sub.id?.toLowerCase().includes(sQueryLower) ||
               sub.name?.toLowerCase().includes(sQueryLower)
             );
-  
+            
+      
             if (oSubcategory) {
-              aFilteredProducts = oSubcategory.products || [];
+
+              aFilteredProducts.push(...(oSubcategory.products || []));
+              bFound = true;
               break;
             }
           }
+      
+          if (!bFound) {
+            console.log("mmm");
+            for (const category of oCatalogData.catalog.categories) {
+              for (const sub of category.subcategories || []) {
+                const aMatchingProducts = (sub.products || []).filter(prod =>
+                  prod.name?.toLowerCase().includes(sQueryLower)
+                );
+                aFilteredProducts.push(...aMatchingProducts);
+              }
+            }
+          }
         }
-
-        return aFilteredProducts;
+      
+        return new JSONModel({ products: aFilteredProducts });
       },
 
       _getAllProducts: (oComponent) => {
