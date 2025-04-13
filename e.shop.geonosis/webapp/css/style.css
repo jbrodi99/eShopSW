@@ -89,7 +89,7 @@
 }
 
 .myGridItemFixedHeight {
-  height: 25rem; /* o el valor que quieras */
+  height: 37rem; /* o el valor que quieras */
 }
 
 .myCarouselItemWidth {
@@ -111,3 +111,78 @@
   max-height: 400px;
   overflow-y: auto;
 }
+
+/*-------------------MELI style_______*/
+
+.productCard {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.productCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.productCardContent {
+  padding: 1rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.productTitle {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+.priceContainer {
+  gap: 0.25rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.priceText {
+  color: #000;
+  font-size: 1.2rem;
+}
+
+.currencyText {
+  font-size: 0.8rem;
+  color: gray;
+}
+
+.stockLabel {
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  text-align: center;
+  width: fit-content;
+  margin-bottom: 0.5rem;
+}
+
+/* Colores por estado */
+.stockLabel.available {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.stockLabel.limited {
+  background-color: #fffde7;
+  color: #f9a825;
+}
+
+.stockLabel.outofstock {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.actionsContainer {
+  margin-top: 0.5rem;
+}
+

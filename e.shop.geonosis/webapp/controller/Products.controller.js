@@ -3,7 +3,7 @@ sap.ui.define([
     "com/geonosis/shop/e/shop/geonosis/model/products",
     "sap/ui/core/Fragment",
     "sap/ui/model/json/JSONModel"
-  ], (BaseController, products, Fragment, JSONModel) => {
+  ], (BaseController, products, Fragment, JSONModel, ) => {
     "use strict";
   
     return BaseController.extend("com.geonosis.shop.e.shop.geonosis.controller.Products", {
@@ -64,6 +64,37 @@ sap.ui.define([
       
           oGridListItem.addStyleClass("myGridItemFixedHeight");
           oGridList.addItem(oGridListItem);
+        }
+      },
+
+
+      onSortPress: function () {
+        this._bSortAscending = !this._bSortAscending;
+
+        const oModel = this.getView().getModel("filteredProducts");
+        let aProducts = oModel.getProperty("/products") || [];
+      
+        aProducts.sort((a, b) => {
+          return this._bSortAscending 
+            ? a.price - b.price 
+            : b.price - a.price;
+        });
+      
+        oModel.setProperty("/products", aProducts);
+
+        this._loadFilteredProductCards();
+      },
+
+      onResetPress: function () {
+        const oModel = this.getView().getModel("filteredProducts");
+        const aOriginal = oModel.getProperty("/_originalProducts");
+      
+        if (aOriginal) {
+          // Restaurar los productos originales
+          oModel.setProperty("/products", [...aOriginal]);
+      
+          // Vuelve a regenerar los fragments
+          this._loadFilteredProductCards();
         }
       }
     });

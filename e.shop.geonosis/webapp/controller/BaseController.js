@@ -44,6 +44,10 @@ sap.ui.define([
         }
       },
 
+      onBackHome: function () {
+        this.getRouter().navTo("RouteMain", {}, true);
+      },
+
       //Fragment Header Methods
 
       onCartPress: function () {
@@ -126,8 +130,23 @@ sap.ui.define([
       },
 
       onSearch: function (oEvent) {
-        let sSearchQuery = oEvent.getSource().getValue();
+        let oSearchField = oEvent.getSource();
+        let sSearchQuery = oSearchField.getValue();
+
         this.onSearchNavigation(sSearchQuery);
+
+        oSearchField.setValue("");
+      },
+
+      onProductPress: function (oEvent) {
+        const oItem = oEvent.getSource();
+        const oModel = oItem.getModel("model");
+
+        if (oModel) {
+          const oData = oModel.getData();
+          console.log("Producto seleccionado:", oData);
+          // podés navegar, abrir detalles, etc.
+        }
       }
     });
   });

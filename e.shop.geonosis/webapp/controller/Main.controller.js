@@ -10,6 +10,11 @@ sap.ui.define([
     return BaseController.extend("com.geonosis.shop.e.shop.geonosis.controller.Main", {
         onInit() {
 
+          let oCarousel = this.byId("main-carousel-info-pictures");
+            setInterval(function() {
+                oCarousel.next();
+            }, 4000);
+
           this.loadHeader(this.getView().getViewName(), "headerContainer");
 
           this._loadItems();

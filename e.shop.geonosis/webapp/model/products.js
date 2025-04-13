@@ -17,7 +17,7 @@ function (JSONModel) {
         const oCatalogData = oCatalogModel?.getData();
         const aFilteredProducts = [];
         const sQueryLower = sQuery.toLowerCase();
-        console.log(sQueryLower);
+        
       
         if (oCatalogData && oCatalogData.catalog.categories) {
           let bFound = false;
@@ -49,7 +49,7 @@ function (JSONModel) {
           }
       
           if (!bFound) {
-            console.log("mmm");
+            
             for (const category of oCatalogData.catalog.categories) {
               for (const sub of category.subcategories || []) {
                 const aMatchingProducts = (sub.products || []).filter(prod =>
@@ -61,7 +61,10 @@ function (JSONModel) {
           }
         }
       
-        return new JSONModel({ products: aFilteredProducts });
+        return new JSONModel({ 
+          products: aFilteredProducts,
+          _originalProducts: [...aFilteredProducts]
+        });
       },
 
       _getAllProducts: (oComponent) => {

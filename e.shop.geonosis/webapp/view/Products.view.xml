@@ -15,8 +15,8 @@
           <Toolbar height="3rem">
             <Text text="{filteredProducts>/totalStock} productos disponibles"></Text>
             <ToolbarSpacer ></ToolbarSpacer>
-            <Button icon="sap-icon://filter" press="onFilterPress"/>
             <Button icon="sap-icon://sort" press="onSortPress"/>
+            <Button icon="sap-icon://reset" press="onResetPress"/>
           </Toolbar>
         </headerToolbar>
 

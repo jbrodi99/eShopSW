@@ -18,6 +18,7 @@
                   "description": "Figura de acción detallada de Luke Skywalker con múltiples puntos de movilidad y accesorios intercambiables.",
                   "image": "assets/images/luke.png",
                   "stock": 25,
+                  "stockText": "disponible",
                   "cantidadVendida": 120,
                   "rating": 4.5,
                   "details": {
