@@ -4,7 +4,7 @@
   <CustomListItem type="Active" press=".onProductPress" class="productListItem">
     <VBox class="productCardContent" width="100%" alignItems="Center">
       <!-- Imagen -->
-      <Image src="{model>/image}" height="250px" densityAware="false" />
+      <Image src="{model>/mainImage}" height="250px" densityAware="false" />
 
       <!-- Nombre -->
       <Text text="{model>/name}" class="productTitle" />
@@ -21,7 +21,7 @@
       </HBox>
 
       <!-- Etiqueta de estado (stock) -->
-      <Text text="{model>/stockText}" class="stockLabel {model>/stockStatus}" />
+      <Text text="{model>/status}" class="stockLabel {model>/status}" />
 
       <!-- Botones -->
       <HBox justifyContent="SpaceBetween" width="100%" class="actionsContainer">

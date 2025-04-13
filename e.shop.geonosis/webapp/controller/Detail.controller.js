@@ -1,47 +1,65 @@
 sap.ui.define([
     "com/geonosis/shop/e/shop/geonosis/controller/BaseController",
-    "sap/ui/model/json/JSONModel"
-  ], (BaseController, JSONModel) => {
+    "com/geonosis/shop/e/shop/geonosis/model/products",
+    "sap/m/MessageToast",
+    "com/geonosis/shop/e/shop/geonosis/model/Cart",
+  ], (BaseController, products, MessageToast, Cart) => {
     "use strict";
   
     return BaseController.extend("com.geonosis.shop.e.shop.geonosis.controller.Detail", {
       onInit: function() {
 
-        let mockProduct = {
-            "id": "prod12",
-            "name": "Modelo Destructor Estelar",
-            "price": 499.99,
-            "currency": "USD",
-            "description": "Magnífico modelo a escala del Destructor Estelar con múltiples detalles, ideal para los coleccionistas.",
-            "image": [
-            "assets/images/luke.png",
-            "assets/images/luke.png",
-            "assets/images/luke.png"
-            ],
-            "mainImage": "assets/images/luke.png",
-            "stock": 3,
-            "cantidadVendida": 5,
-            "rating": 4.9,
-            "details": {
-            "scale": "1:144",
-            "material": "Plástico y metal",
-            "manufacturer": "Starship Models",
-            "weight": "3.5 kg"
-            },
-            "tags": ["modelo", "Destructor Estelar", "Star Wars", "coleccionable"],
-            "variants": []
-        };
+        this.loadHeader(this.getView().getViewName(), "detail-header-container");
 
-        let detailsObject = mockProduct.details;
-        let detailsArray = Object.entries(detailsObject).map(([key, value]) => {
-          return { key, value };
-        });
-        mockProduct.detailsArray = detailsArray;
+        this.getRouteFor("Detail").attachPatternMatched(this._onObjectMatched,this);
 
-        let oProductModel = new JSONModel({product: mockProduct});
+      },
 
-        console.log(oProductModel);
-        this.getView().setModel(oProductModel, "product");
+      _onObjectMatched: function (oEvent) {
+        let oArgs = oEvent.getParameter("arguments");
+
+        let sSearchQuery = decodeURIComponent(oArgs.query); 
+
+        let oProductModel = products.getById(this.getOwnerComponent(), sSearchQuery);
+
+        this.setModel(oProductModel, "product");
+      },
+
+      onBuyNowPress: function () {
+        MessageToast.show("Se compra ah sido realizada con exito!");
+      },
+
+      onAddCartPress: function (oEvent) {
+        //TODO: obtener desde un input la cantidad de productos y enviarla como parametro al agregar al carrito
+        Cart.addToCart(this.getResourceBundle(),this.getModel("product"),this.getComponentModel("catalog"));
+      },
+
+      // Método para abrir el diálogo con la imagen ampliada
+      onOpenImageZoom: function (oEvent) {
+          let oView = this.getView();
+          
+          // Cargar el fragment de manera lazy
+          if (!this._pZoomDialog) {
+              console.log("intente");
+              this._pZoomDialog = this.loadFragment({
+                  name: "com.geonosis.shop.e.shop.geonosis.view.fragments.ImageZoomDialog"
+              }).then(function (oDialog) {
+                  return oDialog;
+              });
+          }
+          
+          this._pZoomDialog.then(function (oDialog) {
+              oDialog.open();
+          });
+      },
+
+      onCloseImageZoom: function () {
+        this.byId("imageZoomDialog").close();
+      },
+
+      onNavTo: function (oEvent) {
+        let query = oEvent.getSource().getText();
+        this.onSearchNavigation(query);
       }
     });
   });

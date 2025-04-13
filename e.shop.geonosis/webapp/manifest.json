@@ -113,7 +113,7 @@
         },
         {
           "name": "Detail",
-          "pattern": "detail",
+          "pattern": "detail/{query}",
           "target": "TargetDetail"
         },
         {

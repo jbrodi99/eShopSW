@@ -16,9 +16,14 @@
                   "price": 79.99,
                   "currency": "USD",
                   "description": "Figura de acción detallada de Luke Skywalker con múltiples puntos de movilidad y accesorios intercambiables.",
-                  "image": "assets/images/luke.png",
+                  "image": [
+                    "assets/images/luke.png",
+                    "assets/images/luke.png",
+                    "assets/images/luke.png"
+                  ],
+                  "mainImage": "assets/images/luke.png",
                   "stock": 25,
-                  "stockText": "disponible",
+                  "status": "A",
                   "cantidadVendida": 120,
                   "rating": 4.5,
                   "details": {
@@ -518,6 +523,7 @@
         }
       ]
     },
-    "cart": []
+    "cart": {
+    }
   }
   

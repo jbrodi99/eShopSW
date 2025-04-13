@@ -7,57 +7,142 @@
     xmlns="sap.m">
     <Page showHeader="false">
 
-    <core:Fragment fragmentName="com.geonosis.shop.e.shop.geonosis.view.fragments.Header" type="XML" />
-
+    <ScrollContainer id="detail-header-container" class="mySticky"></ScrollContainer>
 
     <content>
-      <VBox >
-        <Panel >
-          <HBox >
-            <VBox >
-              <List items="{product>/product/image}">
-                <CustomListItem>
-                  <Image src="{product>}" width="72px" />
-                </CustomListItem>
-              </List>
+      <VBox class="sapUiSmallMargin">
+                <!-- Breadcrumb navigation -->
+                <Breadcrumbs currentLocationText="{product>/product/name}">
+                    <Link text="Inicio" press="onNavToHome" />
+                    <Link text="{product>/product/category}" press="onNavTo" />
+                    <Link text="{product>/product/subcategory}" press="onNavTo" />
+                </Breadcrumbs>
+                
+                <!-- Product Detail Area -->
+                <Panel backgroundDesign="Transparent" class="productDetailPanel">
+                    <HBox justifyContent="SpaceBetween" class="productDetailContainer">
+                        <!-- Image Gallery -->
+                        <VBox width="5%" class="thumbnailGallery">
+                            <List items="{product>/product/image}" noDataText="" showSeparators="None">
+                                <CustomListItem class="galleryThumbnail">
+                                    <Image src="{product>}" width="100%" press="onThumbnailPress" />
+                                </CustomListItem>
+                            </List>
+                        </VBox>
+                        
+                        <!-- Main Image -->
+                        <VBox width="40%" alignItems="Center" justifyContent="Center" class="mainImageContainer">
+                            <Image 
+                                id="productMainImage" 
+                                src="{product>/product/mainImage}" 
+                                width="100%"
+                                height="400px" 
+                                class="productMainImage" 
+                                press="onOpenImageZoom" />
+                            <Text text="Clic para ampliar" class="clickInstructionText sapUiTinyMarginTop" />
+                        </VBox>
+                        
+                        <!-- Product Info -->
+                        <VBox width="33%" class="productInfo">
+                            <ObjectHeader
+                                title="{product>/product/name}"
+                                number="$ {product>/product/price}"
+                                numberUnit="{product>/product/currency}"
+                                class="productHeader">
+                                <statuses>
+                                    <ObjectStatus text="Nuevo" state="Success" />
+                                </statuses>
+                            </ObjectHeader>
+                            
+                            <Text text="{product>/product/description}" class="sapUiSmallMarginTop productDescription" />
+                            
+                            <HBox alignItems="Center" class="sapUiSmallMarginTop ratingContainer">
+                                <RatingIndicator value="{product>/product/rating}" maxValue="5" iconSize="1.5rem" class="starRating" editable="false"/>
+                                <Text text="{= '(' + ${product>/product/rating} + ')' }" class="sapUiTinyMarginBegin ratingText" />
+                            </HBox>
+                            
+                            <!-- Specs Table with Star Wars styling -->
+                            <Title text="Características" level="H3" class="sapUiSmallMarginTop characteristicsTitle" />
+                            <Table items="{product>/productDetails}" showSeparators="Inner" class="specsTable">
+                                <columns >
+                                    <Column width="40%">
+                                        <Text text="" />
+                                    </Column>
+                                    <Column width="60%">
+                                        <Text text="" />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <Text text="{product>key}" class="specKey" />
+                                        <Text text="{product>value}" class="specValue" />
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </VBox>
+                        
+                        <!-- Buy Box -->
+                        <VBox width="20%" class="buyBoxContainer">
+                            <Panel class="buyBoxPanel">
+                                <VBox class="buyBoxContent" alignItems="Start">
+                                    <!-- Stock status with icon -->
+                                    <HBox alignItems="Center" class="stockStatus">
+                                        <core:Icon src="sap-icon://accept" color="#107e3e" />
+                                        <Text text="Stock disponible" class="sapUiTinyMarginBegin" />
+                                    </HBox>
+                                    
+                                    <!-- Shipping info -->
+                                    <HBox alignItems="Center" class="shippingInfo sapUiSmallMarginTop">
+                                        <core:Icon src="sap-icon://shipping-status" />
+                                        <Text text="Envío gratis" class="sapUiTinyMarginBegin" />
+                                    </HBox>
+                                    
+                                    <!-- Quantity selector -->
+                                    <VBox class="sapUiSmallMarginTop quantitySelector" width="100%">
+                                        <Label text="Cantidad" />
+                                        <HBox alignItems="Center" width="100%">
+                                            <StepInput id="stepQty"
+                                                value="1"
+                                                min="1"
+                                                max="{product>/product/stock}"
+                                                width="6rem"
+                                                textAlign="Center"/>
+                                            <Text text="(+{product>/product/stock} disponibles)" class="sapUiTinyMarginBegin availableText" />
+                                        </HBox>
+                                    </VBox>
+                                    
+                                    <!-- Action buttons -->
+                                    <VBox width="100%" class="actionButtons sapUiSmallMarginTop">
+                                        <Button text="Comprar ahora" type="Emphasized" width="100%" class="buyNowBtn sapUiTinyMarginBottom" press="onBuyNowPress" />
+                                        <Button text="Agregar al carrito" type="Default" width="100%" class="addCartBtn" press="onAddCartPress" />
+                                    </VBox>
+                                    
+                                    <!-- Secure purchase message -->
+                                    <HBox alignItems="Center" class="secureInfo sapUiSmallMarginTop">
+                                        <core:Icon src="sap-icon://shield" />
+                                        <Text text="Compra segura" class="sapUiTinyMarginBegin secureText" />
+                                    </HBox>
+                                </VBox>
+                            </Panel>
+                        </VBox>
+                    </HBox>
+                </Panel>
+                
+                <!-- Related Products Section -->
+                <Panel headerText="Productos relacionados" expandable="false" class="relatedProductsPanel sapUiMediumMarginTop">
+                    <Carousel class="relatedProductsCarousel" loop="true" pageIndicatorPlacement="Bottom">
+                        <HBox justifyContent="SpaceBetween" class="relatedProductsRow">
+                            <!-- Sample related product cards would go here -->
+                            <!-- You would bind these to an actual collection in your controller -->
+                        </HBox>
+                    </Carousel>
+                </Panel>
+                
+                <!-- Reviews Section -->
+                <Panel headerText="Opiniones de compradores" expandable="true" expanded="false" class="reviewsPanel sapUiMediumMarginTop">
+                    <!-- Reviews content would go here -->
+                </Panel>
             </VBox>
-            <VBox >
-              <Image src="{product>/product/mainImage}" width="20rem" ></Image>
-            </VBox>
-            <VBox width="55%">
-              <Title text="{product>/product/name}"></Title>
-              <Text text="{product>/product/description}"></Text>
-              <HBox >
-                 <RatingIndicator value="{product>/product/rating}" maxValue="5" iconSize="1.5rem"/>
-                  <Text text="{= '(' + ${product>/product/rating} + ')' }" />
-              </HBox>
-              <Text text="$ {product>/product/price} {product>/product/currency}"></Text>
-              <Table items="{product>/product/detailsArray}" >
-                <columns>
-                  <Column><Text text="Caracteristicas" /></Column>
-                  <Column><Text text="" /></Column>
-                </columns>
-                <items>
-                  <ColumnListItem>
-                    <Text text="{product>key}" />
-                    <Text text="{product>value}" />
-                  </ColumnListItem>
-                </items>
-              </Table>
-              <!-- ACA iria carousel de productos recomendados por tags-->
-              <!-- ACA irian variantes-->
-
-            </VBox>
-
-            <VBox class="productBuyBox" >
-              <Text text="stock disponible"></Text>
-              <Text text="Cantidad: 1 '(' {product>/product/stock} disponibles')' "></Text>
-              <Button text="Comprar Ahora"></Button>
-              <Button text="Agregar al carrito"></Button>
-            </VBox>
-          </HBox>
-        </Panel>
-      </VBox>
     </content>
 
   </Page>

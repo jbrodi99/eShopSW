@@ -143,9 +143,13 @@ sap.ui.define([
         const oModel = oItem.getModel("model");
 
         if (oModel) {
-          const oData = oModel.getData();
-          console.log("Producto seleccionado:", oData);
-          // podés navegar, abrir detalles, etc.
+          let oData = oModel.getData();
+          let sQuery = oData.id;
+
+          
+          this.getRouter().navTo("Detail", {
+            query: encodeURIComponent(sQuery)
+          });
         }
       }
     });

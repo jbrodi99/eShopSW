@@ -83,6 +83,35 @@ function (JSONModel) {
         };
         
         return extractedProduct(aCategories);
+      },
+
+      getById: function (oComponent, sId) {
+        let oCatalogModel = oComponent.getModel("catalog");
+        let oCatalogData = oCatalogModel?.getData?.();
+        let aCategories = oCatalogData?.catalog?.categories || []; // <- defensivo
+
+        let product = {};
+
+        aCategories.forEach(cat => {
+          cat.subcategories.forEach(sub => {
+            sub.products.forEach(prod => {
+              if(prod.id === sId){
+                product = prod;
+                product.category = cat.id;
+                product.subcategory = sub.id;
+              }
+            })
+          })
+        })
+        
+        let details = Object.entries(product.details).map(([key, value]) => {
+          return { key, value };
+        })
+        
+        return new JSONModel({
+          product : product,
+          productDetails: details
+        });
       }
     };
 
