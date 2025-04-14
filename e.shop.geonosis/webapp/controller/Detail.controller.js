@@ -60,6 +60,10 @@ sap.ui.define([
       onNavTo: function (oEvent) {
         let query = oEvent.getSource().getText();
         this.onSearchNavigation(query);
+      },
+
+      onNavToHome: function () {
+        this.onBackHome();
       }
     });
   });

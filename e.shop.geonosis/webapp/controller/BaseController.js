@@ -2,9 +2,9 @@ sap.ui.define([
   "sap/ui/core/mvc/Controller",
   "sap/m/MenuItem",
   "sap/m/Menu",
-  "sap/ui/Device",
+  "com/geonosis/shop/e/shop/geonosis/model/Cart"
 
-], function(Controller, MenuItem, Menu, Device) {
+], function(Controller, MenuItem, Menu, Cart) {
   "use strict";
   
   return Controller.extend("com.geonosis.shop.e.shop.geonosis.controller.BaseController", {
@@ -151,6 +151,15 @@ sap.ui.define([
             query: encodeURIComponent(sQuery)
           });
         }
+      },
+
+      onCardCartPress: function (oEvent) {
+        console.log("Implementar");
+        //Cart.addToCart(this.getResourceBundle(),oEvent.getSource().getModel("model"),this.getComponentModel("catalog"));
+      },
+
+      onFavoritPress: function (oEvent) {
+        console.log("TODO:implementar");
       }
     });
   });

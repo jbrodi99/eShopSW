@@ -6,69 +6,61 @@
   <Page showHeader="false">
    
       <ScrollContainer id="cart-header-container" class="mySticky"></ScrollContainer>
-      <!-- <core:Fragment fragmentName="com.geonosis.shop.e.shop.geonosis.view.fragments.Header" type="XML" /> -->
    
       <content>
         <VBox justifyContent="Center" alignItems="Center">
-          <HBox width="70%">
-            <FlexBox 
-              direction="{layoutModel>/flexDirection}" 
-              width="100%"
-              class="relativeParent">
-              
-              <VBox>
-                <layoutData>
-                  <FlexItemData growFactor="{layoutModel>/growLeft}" />
-                </layoutData>
-                <Panel headerText="Carrito" >
-                  <List items="{products>/products}">
-                      <CustomListItem class="sapUiSmallMargin">
-                        <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiSmallMargin" height="10rem">
+          <HBox width="80%">
+            
+            <VBox width="100%">
+              <Panel headerText="Carrito" >
+                <List items="{cart>/}"
+               >
+                    <ObjectListItem
+                      title="{cart>name}"
+                      icon="{cart>mainImage}"
+                      iconDensityAware="false"
+                      
+                      number="{
+                        parts:[{path:'cart>price'}],
+                        type: 'sap.ui.model.type.Currency',
+                        formatOptions: {showMeasure: false}
+                      }"
+                      numberUnit="USD">
+
+                      <firstStatus>
+                        <ObjectStatus
+                          text="{= 'Stock: ' + ${cart>stock} }"
+                          state="{= ${cart>stock} > 0 ? 'Success' : 'Error' }" 
+                          />
                           
-                          <!-- Imagen -->
-                          <Image src="{products>image}" width="120px" height="120px" class="productImage" />
+                      </firstStatus>
+                      <secondStatus>
+                        <ObjectStatus text="cantidad: {cart>Quantity}" ></ObjectStatus>
+                      </secondStatus>
 
-                          <!-- Título y acciones -->
-                          <VBox width="40%">
-                            <Title text="{products>name}" wrapping="true" level="H5" class="sapUiSmallMarginBottom"/>
-                            <HBox class="sapUiSmallMarginTop" >
-                              <Link class="sapUiSmallMarginEnd" text="Eliminar" press=".onRemoveItem" />
-                              <Link class="sapUiSmallMarginBeginEnd" text="Guardar" press=".onSaveItem" />
-                              <Link class="sapUiSmallMarginBegin" text="Comprar ahora" press=".onBuyNow" />
-                            </HBox>
-                          </VBox>
+                      
+                      <attributes >
+                        <ObjectAttribute text="{cart>description}" />
+                        <ObjectAttribute text="Eliminar" press="onDeleteCartPress" active="true" />
+                        <ObjectAttribute text="Agregar" press="onDeleteCartPress" active="true" />
+                      
+                      </attributes>
 
-                          <!-- Selector de cantidad -->
-                          <VBox alignItems="Center">
-                            <HBox class="quantityBox" alignItems="Center">
-                              <Button icon="sap-icon://less" press=".onDecreaseQuantity" />
-                              <Input value="{products>quantity}" width="2.5rem" textAlign="Center" editable="false" />
-                              <Button icon="sap-icon://add" press=".onIncreaseQuantity" />
-                            </HBox>
-                            <Text text="{= 'Disponible: ' + ${products>stock} }" />
-                          </VBox>
+                      
+                    </ObjectListItem>
+                </List>
+              </Panel>
+            </VBox>
 
-                          <!-- Precio -->
-                          <Text text="{= '$ ' + ${products>price} }" class="productPrice" />
-                        </HBox>
-                      </CustomListItem>
-                  </List>
+
+            <ScrollContainer id="myScrollContainer" width="100%">
+              <VBox width="100%">
+                <Panel headerText="Resumen de compra" >
+                  <Text text="Total: $999" />
+                  <Button text="Finalizar compra" type="Emphasized" />
                 </Panel>
               </VBox>
-
-
-              <ScrollContainer id="myScrollContainer" width="100%">
-                <layoutData>
-                  <FlexItemData growFactor="{layoutModel>/growRight}" />
-                </layoutData>
-                <VBox width="100%">
-                  <Panel headerText="Resumen de compra" >
-                    <Text text="Total: $999" />
-                    <Button text="Finalizar compra" type="Emphasized" />
-                  </Panel>
-                </VBox>
-              </ScrollContainer>
-            </FlexBox>
+            </ScrollContainer>
           </HBox>
         </VBox>
       </content>

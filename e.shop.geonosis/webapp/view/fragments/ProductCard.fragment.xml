@@ -25,8 +25,8 @@
 
       <!-- Botones -->
       <HBox justifyContent="SpaceBetween" width="100%" class="actionsContainer">
-        <Button icon="sap-icon://cart-4" text="Añadir" type="Emphasized" />
-        <Button icon="sap-icon://heart-2" type="Transparent" />
+        <Button icon="sap-icon://cart-4" text="Añadir" type="Emphasized" press="onCardCartPress"/>
+        <Button icon="sap-icon://heart-2" type="Transparent" press="onFavoritPress" />
       </HBox>
     </VBox>
   </CustomListItem>

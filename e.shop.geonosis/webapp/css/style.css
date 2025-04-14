@@ -471,3 +471,22 @@
   color: var(--sw-gray);
   font-size: 0.8rem;
 }
+
+.productPrice {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0070f3; /* Azul destacado, puedes cambiar según el theme */
+  text-align: right;
+  margin-left: 1rem;
+}
+
+.productTitle {
+  font-size: 1.25rem;        /* Tamaño claro pero no tan grande */
+  font-weight: 600;          /* Un poco más marcado que normal */
+  color: #333333;            /* Gris oscuro para buena legibilidad */
+  line-height: 1.3;          /* Espaciado vertical agradable */
+  max-height: 3.6rem;        /* Limita a 2 líneas aprox. */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
