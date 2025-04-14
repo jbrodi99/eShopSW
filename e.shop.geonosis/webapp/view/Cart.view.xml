@@ -13,7 +13,7 @@
             
             <VBox width="100%">
               <Panel headerText="Carrito" >
-                <List items="{cart>/}"
+                <List items="{cart>/cartEntries}"
                >
                     <ObjectListItem
                       title="{cart>name}"

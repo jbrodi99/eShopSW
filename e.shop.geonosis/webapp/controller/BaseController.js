@@ -141,7 +141,7 @@ sap.ui.define([
       onProductPress: function (oEvent) {
         const oItem = oEvent.getSource();
         const oModel = oItem.getModel("model");
-
+        
         if (oModel) {
           let oData = oModel.getData();
           let sQuery = oData.id;
