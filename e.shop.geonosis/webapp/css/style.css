@@ -1,1 +1,221 @@
 /* Enter your custom styles here */
+
+.mySticky {
+  position: sticky;
+  top: 0;
+  z-index: 100; 
+}
+
+/* Celular: sticky abajo */
+.stickyBottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  background: white;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  z-index: 100;
+}
+
+
+.myGridItemFixedHeight {
+  height: 37rem; 
+}
+
+
+.productCard {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.productCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.productCardContent {
+  padding: 1rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.productTitle {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+.actionsContainer {
+  margin-top: 0.5rem;
+}
+
+.buyBoxPanel {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background-color: white;
+  padding: 1rem;
+}
+
+
+/* Navigation Bar */
+
+
+/* Product Detail Panel */
+.productDetailPanel {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.productDetailContainer {
+  padding: 1rem;
+}
+
+.productDescription {
+  line-height: 1.5;
+}
+
+/* Buy Box */
+.buyBoxContainer {
+  padding-left: 1rem;
+}
+
+.buyBoxPanel {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.buyBoxContent {
+  padding: 1rem;
+}
+
+.stockStatus .sapUiIcon {
+  color: #107e3e;
+}
+
+.quantitySelector .sapMLabel {
+  font-weight: bold;
+}
+
+.availableText {
+  color: #6b6b6b;
+  font-size: 0.875rem;
+}
+
+
+.buyNowBtn .sapMBtnInner,
+.addCartBtn .sapMBtnInner {
+    border-radius: 8px !important; 
+    height: 2rem;
+}
+
+
+.buyNowBtn .sapMBtnInner {
+    background-color: #0d6efd; 
+    border-color: #0d6efd;
+}
+
+
+.addCartBtn .sapMBtnInner {
+    border: 1px solid #0d6efd;
+    color: #0d6efd;
+    background-color: white;
+}
+
+.secureInfo {
+  justify-content: center;
+}
+
+.secureInfo .sapUiIcon {
+  color: #107e3e;
+}
+
+.secureText {
+  color: #6b6b6b;
+  font-size: 0.875rem;
+}
+
+
+/* Mejoras para el diálogo de zoom */
+.imageZoomDialog .sapMDialogSection {
+  background-color: white;
+}
+
+.imageZoomDialog .sapMBar {
+  box-shadow: none;
+  border-bottom: 1px solid #ddd;
+}
+
+.imageZoomDialog .sapMDialogTitle {
+  font-weight: bold;
+  color: var(--sw-space-black);
+}
+
+/* Efecto de borde temático Star Wars */
+.imageZoomDialog {
+  border: 2px solid var(--sw-blue);
+}
+
+/* Estilos para el diálogo de ampliación de imagen */
+.imageZoomDialog .sapMDialogTitle {
+  color: var(--sw-space-black);
+  font-weight: bold;
+}
+
+.zoomDialogContent {
+  background-color: white;
+  padding: 1rem;
+}
+
+.zoomedImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.closeZoomBtn {
+  background-color: var(--sw-blue);
+  color: white;
+}
+
+.clickInstructionText {
+  color: var(--sw-gray);
+  font-size: 0.8rem;
+}
+
+.productTitle {
+  font-size: 1.25rem;        
+  font-weight: 600;       
+  color: #333333;           
+  line-height: 1.3;         
+  max-height: 3.6rem;       
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.buyNowBtnCart .sapMBtnInner {
+  border-radius: 8px !important; 
+  height: 2rem;
+}
+
+.tagChip {
+  background-color: #e0e0e0;
+  color: #333;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 1rem;
+  margin: 0.2rem;
+  display: inline-block;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  transition: background-color 0.3s;
+  cursor: default;
+}
+
+.tagChip:hover {
+  background-color: #d5d5d5;
+}

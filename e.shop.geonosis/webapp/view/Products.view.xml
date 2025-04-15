@@ -1,0 +1,34 @@
+<mvc:View controllerName="com.geonosis.shop.e.shop.geonosis.controller.Products"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:grid="sap.ui.layout.cssgrid"
+    xmlns:f="sap.f">
+  <Page showHeader="false">
+    
+    <ScrollContainer id="headerProdContainer" class="mySticky"></ScrollContainer>
+      <content>
+        <Panel id="panelForGridList" backgroundDesign="Transparent">
+          <headerToolbar>
+            <Toolbar height="3rem">
+              <Text text="{filteredProducts>/totalStock} {i18n>productQuantitySearch}"></Text>
+              <ToolbarSpacer ></ToolbarSpacer>
+              <Button icon="sap-icon://sort" press="onSortPress"/>
+              <Button icon="sap-icon://reset" press="onResetPress"/>
+            </Toolbar>
+          </headerToolbar>
+        
+          <HBox justifyContent="Center" >
+            <VBox width="80%">
+              <f:GridList id="gridList">
+                <f:customLayout>
+                  <grid:GridBoxLayout boxMinWidth="15rem" />
+                </f:customLayout>
+              </f:GridList>
+            </VBox>
+          </HBox>
+        </Panel>
+      </content>
+    <core:Fragment fragmentName="com.geonosis.shop.e.shop.geonosis.view.fragments.Footer" type="XML"/>
+  </Page>
+</mvc:View>

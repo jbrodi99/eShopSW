@@ -1,0 +1,9 @@
+{
+    "imagesUrl": [
+        { "src": "../assets/images/banner-1-sw.png" },
+        { "src": "../assets/images/banner-2-sw.png" },
+        { "src": "../assets/images/banner-3-sw.png" }
+    ],
+    "footer": "../assets/images/geonosis-logo.png",
+    "logo": "../assets/images/geo-logo.png"
+}

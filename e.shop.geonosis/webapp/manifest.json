@@ -33,12 +33,16 @@
     }
   },
   "sap.ui5": {
-    "flexEnabled": true,
+    "flexEnabled": false,
     "dependencies": {
       "minUI5Version": "1.134.1",
       "libs": {
         "sap.m": {},
-        "sap.ui.core": {}
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.ui.layout": {},
+        "sap.tnt": {},
+        "sap.uxap": {}
       }
     },
     "contentDensities": {
@@ -51,6 +55,18 @@
         "settings": {
           "bundleName": "com.geonosis.shop.e.shop.geonosis.i18n.i18n"
         }
+      },
+      "catalog": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "./model/Catalog.json"
+      },
+      "welcome": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "./model/Welcome.json"
+      },
+      "featured": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "./model/FeaturedProducts.json"
       }
     },
     "resources": {
@@ -70,7 +86,10 @@
         "viewType": "XML",
         "path": "com.geonosis.shop.e.shop.geonosis.view",
         "async": true,
-        "viewPath": "com.geonosis.shop.e.shop.geonosis.view"
+        "viewPath": "com.geonosis.shop.e.shop.geonosis.view",
+        "bypassed": {
+          "target": ["TargetNotFound"]
+        }
       },
       "routes": [
         {
@@ -79,12 +98,72 @@
           "target": [
             "TargetMain"
           ]
+        },
+        {
+          "name": "Products",
+          "pattern": "products/{query}",
+          "target": "TargetProducts"
+        },
+        {
+          "name": "Cart",
+          "pattern": "cart",
+          "target": "TargetCart"
+        },
+        {
+          "name": "Categories",
+          "pattern": "categories",
+          "target": "TargetCategories"
+        },
+        {
+          "name": "Detail",
+          "pattern": "detail/{query}",
+          "target": "TargetDetail"
         }
       ],
       "targets": {
         "TargetMain": {
           "id": "Main",
           "name": "Main"
+        },
+        "TargetProducts": {
+          "name": "Products",
+          "id": "Products",
+          "viewLevel": 2,
+          "controlAggregation": "pages",
+          "controlId": "app",
+          "viewType": "XML"
+        },
+        "TargetCategories": {
+          "name": "Categories",
+          "id": "Categories",
+          "viewLevel": 2,
+          "controlAggregation": "pages",
+          "controlId": "app",
+          "viewType": "XML"
+        },
+        "TargetCart": {
+          "name": "Cart",
+          "id": "Cart",
+          "viewLevel": 2,
+          "controlAggregation": "pages",
+          "controlId": "app",
+          "viewType": "XML"
+        },
+        "TargetDetail": {
+          "name": "Detail",
+          "id": "Detail",
+          "viewLevel": 2,
+          "controlAggregation": "pages",
+          "controlId": "app",
+          "viewType": "XML"
+        },
+        "TargetNotFound": {
+          "name": "NotFound",
+          "id": "NotFound",
+          "viewLevel": 2,
+          "controlAggregation": "pages",
+          "controlId": "app",
+          "viewType": "XML"
         }
       }
     },

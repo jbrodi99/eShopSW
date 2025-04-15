@@ -1,20 +1,11 @@
 sap.ui.define([
-  "sap/ui/core/mvc/Controller",
+  "com/geonosis/shop/e/shop/geonosis/controller/BaseController",
   "sap/ui/model/json/JSONModel"
 ], (BaseController,JSONModel) => {
   "use strict";
 
   return BaseController.extend("com.geonosis.shop.e.shop.geonosis.controller.App", {
       onInit() {
-        let sImagePath = "../assets/images/star-wars-seeklogo.png";
-        
-        // Crear un modelo con la imagen
-        let oImageModel = new JSONModel({
-            logo: sImagePath
-        });
-
-        // Asignar el modelo a la vista
-        this.getView().setModel(oImageModel, "logoModel");
       }
   });
 });

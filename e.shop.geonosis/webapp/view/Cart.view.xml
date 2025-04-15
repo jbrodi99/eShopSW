@@ -1,4 +1,124 @@
-<mvc:View controllerName="com.geonosis.shop.e.shop.geonosis.controller.Main"
+<mvc:View controllerName="com.geonosis.shop.e.shop.geonosis.controller.Cart"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
+
+  <Page showHeader="false">
+   
+      <ScrollContainer id="cart-header-container" class="mySticky"></ScrollContainer>
+   
+      <content>
+        <VBox justifyContent="Center" alignItems="Center">
+          <HBox width="80%">
+            
+            <Table id="cartTable"
+              growing="true"
+              mode="{cfnTable>/tableMode}"
+              delete="onCartDelete"
+              inset="false"
+              growingThreshold="10"
+              rememberSelections="true"
+              items="{
+                path: 'cart>/cartEntries',
+                sorter: {
+                  path: 'cart>details/manufacturer',
+                  descending: false,
+                  group: true
+                }
+              }">
+              <headerToolbar>
+                <OverflowToolbar>
+                  <Title text="{i18n>cartName}" level="H2"/>
+                  <ToolbarSpacer />
+                  <Button id="cartEdit" icon="sap-icon://edit" press="onEditCartPress"/>
+                  <Button id="cartEditClose" visible="false" icon="sap-icon://accept" press="onDoneEditingCartPress"></Button>
+                </OverflowToolbar>
+              </headerToolbar>
+              <columns>
+                <Column>
+                  <Text text="{i18n>cartCol1}" />
+                </Column>
+                <Column
+                  minScreenWidth="Tablet"
+                  demandPopin="true"
+                  hAlign="Center">
+                  <Text text="" />
+                </Column>
+                <Column
+                  hAlign="Center"
+                  width="12em"
+                  minScreenWidth="Tablet"
+                  demandPopin="true">
+                  <Text text="{i18n>cartCol2}" />
+                </Column>
+                <Column
+                  hAlign="Center"
+                  width="12em"
+                  minScreenWidth="Tablet"
+                  demandPopin="true">
+                  <Text text="{i18n>cartCol3}" />
+                </Column>
+                
+                <Column
+                  hAlign="End">
+                  <Text text="{i18n>carCol4}" />
+                </Column>
+              </columns>
+              <items>
+                <ColumnListItem vAlign="Middle" type="Active">
+                  <cells>
+
+                    <ObjectIdentifier
+                      title="{cart>name}"
+                      />
+                    <Image src="{cart>mainImage}" width="4rem" height="4rem" />
+
+
+                    <StepInput 
+                      value="{cart>quantity}"
+                      min="1"
+                      max="{cart>stock}"
+                      width="6rem"
+                      textAlign="Center"
+                      change="onQuantityChange"
+                      />
+
+                    <Text text="{= ${cart>stock} + ' disponibles' }" />
+
+
+                    <ObjectNumber
+                      number="{
+                        parts:[{path:'cart>price'},{path:'cart>currency'}],
+                        type: 'sap.ui.model.type.Currency',
+                        formatOptions: {showMeasure: false}
+                      }"
+                      unit="{cart>currency}" />
+
+                  </cells>
+                </ColumnListItem>
+              </items>
+            </Table>
+
+
+            <ScrollContainer id="myScrollContainer" class="stickyBottom" width="100%">
+              <VBox width="100%">
+                <Panel headerText="Resumen de compra" >
+                  <VBox >
+                    <HBox justifyContent="SpaceBetween" >
+                      <Text text="{i18n>cartProducts} ({cart>/summary/products}):"></Text>
+                      
+                      <Text text="{i18n>cartSummarytotal}: ${cart>/summary/total}" class="sapUiSmallMarginEnd"/>
+                    </HBox>
+                   
+                       <FlexBox justifyContent="Center" width="100%">
+                        <Button text="{i18n>cartBtnBuy}" type="Emphasized" width="15rem" class="buyNowBtnCart sapUiMediumMarginEnd" press="onBuyNowPress"/>
+                      </FlexBox>
+                    
+                  </VBox>
+                </Panel>
+              </VBox>
+            </ScrollContainer>
+          </HBox>
+        </VBox>
+      </content>
+  </Page>
 </mvc:View>

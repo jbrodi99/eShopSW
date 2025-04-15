@@ -1,0 +1,22 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+  xmlns:layout="sap.ui.layout">
+  <Bar
+    design="Footer"
+    class="dark"
+    >
+    <contentLeft>
+      <HBox alignItems="Center" justifyContent="Start">
+        <Image src="{welcome>/footer}" width="6rem" height="1rem" />
+        <Text text="© 2025 Rodriguez Juan Cruz" class="sapUiTinyMarginBegin" />
+      </HBox>
+    </contentLeft>
+    <contentRight>
+      <Button
+        icon="sap-icon://nav-back"
+        text="Home"
+        press=".onBackHome" />
+    </contentRight>
+  </Bar>
+</core:FragmentDefinition>
