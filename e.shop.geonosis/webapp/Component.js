@@ -30,7 +30,6 @@ sap.ui.define([
             this.getModel("catalog").attachRequestCompleted(() => {
                 this.setModel(Cart.createCartModel(this.getModel("catalog").getProperty("/cart")), "cart");
             });
-
             // enable routing
             this.getRouter().initialize();
         }

@@ -13,7 +13,7 @@
       <Panel id="panelForGridList" backgroundDesign="Transparent">
         <headerToolbar>
           <Toolbar height="3rem">
-            <Text text="{filteredProducts>/totalStock} productos disponibles"></Text>
+            <Text text="{filteredProducts>/totalStock} productos encontrados"></Text>
             <ToolbarSpacer ></ToolbarSpacer>
             <Button icon="sap-icon://sort" press="onSortPress"/>
             <Button icon="sap-icon://reset" press="onResetPress"/>
@@ -34,5 +34,6 @@
       </Panel>
 
     </content>
+    <core:Fragment fragmentName="com.geonosis.shop.e.shop.geonosis.view.fragments.Footer" type="XML"/>
   </Page>
 </mvc:View>

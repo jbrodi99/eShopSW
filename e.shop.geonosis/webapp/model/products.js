@@ -102,11 +102,11 @@ function (JSONModel) {
               }
             })
           })
-        })
+        });
         
         let details = Object.entries(product.details).map(([key, value]) => {
           return { key, value };
-        })
+        });
         
         return new JSONModel({
           product : product,

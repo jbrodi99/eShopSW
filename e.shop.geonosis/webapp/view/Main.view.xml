@@ -110,5 +110,7 @@
 
 
     </content>
+     <core:Fragment fragmentName="com.geonosis.shop.e.shop.geonosis.view.fragments.Footer" type="XML"/>
     </Page>
+
 </mvc:View>

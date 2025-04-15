@@ -3,6 +3,7 @@
     xmlns:core="sap.ui.core"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:uxap="sap.uxap"
+    xmlns:grid="sap.ui.layout.cssgrid"
     xmlns:layout="sap.ui.layout"
     xmlns="sap.m">
     <Page showHeader="false">
@@ -11,39 +12,58 @@
 
     <content>
       <VBox class="sapUiSmallMargin">
-                <!-- Breadcrumb navigation -->
+            
                 <Breadcrumbs currentLocationText="{product>/product/name}">
                     <Link text="Inicio" press="onNavToHome" />
                     <Link text="{product>/product/category}" press="onNavTo" />
                     <Link text="{product>/product/subcategory}" press="onNavTo" />
                 </Breadcrumbs>
                 
-                <!-- Product Detail Area -->
-                <Panel backgroundDesign="Transparent" class="productDetailPanel">
-                    <FlexBox justifyContent="SpaceBetween" class="productDetailContainer">
-                        <!-- Image Gallery -->
-                        <VBox width="5%" class="thumbnailGallery">
-                            <List items="{product>/product/image}" noDataText="" showSeparators="None">
-                                <CustomListItem class="galleryThumbnail">
-                                    <Image src="{product>}" width="100%" press="onThumbnailPress" />
-                                </CustomListItem>
-                            </List>
-                        </VBox>
-                        
-                        <!-- Main Image -->
-                        <VBox width="40%" alignItems="Center" justifyContent="Center" class="mainImageContainer">
-                            <Image 
-                                id="productMainImage" 
-                                src="{product>/product/mainImage}" 
+             
+                <Panel backgroundDesign="Transparent" class="productDetailPanel"  >
+                    <grid:CSSGrid class="productDetailContainer" id="productDetailGrid">
+
+                        <grid:customLayout>
+                            <grid:GridResponsiveLayout containerQuery="true">
+                                <grid:layoutS>
+                                    <grid:GridSettings gridTemplateColumns="1fr" gridGap="1rem" />
+                                </grid:layoutS>
+                                <grid:layoutM>
+                                    <grid:GridSettings gridTemplateColumns="1fr 4fr" gridGap="1rem" />
+                                </grid:layoutM>
+                                <grid:layout>
+                                    <grid:GridSettings gridTemplateColumns="1fr 3fr 2fr" gridGap="1rem" />
+                                </grid:layout>
+                                <grid:layoutL>
+                                    <grid:GridSettings gridTemplateColumns="1fr 4fr 3fr" gridGap="1.5rem" />
+                                </grid:layoutL>
+                            </grid:GridResponsiveLayout>
+                        </grid:customLayout>
+
+
+                        <VBox width="80%" alignItems="Center" class="imageCarouselContainer">
+                            <Carousel
+                                id="productImageCarousel"
+                                pages="{product>/product/allImages}"
+                                loop="true"
+                                pageIndicatorPlacement="Bottom"
+                                height="400px"
                                 width="100%"
-                                height="400px" 
-                                class="productMainImage" 
-                                press="onOpenImageZoom" />
-                            <Text text="Clic para ampliar" class="clickInstructionText sapUiTinyMarginTop" />
+                                class="productImageCarousel">
+
+                                <Image 
+                                    src="{product>}" 
+                                    width="100%" 
+                                    height="100%" 
+                                    class="carouselImage" 
+                                    press="onOpenImageZoom" />
+                            </Carousel>
+
+                            <Text text="Desliza para ver más imágenes" class="clickInstructionText sapUiTinyMarginTop" />
                         </VBox>
                         
-                        <!-- Product Info -->
-                        <VBox width="33%" class="productInfo">
+                      
+                        <VBox width="80%" class="productInfo">
                             <ObjectHeader
                                 title="{product>/product/name}"
                                 number="$ {product>/product/price}"
@@ -54,14 +74,23 @@
                                 </statuses>
                             </ObjectHeader>
                             
+                            
                             <Text text="{product>/product/description}" class="sapUiSmallMarginTop productDescription" />
                             
                             <HBox alignItems="Center" class="sapUiSmallMarginTop ratingContainer">
                                 <RatingIndicator value="{product>/product/rating}" maxValue="5" iconSize="1.5rem" class="starRating" editable="false"/>
                                 <Text text="{= '(' + ${product>/product/rating} + ')' }" class="sapUiTinyMarginBegin ratingText" />
+                                
+                                
+                            </HBox>
+                            <Text text="Tags:" class="sapUiSmallMarginBottom sapUiTinyMarginTop" />
+                            <HBox wrap="Wrap" justifyContent="Start" class="tagContainer" items="{product>/product/tags}">
+                                <items>
+                                    <Text text="{product>}" class="tagChip" />
+                                </items>
                             </HBox>
                             
-                            <!-- Specs Table with Star Wars styling -->
+                      
                             <Title text="Características" level="H3" class="sapUiSmallMarginTop characteristicsTitle" />
                             <Table items="{product>/productDetails}" showSeparators="Inner" class="specsTable">
                                 <columns >
@@ -81,23 +110,23 @@
                             </Table>
                         </VBox>
                         
-                        <!-- Buy Box -->
-                        <VBox width="20%" class="buyBoxContainer">
+                  
+                        <VBox width="80%" class="buyBoxContainer">
                             <Panel class="buyBoxPanel">
                                 <VBox class="buyBoxContent" alignItems="Start">
-                                    <!-- Stock status with icon -->
+                           
                                     <HBox alignItems="Center" class="stockStatus">
                                         <core:Icon src="sap-icon://accept" color="#107e3e" />
                                         <Text text="Stock disponible" class="sapUiTinyMarginBegin" />
                                     </HBox>
                                     
-                                    <!-- Shipping info -->
+                            
                                     <HBox alignItems="Center" class="shippingInfo sapUiSmallMarginTop">
                                         <core:Icon src="sap-icon://shipping-status" />
                                         <Text text="Envío gratis" class="sapUiTinyMarginBegin" />
                                     </HBox>
                                     
-                                    <!-- Quantity selector -->
+                                
                                     <VBox class="sapUiSmallMarginTop quantitySelector" width="100%">
                                         <Label text="Cantidad" />
                                         <HBox alignItems="Center" width="100%">
@@ -111,13 +140,12 @@
                                         </HBox>
                                     </VBox>
                                     
-                                    <!-- Action buttons -->
+                        
                                     <VBox width="100%" class="actionButtons sapUiSmallMarginTop">
                                         <Button text="Comprar ahora" type="Emphasized" width="100%" class="buyNowBtn sapUiTinyMarginBottom" press="onBuyNowPress" />
                                         <Button text="Agregar al carrito" type="Default" width="100%" class="addCartBtn" press="onAddCartPress" />
                                     </VBox>
-                                    
-                                    <!-- Secure purchase message -->
+                               
                                     <HBox alignItems="Center" class="secureInfo sapUiSmallMarginTop">
                                         <core:Icon src="sap-icon://shield" />
                                         <Text text="Compra segura" class="sapUiTinyMarginBegin secureText" />
@@ -125,25 +153,10 @@
                                 </VBox>
                             </Panel>
                         </VBox>
-                    </FlexBox>
-                </Panel>
-                
-                <!-- Related Products Section -->
-                <Panel headerText="Productos relacionados" expandable="false" class="relatedProductsPanel sapUiMediumMarginTop">
-                    <Carousel class="relatedProductsCarousel" loop="true" pageIndicatorPlacement="Bottom">
-                        <HBox justifyContent="SpaceBetween" class="relatedProductsRow">
-                            <!-- Sample related product cards would go here -->
-                            <!-- You would bind these to an actual collection in your controller -->
-                        </HBox>
-                    </Carousel>
-                </Panel>
-                
-                <!-- Reviews Section -->
-                <Panel headerText="Opiniones de compradores" expandable="true" expanded="false" class="reviewsPanel sapUiMediumMarginTop">
-                    <!-- Reviews content would go here -->
+                    </grid:CSSGrid>
                 </Panel>
             </VBox>
     </content>
-
+    <core:Fragment fragmentName="com.geonosis.shop.e.shop.geonosis.view.fragments.Footer" type="XML"/>
   </Page>
 </mvc:View>

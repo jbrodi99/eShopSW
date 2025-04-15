@@ -17,6 +17,7 @@ sap.ui.define([
 
         this._selectAllCartItems();
         this.byId("cartTable").attachSelectionChange(this._updateCartSummary, this);
+
       },
 
       onCartDelete: function (oEvent) {

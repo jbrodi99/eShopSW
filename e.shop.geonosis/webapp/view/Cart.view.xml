@@ -71,7 +71,7 @@
                     <ObjectIdentifier
                       title="{cart>name}"
                       />
-                    <Image src="{cart>mainImage}" width="6rem" height="4rem" />
+                    <Image src="{cart>mainImage}" width="4rem" height="4rem" />
 
 
                     <StepInput 

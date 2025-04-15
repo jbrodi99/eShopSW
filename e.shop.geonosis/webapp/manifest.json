@@ -58,7 +58,7 @@
       },
       "catalog": {
         "type": "sap.ui.model.json.JSONModel",
-        "uri": "./model/Catalog-test.json"
+        "uri": "./model/Catalog.json"
       },
       "welcome": {
         "type": "sap.ui.model.json.JSONModel",

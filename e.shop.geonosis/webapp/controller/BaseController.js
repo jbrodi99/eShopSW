@@ -2,9 +2,10 @@ sap.ui.define([
   "sap/ui/core/mvc/Controller",
   "sap/m/MenuItem",
   "sap/m/Menu",
-  "com/geonosis/shop/e/shop/geonosis/model/Cart"
+  "com/geonosis/shop/e/shop/geonosis/model/Cart",
+  "sap/m/MessageToast"
 
-], function(Controller, MenuItem, Menu, Cart) {
+], function(Controller, MenuItem, Menu, Cart, MessageToast) {
   "use strict";
   
   return Controller.extend("com.geonosis.shop.e.shop.geonosis.controller.BaseController", {
@@ -80,18 +81,42 @@ sap.ui.define([
       },
 
       onCategoryMenuPress: function (oEvent) {
+
         const oItem = oEvent.getSource();
         const oContext = oItem.getBindingContext("catalog");
         const aSubcategories = oContext.getProperty("subcategories");
+        const oMenu = oItem.getParent();
+
+       
         if (aSubcategories && aSubcategories.length > 0) {
-          const oSubMenu = new Menu({
-            items: aSubcategories.map(sub => new MenuItem({
+          let aItems = [];
+
+          aItems.push(new MenuItem({
+            text: "← Volver a categorías",
+            icon: "sap-icon://nav-back",
+            press: () => this.loadMenu("MenuMobile", oEvent) 
+          }));
+
+
+          aSubcategories.forEach(sub => {
+            aItems.push(new MenuItem({
               text: sub.name,
               icon: "sap-icon://product",
-              press: () => this.onSearchNavigation(sub.id) // o navegación
-            }))
+              press: () => {
+                this.onSearchNavigation(sub.id);
+                oMenu.close(); 
+              }
+            }));
           });
       
+
+          const oOldMenu = oItem.getParent();
+          oOldMenu.close();
+
+          const oSubMenu = new Menu({
+            items: aItems
+          });
+
           oSubMenu.openBy(oItem);
         }
       },
@@ -124,10 +149,11 @@ sap.ui.define([
 
       loadMenu: function (sMenu, oEvent) {
         let sPath = "com.geonosis.shop.e.shop.geonosis.view.fragments." + sMenu;
-
+        let sUniqueId = sPath + "-" + Date.now();
+        
         this.loadFragment({
           name: sPath,
-          id: sPath
+          id: sUniqueId
         }).then(function (oFragment) {
           oFragment.openBy(oEvent.getSource());
         }.bind(this));
@@ -163,7 +189,16 @@ sap.ui.define([
       },
 
       onFavoritPress: function (oEvent) {
-        console.log("TODO:implementar");
+        const oButton = oEvent.getSource();
+        const bIsFavorite = oButton.getIcon() === "sap-icon://heart";
+      
+        if (bIsFavorite) {
+          oButton.setIcon("sap-icon://heart-2");
+          MessageToast.show("Producto quitado de favoritos.");
+        } else {
+          oButton.setIcon("sap-icon://heart");
+          MessageToast.show("Producto agregado a favoritos.");
+        }
       }
     });
   });

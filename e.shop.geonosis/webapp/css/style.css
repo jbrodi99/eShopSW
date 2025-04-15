@@ -494,3 +494,20 @@
   border-radius: 8px !important; /* Ajusta este valor para más o menos redondeo */
   height: 2rem;
 }
+
+.tagChip {
+  background-color: #e0e0e0;
+  color: #333;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 1rem;
+  margin: 0.2rem;
+  display: inline-block;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  transition: background-color 0.3s;
+  cursor: default;
+}
+
+.tagChip:hover {
+  background-color: #d5d5d5;
+}

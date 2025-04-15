@@ -3,7 +3,8 @@ sap.ui.define([
     "com/geonosis/shop/e/shop/geonosis/model/products",
     "sap/m/MessageToast",
     "com/geonosis/shop/e/shop/geonosis/model/Cart",
-  ], (BaseController, products, MessageToast, Cart) => {
+    "sap/ui/model/json/JSONModel",
+  ], (BaseController, products, MessageToast, Cart, JSONModel) => {
     "use strict";
   
     return BaseController.extend("com.geonosis.shop.e.shop.geonosis.controller.Detail", {
@@ -23,10 +24,37 @@ sap.ui.define([
         let oProductModel = products.getById(this.getOwnerComponent(), sSearchQuery);
 
         this.setModel(oProductModel, "product");
+        
+        const productData = oProductModel.getProperty("/product");
+        
+        // Asegurarse de que existe mainImage e image
+        const mainImage = productData.mainImage;
+        const imageArray = productData.image || [];
+
+        // Evitar duplicar si mainImage ya está en el array
+        const allImages = imageArray.includes(mainImage)
+            ? imageArray
+            : [mainImage, ...imageArray];
+
+        // Setear en el modelo
+        oProductModel.setProperty("/product/allImages", allImages);
+
       },
 
+
       onBuyNowPress: function () {
-        MessageToast.show("Se compra ah sido realizada con exito!");
+        const oProductModel = this.getView().getModel("product");
+        const oProductData = oProductModel.getProperty("/product");
+        let iQuantity = this.byId("stepQty").getValue();
+
+        if (oProductData.stock >= iQuantity) {
+          oProductData.stock -= iQuantity;
+          oProductModel.setProperty("/product", oProductData);
+
+          MessageToast.show("¡La compra ha sido realizada con éxito!");
+        } else {
+          MessageToast.show("¡Producto sin stock!");
+        }
       },
 
       onAddCartPress: function (oEvent) {
@@ -38,7 +66,6 @@ sap.ui.define([
 
       // Método para abrir el diálogo con la imagen ampliada
       onOpenImageZoom: function (oEvent) {
-          let oView = this.getView();
           
           // Cargar el fragment de manera lazy
           if (!this._pZoomDialog) {

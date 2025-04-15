@@ -3,7 +3,7 @@
   xmlns:core="sap.ui.core">
   <CustomListItem type="Active" press=".onProductPress" class="productListItem">
     <VBox class="productCardContent" width="100%" alignItems="Center">
-      <Image src="{model>/mainImage}" height="250px" densityAware="false" />
+      <Image src="{model>/mainImage}" height="400px" densityAware="false" />
 
       <Text text="{model>/name}" class="productTitle" />
 
@@ -11,16 +11,26 @@
         <RatingIndicator value="{model>/rating}" maxValue="5" iconSize="1.2rem" />
       </HBox>
 
-      <HBox alignItems="End" class="priceContainer">
-        <Text text="$ {model>/price}" class="priceText" />
-        <Text text="{model>/currency}" class="currencyText" />
+      <HBox >
+        <HBox alignItems="Start" class="sapUiMediumMarginBeginEnd">
+          <ObjectNumber number="{
+                        parts:[{path:'model>/price'},{path:'model>/currency'}],
+                        type: 'sap.ui.model.type.Currency',
+                        formatOptions: {showMeasure: false}
+                      }"
+                      unit="{model>/currency}" ></ObjectNumber>
+        </HBox>
+        <HBox class="sapUiMediumMarginBeginEnd">
+          <ObjectStatus title="Stock"
+          text="{model>/stock}">
+            
+          </ObjectStatus>
+        </HBox>
       </HBox>
 
-      <Text text="{model>/status}" class="stockLabel {model>/status}" />
-
-      <HBox justifyContent="SpaceBetween" width="100%" class="actionsContainer">
-        <Button icon="sap-icon://cart-4" text="Añadir" type="Emphasized" press="onCardCartPress"/>
-        <Button icon="sap-icon://heart-2" type="Transparent" press="onFavoritPress" />
+      <HBox justifyContent="Center" width="100%" class="actionsContainer">
+        <Button icon="sap-icon://cart-4" class="sapUiLargeMarginEnd" text="Añadir" type="Emphasized" press="onCardCartPress"/>
+        <Button icon="sap-icon://heart-2" class="sapUiLargeMarginBegin" type="Transparent" press="onFavoritPress" />
       </HBox>
     </VBox>
   </CustomListItem>

@@ -29,9 +29,14 @@ sap.ui.define([
                     const sMedia = oEvent.name; 
                     const iNewItems = sMedia === "Desktop" ? 4 :
                                       sMedia === "Tablet"  ? 2 : 1;
+                    const imageGaleryDirection = sMedia === "Desktop" ? "Row" : "Column";
                                       
                     oComponent.getModel("settingsResponsive").setProperty("/carouselItemsPerPage", iNewItems);
+                    oComponent.getModel("settingsResponsive").setProperty("/imageGaleryDirection", imageGaleryDirection);
+
                 });
+
+
 
                 oSettingsModel.setDefaultBindingMode("OneWay");
                 return oSettingsModel;
