@@ -461,42 +461,13 @@
                 "variants": []
               },
               {
-                "id": "prod19",
-                "name": "Arte del Millennium Falcon",
-                "price": 34.99,
-                "currency": "USD",
-                "description": "Impresión artística del legendario Millennium Falcon con detalles técnicos.",
-                "image": [
-                  "assets/images/falcon-art.png",
-                  "assets/images/falcon-art.png",
-                  "assets/images/falcon-art.png"
-                ],
-                "mainImage": "assets/images/falcon-art.png",
-                "stock": 40,
-                "status": "A",
-                "cantidadVendida": 65,
-                "rating": 4.6,
-                "details": {
-                  "dimensions": "70x100 cm",
-                  "material": "Papel artístico",
-                  "manufacturer": "Star Art",
-                  "weight": "0.35 kg"
-                },
-                "tags": ["poster", "arte", "Millennium Falcon", "Star Wars", "coleccionable"],
-                "variants": []
-              },
-              {
                 "id": "prod20",
                 "name": "Set de 3 Mini Posters Vintage",
                 "price": 39.99,
                 "currency": "USD",
                 "description": "Conjunto de tres mini posters con diseños vintage de la trilogía original.",
-                "image": [
-                  "assets/images/vintage-posters.png",
-                  "assets/images/vintage-posters.png",
-                  "assets/images/vintage-posters.png"
-                ],
-                "mainImage": "assets/images/vintage-posters.png",
+                "image": [],
+                "mainImage": "assets/images/poster-set-3.png",
                 "stock": 25,
                 "status": "A",
                 "cantidadVendida": 50,
@@ -523,11 +494,11 @@
                 "currency": "USD",
                 "description": "Taza temática con diseños icónicos de Star Wars para los fans más apasionados.",
                 "image": [
-                  "assets/images/luke.png",
-                  "assets/images/luke.png",
-                  "assets/images/luke.png"
+                  "assets/images/taza-sw-1.png",
+                  "assets/images/taza-sw-2.png",
+                  "assets/images/taza-sw-3.png"
                 ],
-                "mainImage": "assets/images/luke.png",
+                "mainImage": "assets/images/taza-sw.png",
                 "stock": 100,
                 "status": "A",
                 "cantidadVendida": 120,
@@ -560,12 +531,8 @@
                 "price": 9.99,
                 "currency": "USD",
                 "description": "Llavero con el emblema del Imperio. Un accesorio pequeño pero lleno de identidad.",
-                "image": [
-                  "assets/images/luke.png",
-                  "assets/images/luke.png",
-                  "assets/images/luke.png"
-                ],
-                "mainImage": "assets/images/luke.png",
+                "image": [],
+                "mainImage": "assets/images/llavero-imperio.png",
                 "stock": 150,
                 "status": "A",
                 "cantidadVendida": 120,
@@ -584,11 +551,11 @@
                 "currency": "USD",
                 "description": "Réplica decorativa de casco Stormtrooper en tamaño reducido, perfecto para escritorio.",
                 "image": [
-                  "assets/images/stormtrooper-mini.png",
-                  "assets/images/stormtrooper-mini.png",
-                  "assets/images/stormtrooper-mini.png"
+                  "assets/images/casco-1.png",
+                  "assets/images/casco-2.png",
+                  "assets/images/casco-4.png"
                 ],
-                "mainImage": "assets/images/stormtrooper-mini.png",
+                "mainImage": "assets/images/casco.png",
                 "stock": 35,
                 "status": "A",
                 "cantidadVendida": 45,
@@ -621,11 +588,12 @@
                 "currency": "USD",
                 "description": "Modelo a escala del icónico caza estelar X-Wing con detalles precisos y partes móviles.",
                 "image": [
-                  "assets/images/luke.png",
-                  "assets/images/luke.png",
-                  "assets/images/luke.png"
+                  "assets/images/caza-1.png",
+                  "assets/images/caza-2.png",
+                  "assets/images/caza-3.png",
+                  "assets/images/caza-4.png"
                 ],
-                "mainImage": "assets/images/luke.png",
+                "mainImage": "assets/images/caza.png",
                 "stock": 5,
                 "status": "A",
                 "cantidadVendida": 120,
@@ -645,11 +613,11 @@
                 "currency": "USD",
                 "description": "Detallado modelo a escala del caza TIE Fighter con paneles solares articulados.",
                 "image": [
-                  "assets/images/tie-fighter.png",
-                  "assets/images/tie-fighter.png",
-                  "assets/images/tie-fighter.png"
+                  "assets/images/tie-1.png",
+                  "assets/images/tie-2.png",
+                  "assets/images/tie-4.png"
                 ],
-                "mainImage": "assets/images/tie-fighter.png",
+                "mainImage": "assets/images/tie.png",
                 "stock": 7,
                 "status": "A",
                 "cantidadVendida": 85,
@@ -670,11 +638,11 @@
                 "currency": "USD",
                 "description": "Modelo a escala del veloz caza A-Wing de la Alianza Rebelde con base de exhibición.",
                 "image": [
-                  "assets/images/a-wing.png",
-                  "assets/images/a-wing.png",
-                  "assets/images/a-wing.png"
+                  "assets/images/a-win-1.png",
+                  "assets/images/a-win-2.png",
+                  "assets/images/a-wing-3.png"
                 ],
-                "mainImage": "assets/images/a-wing.png",
+                "mainImage": "assets/images/a-win.png",
                 "stock": 9,
                 "status": "A",
                 "cantidadVendida": 50,
@@ -695,11 +663,12 @@
                 "currency": "USD",
                 "description": "Detallado modelo del bombardero Y-Wing con componentes mecánicos visibles.",
                 "image": [
-                  "assets/images/y-wing.png",
-                  "assets/images/y-wing.png",
-                  "assets/images/y-wing.png"
+                  "assets/images/Y-win-1.png",
+                  "assets/images/Y-win-2.png",
+                  "assets/images/Y-win-3.png",
+                  "assets/images/Y-win-4.png"
                 ],
-                "mainImage": "assets/images/y-wing.png",
+                "mainImage": "assets/images/Y-win.png",
                 "stock": 6,
                 "status": "A",
                 "cantidadVendida": 40,
@@ -726,11 +695,11 @@
                 "currency": "USD",
                 "description": "Magnífico modelo a escala del Destructor Estelar con múltiples detalles, ideal para los coleccionistas.",
                 "image": [
-                  "assets/images/luke.png",
-                  "assets/images/luke.png",
-                  "assets/images/luke.png"
+                  "assets/images/destructor-1.png",
+                  "assets/images/destructor-2.png",
+                  "assets/images/destructor-3.png"
                 ],
-                "mainImage": "assets/images/luke.png",
+                "mainImage": "assets/images/destructor.png",
                 "stock": 3,
                 "status": "A",
                 "cantidadVendida": 120,
@@ -751,11 +720,11 @@
                 "currency": "USD",
                 "description": "Modelo elegante del Shuttle Imperial con alas desplegables y base iluminada.",
                 "image": [
-                  "assets/images/imperial-shuttle.png",
-                  "assets/images/imperial-shuttle.png",
-                  "assets/images/imperial-shuttle.png"
+                  "assets/images/shuttle-2.png",
+                  "assets/images/shuttle-3.png",
+                  "assets/images/shuttle-4.png"
                 ],
-                "mainImage": "assets/images/imperial-shuttle.png",
+                "mainImage": "assets/images/shuttle.png",
                 "stock": 4,
                 "status": "A",
                 "cantidadVendida": 30,
@@ -782,9 +751,9 @@
                 "currency": "USD",
                 "description": "Increíble réplica del Millennium Falcon con detalles internos y efectos de luz.",
                 "image": [
-                  "assets/images/falcon.png",
-                  "assets/images/falcon.png",
-                  "assets/images/falcon.png"
+                  "assets/images/falcon-1.png",
+                  "assets/images/falcon-2.png",
+                  "assets/images/falcon-3.png"
                 ],
                 "mainImage": "assets/images/falcon.png",
                 "stock": 5,
@@ -820,11 +789,12 @@
                 "currency": "USD",
                 "description": "Modelo de la nave consular Tantive IV, la famosa corbeta de la princesa Leia.",
                 "image": [
-                  "assets/images/tantive.png",
-                  "assets/images/tantive.png",
-                  "assets/images/tantive.png"
+                  "assets/images/tentative-1.png",
+                  "assets/images/tentative-2.png",
+                  "assets/images/tentative-3.png",
+                  "assets/images/tentative-4.png"
                 ],
-                "mainImage": "assets/images/tantive.png",
+                "mainImage": "assets/images/tentative.png",
                 "stock": 4,
                 "status": "A",
                 "cantidadVendida": 25,
@@ -857,9 +827,10 @@
                 "currency": "USD",
                 "description": "Versión galáctica del clásico juego de propiedades con elementos de Star Wars.",
                 "image": [
-                  "assets/images/monopoly.png",
-                  "assets/images/monopoly.png",
-                  "assets/images/monopoly.png"
+                  "assets/images/monopoly-1.png",
+                  "assets/images/monopoly-2.png",
+                  "assets/images/monopoly-3.png",
+                  "assets/images/monopoly-4.png"
                 ],
                 "mainImage": "assets/images/monopoly.png",
                 "stock": 25,
@@ -889,9 +860,8 @@
                 "currency": "USD",
                 "description": "Rompecabezas panorámico de 1000 piezas con escenas icónicas de las 9 películas.",
                 "image": [
-                  "assets/images/puzzle.png",
-                  "assets/images/puzzle.png",
-                  "assets/images/puzzle.png"
+                  "assets/images/puzzle-1.png",
+                  "assets/images/puzzle-2.png"
                 ],
                 "mainImage": "assets/images/puzzle.png",
                 "stock": 20,
@@ -914,9 +884,9 @@
                 "currency": "USD",
                 "description": "Rompecabezas tridimensional para construir una Estrella de la Muerte.",
                 "image": [
-                  "assets/images/puzzle-3d.png",
-                  "assets/images/puzzle-3d.png",
-                  "assets/images/puzzle-3d.png"
+                  "assets/images/puzzle-3d-1.png",
+                  "assets/images/puzzle-3d-2.png",
+                  "assets/images/puzzle-3d-4.png"
                 ],
                 "mainImage": "assets/images/puzzle-3d.png",
                 "stock": 15,
