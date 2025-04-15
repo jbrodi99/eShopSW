@@ -20,7 +20,7 @@
                 
                 <!-- Product Detail Area -->
                 <Panel backgroundDesign="Transparent" class="productDetailPanel">
-                    <HBox justifyContent="SpaceBetween" class="productDetailContainer">
+                    <FlexBox justifyContent="SpaceBetween" class="productDetailContainer">
                         <!-- Image Gallery -->
                         <VBox width="5%" class="thumbnailGallery">
                             <List items="{product>/product/image}" noDataText="" showSeparators="None">
@@ -125,7 +125,7 @@
                                 </VBox>
                             </Panel>
                         </VBox>
-                    </HBox>
+                    </FlexBox>
                 </Panel>
                 
                 <!-- Related Products Section -->

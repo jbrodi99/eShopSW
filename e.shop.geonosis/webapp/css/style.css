@@ -490,3 +490,7 @@
   text-overflow: ellipsis;
 }
 
+.buyNowBtnCart .sapMBtnInner {
+  border-radius: 8px !important; /* Ajusta este valor para más o menos redondeo */
+  height: 2rem;
+}

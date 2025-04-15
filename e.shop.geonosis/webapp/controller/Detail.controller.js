@@ -30,8 +30,10 @@ sap.ui.define([
       },
 
       onAddCartPress: function (oEvent) {
+        let iQuantity = this.byId("stepQty").getValue()
+        
         //TODO: obtener desde un input la cantidad de productos y enviarla como parametro al agregar al carrito
-        Cart.addToCart(this.getResourceBundle(),this.getModel("product"),this.getComponentModel("catalog"));
+        Cart.addToCart(this.getResourceBundle(),this.getModel("product"),this.getComponentModel("cart"),iQuantity);
       },
 
       // Método para abrir el diálogo con la imagen ampliada

@@ -21,7 +21,7 @@
               id="carousel-imgs"
               mode="Background"
               backgroundPosition="center"
-              backgroundSize="contain"
+              backgroundSize="cover"
               src="{welcome>src}"
               width="100%"
               height="100%" />

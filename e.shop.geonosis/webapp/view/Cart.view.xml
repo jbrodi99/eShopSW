@@ -11,53 +11,110 @@
         <VBox justifyContent="Center" alignItems="Center">
           <HBox width="80%">
             
-            <VBox width="100%">
-              <Panel headerText="Carrito" >
-                <List items="{cart>/cartEntries}"
-               >
-                    <ObjectListItem
+            <Table id="cartTable"
+              growing="true"
+              mode="{cfnTable>/tableMode}"
+              delete="onCartDelete"
+              inset="false"
+              growingThreshold="10"
+              rememberSelections="true"
+              items="{
+                path: 'cart>/cartEntries',
+                sorter: {
+                  path: 'cart>details/manufacturer',
+                  descending: false,
+                  group: true
+                }
+              }">
+              <headerToolbar>
+                <OverflowToolbar>
+                  <Title text="Carrito" level="H2"/>
+                  <ToolbarSpacer />
+                  <Button id="cartEdit" icon="sap-icon://edit" press="onEditCartPress"/>
+                  <Button id="cartEditClose" visible="false" icon="sap-icon://accept" press="onDoneEditingCartPress"></Button>
+                </OverflowToolbar>
+              </headerToolbar>
+              <columns>
+                <Column>
+                  <Text text="Product" />
+                </Column>
+                <Column
+                  minScreenWidth="Tablet"
+                  demandPopin="true"
+                  hAlign="Center">
+                  <Text text="" />
+                </Column>
+                <Column
+                  hAlign="Center"
+                  width="12em"
+                  minScreenWidth="Tablet"
+                  demandPopin="true">
+                  <Text text="Quantity" />
+                </Column>
+                <Column
+                  hAlign="Center"
+                  width="12em"
+                  minScreenWidth="Tablet"
+                  demandPopin="true">
+                  <Text text="Disponibilidad" />
+                </Column>
+                
+                <Column
+                  hAlign="End">
+                  <Text text="Unit Price" />
+                </Column>
+              </columns>
+              <items>
+                <ColumnListItem vAlign="Middle" type="Active">
+                  <cells>
+
+                    <ObjectIdentifier
                       title="{cart>name}"
-                      icon="{cart>mainImage}"
-                      iconDensityAware="false"
-                      
+                      />
+                    <Image src="{cart>mainImage}" width="6rem" height="4rem" />
+
+
+                    <StepInput 
+                      value="{cart>quantity}"
+                      min="1"
+                      max="{cart>stock}"
+                      width="6rem"
+                      textAlign="Center"
+                      change="onQuantityChange"
+                      />
+
+                    <Text text="{= ${cart>stock} + ' disponibles' }" />
+
+
+                    <ObjectNumber
                       number="{
-                        parts:[{path:'cart>price'}],
+                        parts:[{path:'cart>price'},{path:'cart>currency'}],
                         type: 'sap.ui.model.type.Currency',
                         formatOptions: {showMeasure: false}
                       }"
-                      numberUnit="USD">
+                      unit="{cart>currency}" />
 
-                      <firstStatus>
-                        <ObjectStatus
-                          text="{= 'Stock: ' + ${cart>stock} }"
-                          state="{= ${cart>stock} > 0 ? 'Success' : 'Error' }" 
-                          />
-                          
-                      </firstStatus>
-                      <secondStatus>
-                        <ObjectStatus text="cantidad: {cart>Quantity}" ></ObjectStatus>
-                      </secondStatus>
-
-                      
-                      <attributes >
-                        <ObjectAttribute text="{cart>description}" />
-                        <ObjectAttribute text="Eliminar" press="onDeleteCartPress" active="true" />
-                        <ObjectAttribute text="Agregar" press="onDeleteCartPress" active="true" />
-                      
-                      </attributes>
-
-                      
-                    </ObjectListItem>
-                </List>
-              </Panel>
-            </VBox>
+                  </cells>
+                </ColumnListItem>
+              </items>
+            </Table>
 
 
             <ScrollContainer id="myScrollContainer" width="100%">
               <VBox width="100%">
                 <Panel headerText="Resumen de compra" >
-                  <Text text="Total: $999" />
-                  <Button text="Finalizar compra" type="Emphasized" />
+                  <VBox >
+                    <HBox justifyContent="SpaceBetween" >
+                      <Text text="productos ({cart>/summary/products}):"></Text>
+                      
+                      <Text text="Total: ${cart>/summary/total}" class="sapUiSmallMarginEnd"/>
+                    </HBox>
+                   
+                       <FlexBox justifyContent="Center" width="100%">
+                        <Button text="Finalizar compra" type="Emphasized" width="15rem" class="buyNowBtnCart sapUiMediumMarginEnd" press="onBuyNowPress"/>
+                      </FlexBox>
+                    
+                  </VBox>
                 </Panel>
               </VBox>
             </ScrollContainer>

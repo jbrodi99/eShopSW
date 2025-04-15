@@ -524,7 +524,39 @@
       ]
     },
     "cart": {
-      "cartEntries": []
+      "cartEntries": [
+        {
+        
+          "id": "prod12",
+          "name": "Modelo Destructor Estelar",
+          "price": 499.99,
+          "currency": "USD",
+          "description": "Magnífico modelo a escala del Destructor Estelar con múltiples detalles, ideal para los coleccionistas.",
+          "image": [
+            "assets/images/luke.png",
+            "assets/images/luke.png",
+            "assets/images/luke.png"
+          ],
+          "mainImage": "assets/images/luke.png",
+          "stock": 3,
+          "cantidadVendida": 5,
+          "rating": 4.9,
+          "details": {
+            "scale": "1:144",
+            "material": "Plástico y metal",
+            "manufacturer": "Starship Models",
+            "weight": "3.5 kg"
+          },
+          "tags": ["modelo", "Destructor Estelar", "Star Wars", "coleccionable"],
+          "variants": [],
+          "quantity": 2
+          
+        }
+      ],
+      "summary":{
+        "products": 0,
+        "total": 0.00
+      }
     }
   }
   

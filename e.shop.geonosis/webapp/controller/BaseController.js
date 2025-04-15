@@ -28,6 +28,10 @@ sap.ui.define([
       setModel: function (oModel, sName) {
         return this.getView().setModel(oModel, sName);
       },
+
+      setComponentModel: function (oModel, sName) {
+        return this.getOwnerComponent().setModel(oModel, sName);
+      },
   
       getResourceBundle: function () {
         return this.getOwnerComponent().getModel("i18n").getResourceBundle();
@@ -154,8 +158,8 @@ sap.ui.define([
       },
 
       onCardCartPress: function (oEvent) {
-        console.log("Implementar");
-        //Cart.addToCart(this.getResourceBundle(),oEvent.getSource().getModel("model"),this.getComponentModel("catalog"));
+        console.log(oEvent.getSource().getModel("model"));
+        Cart.addToCart(this.getResourceBundle(),oEvent.getSource().getModel("model"),this.getComponentModel("cart"));
       },
 
       onFavoritPress: function (oEvent) {
