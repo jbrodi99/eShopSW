@@ -86,7 +86,10 @@
         "viewType": "XML",
         "path": "com.geonosis.shop.e.shop.geonosis.view",
         "async": true,
-        "viewPath": "com.geonosis.shop.e.shop.geonosis.view"
+        "viewPath": "com.geonosis.shop.e.shop.geonosis.view",
+        "bypassed": {
+          "target": ["TargetNotFound"]
+        }
       },
       "routes": [
         {
@@ -115,16 +118,6 @@
           "name": "Detail",
           "pattern": "detail/{query}",
           "target": "TargetDetail"
-        },
-        {
-          "name": "NotFound",
-          "pattern": "notFound",
-          "target": "TargetNotFound"
-        },
-        {
-          "name": "Test",
-          "pattern": "Test",
-          "target": "TargetTest"
         }
       ],
       "targets": {
@@ -167,14 +160,6 @@
         "TargetNotFound": {
           "name": "NotFound",
           "id": "NotFound",
-          "viewLevel": 2,
-          "controlAggregation": "pages",
-          "controlId": "app",
-          "viewType": "XML"
-        },
-        "TargetTest": {
-          "name": "Test",
-          "id": "Test",
           "viewLevel": 2,
           "controlAggregation": "pages",
           "controlId": "app",

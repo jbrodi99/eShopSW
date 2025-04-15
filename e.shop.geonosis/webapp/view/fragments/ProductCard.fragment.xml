@@ -7,7 +7,7 @@
 
       <Text text="{model>/name}" class="productTitle" />
 
-      <HBox alignItems="Center" class="ratingContainer">
+      <HBox alignItems="Center" >
         <RatingIndicator value="{model>/rating}" maxValue="5" iconSize="1.2rem" />
       </HBox>
 

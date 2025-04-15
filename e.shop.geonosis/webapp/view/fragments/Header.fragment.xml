@@ -5,7 +5,7 @@
       <SearchField 
           id="search-field-nav-bar" 
           width="40%" 
-          placeholder="Buscar productos..." 
+          placeholder="{i18n>headerSearchPlaceholder}" 
           search="onSearch"
           >
           <layoutData>
@@ -16,20 +16,20 @@
 
       <Button 
         id="btn-nav-categories"
-        text="Categorias"
+        text="{i18n>headerCategorieBtn}"
         press=".onOpenMenu"
         class="sapUiVisibleOnlyOnDesktop"
         />
       <Button id="btn-nav-cart"
         icon="sap-icon://cart" 
-        tooltip="Mi carrito" 
+        tooltip="{i18n>headerMyCart}" 
         press="onCartPress" 
         width="3rem" 
         class="sapUiVisibleOnlyOnDesktop"
         /> 
       <Button id="btn-nav-menu"
       icon="sap-icon://menu" 
-      tooltip="Menu" 
+      tooltip="{i18n>headerHamMenu}" 
       press="onHamburgerPress" 
       width="3rem" 
       class="sapUiHideOnDesktop"

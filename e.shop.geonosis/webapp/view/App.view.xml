@@ -5,6 +5,7 @@
     
     <App id="app"
     height="100%"
+
     >
     </App>
 </mvc:View>

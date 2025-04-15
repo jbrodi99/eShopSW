@@ -34,7 +34,7 @@ sap.ui.define([
 
             switch (oProduct.status) {
 				case "O":
-					// show message dialog
+					
 					MessageBox.show(
 						oBundle.getText("productStatusOutOfStockMsg"), {
                             icon: MessageBox.Icon.ERROR,

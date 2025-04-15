@@ -1,6 +1,5 @@
 <mvc:View controllerName="com.geonosis.shop.e.shop.geonosis.controller.Cart"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns:core="sap.ui.core"
     xmlns="sap.m">
 
   <Page showHeader="false">
@@ -28,7 +27,7 @@
               }">
               <headerToolbar>
                 <OverflowToolbar>
-                  <Title text="Carrito" level="H2"/>
+                  <Title text="{i18n>cartName}" level="H2"/>
                   <ToolbarSpacer />
                   <Button id="cartEdit" icon="sap-icon://edit" press="onEditCartPress"/>
                   <Button id="cartEditClose" visible="false" icon="sap-icon://accept" press="onDoneEditingCartPress"></Button>
@@ -36,7 +35,7 @@
               </headerToolbar>
               <columns>
                 <Column>
-                  <Text text="Product" />
+                  <Text text="{i18n>cartCol1}" />
                 </Column>
                 <Column
                   minScreenWidth="Tablet"
@@ -49,19 +48,19 @@
                   width="12em"
                   minScreenWidth="Tablet"
                   demandPopin="true">
-                  <Text text="Quantity" />
+                  <Text text="{i18n>cartCol2}" />
                 </Column>
                 <Column
                   hAlign="Center"
                   width="12em"
                   minScreenWidth="Tablet"
                   demandPopin="true">
-                  <Text text="Disponibilidad" />
+                  <Text text="{i18n>cartCol3}" />
                 </Column>
                 
                 <Column
                   hAlign="End">
-                  <Text text="Unit Price" />
+                  <Text text="{i18n>carCol4}" />
                 </Column>
               </columns>
               <items>
@@ -100,18 +99,18 @@
             </Table>
 
 
-            <ScrollContainer id="myScrollContainer" width="100%">
+            <ScrollContainer id="myScrollContainer" class="stickyBottom" width="100%">
               <VBox width="100%">
                 <Panel headerText="Resumen de compra" >
                   <VBox >
                     <HBox justifyContent="SpaceBetween" >
-                      <Text text="productos ({cart>/summary/products}):"></Text>
+                      <Text text="{i18n>cartProducts} ({cart>/summary/products}):"></Text>
                       
-                      <Text text="Total: ${cart>/summary/total}" class="sapUiSmallMarginEnd"/>
+                      <Text text="{i18n>cartSummarytotal}: ${cart>/summary/total}" class="sapUiSmallMarginEnd"/>
                     </HBox>
                    
                        <FlexBox justifyContent="Center" width="100%">
-                        <Button text="Finalizar compra" type="Emphasized" width="15rem" class="buyNowBtnCart sapUiMediumMarginEnd" press="onBuyNowPress"/>
+                        <Button text="{i18n>cartBtnBuy}" type="Emphasized" width="15rem" class="buyNowBtnCart sapUiMediumMarginEnd" press="onBuyNowPress"/>
                       </FlexBox>
                     
                   </VBox>

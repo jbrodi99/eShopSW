@@ -27,16 +27,13 @@ sap.ui.define([
         
         const productData = oProductModel.getProperty("/product");
         
-        // Asegurarse de que existe mainImage e image
         const mainImage = productData.mainImage;
         const imageArray = productData.image || [];
 
-        // Evitar duplicar si mainImage ya está en el array
         const allImages = imageArray.includes(mainImage)
             ? imageArray
             : [mainImage, ...imageArray];
 
-        // Setear en el modelo
         oProductModel.setProperty("/product/allImages", allImages);
 
       },
@@ -46,28 +43,30 @@ sap.ui.define([
         const oProductModel = this.getView().getModel("product");
         const oProductData = oProductModel.getProperty("/product");
         let iQuantity = this.byId("stepQty").getValue();
+        let oBundle = this.getResourceBundle();
 
         if (oProductData.stock >= iQuantity) {
           oProductData.stock -= iQuantity;
           oProductModel.setProperty("/product", oProductData);
 
-          MessageToast.show("¡La compra ha sido realizada con éxito!");
+          MessageToast.show(
+            oBundle.getText("msgToastBuy")
+          );
         } else {
-          MessageToast.show("¡Producto sin stock!");
+          MessageToast.show(
+            oBundle.getText("msgOutOfStock")
+          );
         }
       },
 
       onAddCartPress: function (oEvent) {
         let iQuantity = this.byId("stepQty").getValue()
-        
-        //TODO: obtener desde un input la cantidad de productos y enviarla como parametro al agregar al carrito
+      
         Cart.addToCart(this.getResourceBundle(),this.getModel("product"),this.getComponentModel("cart"),iQuantity);
       },
 
-      // Método para abrir el diálogo con la imagen ampliada
-      onOpenImageZoom: function (oEvent) {
-          
-          // Cargar el fragment de manera lazy
+      onOpenImageZoom: function () {
+ 
           if (!this._pZoomDialog) {
               console.log("intente");
               this._pZoomDialog = this.loadFragment({

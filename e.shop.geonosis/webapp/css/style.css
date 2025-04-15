@@ -1,55 +1,9 @@
 /* Enter your custom styles here */
 
-.card-item-header {
-  display: flex;
-  flex-direction: row;
-  place-content: center;
-}
-
-.imageContainer {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.imageAdjust {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;  /* Opciones: contain | cover | fill | none | scale-down */
-}
-
-.carousel-indicator {
-  margin: 0 4px;  /* Espaciado entre los círculos */
-  transition: color 0.3s ease-in-out;  /* Transición suave al cambiar de página */
-  cursor: pointer; /* Opcional: Cambia el cursor si quieres que se puedan hacer clic */
-}
-
-.subcategoryBox {
-  padding: 1rem;
-  margin: 0.5rem;
-  background: white;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.subcategoryBox:hover {
-  transform: scale(1.03);
-}
-
 .mySticky {
   position: sticky;
   top: 0;
   z-index: 100; 
-}
-
-.stickyTop {
-  position: sticky;
-  top: 0;
-  z-index: 100;
 }
 
 /* Celular: sticky abajo */
@@ -64,55 +18,11 @@
   z-index: 100;
 }
 
-.fullWidthPanel {
-  width: 100% !important;
-}
-
-/* Para vista en fila (desktop) */
-.leftPanel {
-  width: 70% !important; /* o 70% si querés más espacio */
-}
-
-.rightPanel {
-  width: 30% !important;
-}
-
-.relativeParent {
-  position: relative;
-}
-
-.productBuyBox {
-  border-radius: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  padding: 1rem;
-  margin: 1rem;
-}
 
 .myGridItemFixedHeight {
-  height: 37rem; /* o el valor que quieras */
+  height: 37rem; 
 }
 
-.myCarouselItemWidth {
-  height: 15rem; /* o el valor que quieras */
-}
-
-
-
-.categoryPopover .sapMNav {
-  height: auto !important;
-}
-
-.categoryPopover .popoverPage {
-  height: auto !important;
-  min-height: 1px;
-}
-
-.categoryPopover .sapMScrollCont {
-  max-height: 400px;
-  overflow-y: auto;
-}
-
-/*-------------------MELI style_______*/
 
 .productCard {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
@@ -140,48 +50,6 @@
   font-size: 1rem;
 }
 
-.priceContainer {
-  gap: 0.25rem;
-  font-weight: bold;
-  margin: 0.5rem 0;
-}
-
-.priceText {
-  color: #000;
-  font-size: 1.2rem;
-}
-
-.currencyText {
-  font-size: 0.8rem;
-  color: gray;
-}
-
-.stockLabel {
-  font-weight: 600;
-  font-size: 0.85rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 6px;
-  text-align: center;
-  width: fit-content;
-  margin-bottom: 0.5rem;
-}
-
-/* Colores por estado */
-.stockLabel.available {
-  background-color: #e8f5e9;
-  color: #2e7d32;
-}
-
-.stockLabel.limited {
-  background-color: #fffde7;
-  color: #f9a825;
-}
-
-.stockLabel.outofstock {
-  background-color: #ffebee;
-  color: #c62828;
-}
-
 .actionsContainer {
   margin-top: 0.5rem;
 }
@@ -194,39 +62,8 @@
 }
 
 
-/* styles of claude*/
-
-/* Star Wars Theme Colors */
-:root {
-  --sw-space-black: #121212;
-  --sw-space-dark: #1e1e1e;
-  --sw-blue: #0070d2;
-  --sw-lightsaber-blue: #3486eb;
-  --sw-lightsaber-red: #e51b24;
-  --sw-yellow: #ffe81f;
-  --sw-gray: #808080;
-  --sw-dark-gray: #333333;
-}
-
-/* Global Styles */
-.starWarsDetailPage {
-  background-color: #f5f5f5;
-  font-family: 'Roboto', sans-serif;
-}
-
 /* Navigation Bar */
-.swNavBar {
-  background-color: var(--sw-space-black);
-}
 
-.swNavBar .sapMBtnInner {
-  color: white;
-}
-
-.swCategoryBtn {
-  background-color: var(--sw-blue);
-  color: white;
-}
 
 /* Product Detail Panel */
 .productDetailPanel {
@@ -238,88 +75,8 @@
   padding: 1rem;
 }
 
-/* Image Gallery */
-.thumbnailGallery {
-  background-color: #fafafa;
-  border-radius: 4px;
-}
-
-.galleryThumbnail {
-  border: 1px solid #ddd;
-  margin-bottom: 0.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.galleryThumbnail:hover {
-  border-color: var(--sw-blue);
-  transform: scale(1.05);
-}
-
-.mainImageContainer {
-  background-color: white;
-  border-radius: 4px;
-  padding: 1rem;
-  position: relative;
-}
-
-.productMainImage {
-  transition: transform 0.3s ease;
-}
-
-.productMainImage:hover {
-  transform: scale(1.05);
-}
-
-.imageNavButtons {
-  position: absolute;
-  bottom: 10px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
-/* Product Info */
-.productHeader .sapMOHTitle {
-  color: var(--sw-space-black);
-  font-size: 1.5rem;
-}
-
-.productHeader .sapMOHNumberDiv {
-  color: var(--sw-blue);
-}
-
 .productDescription {
   line-height: 1.5;
-  color: var(--sw-dark-gray);
-}
-
-.ratingContainer .starRating .sapMRatingIndicatorIconSelected {
-  color: var(--sw-yellow);
-}
-
-.characteristicsTitle {
-  color: var(--sw-space-black);
-  border-bottom: 2px solid var(--sw-yellow);
-  padding-bottom: 0.5rem;
-}
-
-.specsTable {
-  border: none;
-}
-
-.specsTable .sapMListTblRow:nth-child(odd) {
-  background-color: #fafafa;
-}
-
-.specKey {
-  font-weight: bold;
-  color: var(--sw-dark-gray);
-}
-
-.specValue {
-  color: var(--sw-space-black);
 }
 
 /* Buy Box */
@@ -341,10 +98,6 @@
   color: #107e3e;
 }
 
-.shippingInfo .sapUiIcon {
-  color: var(--sw-blue);
-}
-
 .quantitySelector .sapMLabel {
   font-weight: bold;
 }
@@ -354,20 +107,20 @@
   font-size: 0.875rem;
 }
 
-/* Estilo para botones redondeados */
+
 .buyNowBtn .sapMBtnInner,
 .addCartBtn .sapMBtnInner {
-    border-radius: 8px !important; /* Ajusta este valor para más o menos redondeo */
+    border-radius: 8px !important; 
     height: 2rem;
 }
 
-/* Estilo específico para el botón de "Comprar ahora" */
+
 .buyNowBtn .sapMBtnInner {
-    background-color: #0d6efd; /* Color azul similar al de la imagen */
+    background-color: #0d6efd; 
     border-color: #0d6efd;
 }
 
-/* Estilo específico para el botón de "Agregar al carrito" */
+
 .addCartBtn .sapMBtnInner {
     border: 1px solid #0d6efd;
     color: #0d6efd;
@@ -387,39 +140,6 @@
   font-size: 0.875rem;
 }
 
-/* Related Products */
-.relatedProductsPanel .sapMPanelHdr {
-  color: var(--sw-space-black);
-  font-size: 1.25rem;
-  border-bottom: 2px solid var(--sw-yellow);
-}
-
-/* Footer */
-.swFooter {
-  background-color: var(--sw-space-black);
-  color: white;
-}
-
-.swFooter .sapMBtnInner {
-  color: white;
-}
-
-/* Controles de navegación en el diálogo de zoom */
-.imageNavControls {
-  background-color: rgba(0, 0, 0, 0.05);
-  padding: 0.5rem;
-  border-radius: 4px;
-}
-
-.navButton {
-  color: var(--sw-blue);
-}
-
-.imageCounter {
-  line-height: 2.5rem;
-  color: var(--sw-space-dark);
-  font-weight: bold;
-}
 
 /* Mejoras para el diálogo de zoom */
 .imageZoomDialog .sapMDialogSection {
@@ -463,35 +183,23 @@
   color: white;
 }
 
-.productMainImage {
-  cursor: pointer;
-}
-
 .clickInstructionText {
   color: var(--sw-gray);
   font-size: 0.8rem;
 }
 
-.productPrice {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #0070f3; /* Azul destacado, puedes cambiar según el theme */
-  text-align: right;
-  margin-left: 1rem;
-}
-
 .productTitle {
-  font-size: 1.25rem;        /* Tamaño claro pero no tan grande */
-  font-weight: 600;          /* Un poco más marcado que normal */
-  color: #333333;            /* Gris oscuro para buena legibilidad */
-  line-height: 1.3;          /* Espaciado vertical agradable */
-  max-height: 3.6rem;        /* Limita a 2 líneas aprox. */
+  font-size: 1.25rem;        
+  font-weight: 600;       
+  color: #333333;           
+  line-height: 1.3;         
+  max-height: 3.6rem;       
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .buyNowBtnCart .sapMBtnInner {
-  border-radius: 8px !important; /* Ajusta este valor para más o menos redondeo */
+  border-radius: 8px !important; 
   height: 2rem;
 }
 

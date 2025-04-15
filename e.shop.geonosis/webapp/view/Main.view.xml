@@ -1,116 +1,105 @@
 <mvc:View xmlns:layout="sap.ui.layout" controllerName="com.geonosis.shop.e.shop.geonosis.controller.Main"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns:f="sap.f"
-    xmlns:card="sap.f.cards"
-    xmlns:l="sap.ui.layout"
-    xmlns:tnt="sap.tnt"
     xmlns:core="sap.ui.core"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}" showHeader="false">
-    <ScrollContainer id="headerContainer" class="mySticky"></ScrollContainer>
-    <content>
+      <ScrollContainer id="headerContainer" class="mySticky"></ScrollContainer>
+        <content>
 
-    <Carousel 
-      id="main-carousel-info-pictures"
-      height="23rem"
-      showPageIndicator="false"
-      loop="true"
-      pages="{welcome>/imagesUrl}">
-      <VBox id="vbox-carousel-imgs" renderType="Bare" height="100%">
-          <Image
-              id="carousel-imgs"
-              mode="Background"
-              backgroundPosition="center"
-              backgroundSize="cover"
-              src="{welcome>src}"
-              width="100%"
-              height="100%" />
-      </VBox>
-    </Carousel>
+          <Carousel 
+            id="main-carousel-info-pictures"
+            height="23rem"
+            showPageIndicator="false"
+            loop="true"
+            pages="{welcome>/imagesUrl}">
+            <VBox id="vbox-carousel-imgs" renderType="Bare" height="100%">
+                <Image
+                    id="carousel-imgs"
+                    mode="Background"
+                    backgroundPosition="center"
+                    backgroundSize="cover"
+                    src="{welcome>src}"
+                    width="100%"
+                    height="100%" />
+            </VBox>
+          </Carousel>
 
-    <Panel id="panel-carousel-prods-main"
-      backgroundDesign="Transparent"
-      class="sapUiSmallMarginTopBottom">
-      <headerToolbar>
-        <OverflowToolbar id="panel-toolbar-carousel-prods-main" 
-          height="3rem" >
-          <Title id="panel-toolbar-title-carousel-prods-main" text="Favoritos"/>
-          <ToolbarSpacer id="panel-space-center-prods-main"></ToolbarSpacer>
-          <HBox  alignItems="Center" class="carousel-indicator-box"></HBox>
+          <Panel id="panel-carousel-prods-main"
+            backgroundDesign="Transparent"
+            class="sapUiSmallMarginTopBottom">
+            <headerToolbar>
+              <OverflowToolbar id="panel-toolbar-carousel-prods-main" 
+                height="3rem" >
+                <Title id="panel-toolbar-title-carousel-prods-main" text="{i18n>mainFavorited}"/>
+                <ToolbarSpacer id="panel-space-center-prods-main"></ToolbarSpacer>
+               </OverflowToolbar>
+            </headerToolbar>
+              <content>
+                <Carousel
+                  id="Favorited"
+                  height="37rem"
+                  showPageIndicator="false"
+                  loop="true"
+                  backgroundDesign="Solid">
+                  <customLayout>
+                    <CarouselLayout visiblePagesCount="{settingsResponsive>/carouselItemsPerPage}" scrollMode="VisiblePages"/>
+                  </customLayout>
+                  
+                </Carousel>
+              </content>
+            </Panel>
 
-        </OverflowToolbar>
-      </headerToolbar>
-      <content>
-        <Carousel
-          id="Favorited"
-          height="37rem"
-          showPageIndicator="false"
-          loop="true"
-          backgroundDesign="Solid">
-          <customLayout>
-            <CarouselLayout visiblePagesCount="{settingsResponsive>/carouselItemsPerPage}" scrollMode="VisiblePages"/>
-          </customLayout>
-          
-        </Carousel>
-      </content>
-    </Panel>
+            <Panel 
+              backgroundDesign="Transparent"
+              class="sapUiSmallMarginTopBottom">
+              <headerToolbar>
+                <OverflowToolbar 
+                  height="3rem" >
+                  <Title  text="{i18n>mainViewed}"/>
+                  <ToolbarSpacer ></ToolbarSpacer>
+                </OverflowToolbar>
+              </headerToolbar>
+              <content>
+                <Carousel
+                  id="Viewed"
+                  height="37rem"
+                  showPageIndicator="false"
+                  loop="true"
+                  backgroundDesign="Solid">
+                  <customLayout>
+                    <CarouselLayout visiblePagesCount="{settingsResponsive>/carouselItemsPerPage}" scrollMode="VisiblePages"/>
+                  </customLayout>
+                  
+                </Carousel>
+              </content>
+            </Panel>
 
-    <Panel 
-      backgroundDesign="Transparent"
-      class="sapUiSmallMarginTopBottom">
-      <headerToolbar>
-        <OverflowToolbar 
-          height="3rem" >
-          <Title  text="Vistos ultimamente"/>
-          <ToolbarSpacer ></ToolbarSpacer>
-          <HBox  alignItems="Center" class="carousel-indicator-box"></HBox>
-        </OverflowToolbar>
-      </headerToolbar>
-      <content>
-        <Carousel
-          id="Viewed"
-          height="37rem"
-          showPageIndicator="false"
-          loop="true"
-          backgroundDesign="Solid">
-          <customLayout>
-            <CarouselLayout visiblePagesCount="{settingsResponsive>/carouselItemsPerPage}" scrollMode="VisiblePages"/>
-          </customLayout>
-          
-        </Carousel>
-      </content>
-    </Panel>
-
-    <Panel 
-      backgroundDesign="Transparent"
-      class="sapUiSmallMarginTopBottom">
-      <headerToolbar>
-        <OverflowToolbar 
-          height="3rem" >
-          <Title  text="Promocionados"/>
-          <ToolbarSpacer ></ToolbarSpacer>
-          <HBox  alignItems="Center" class="carousel-indicator-box"></HBox>
-        </OverflowToolbar>
-      </headerToolbar>
-      <content>
-        <Carousel
-          id="Promoted"
-          height="37rem"
-          showPageIndicator="false"
-          loop="true"
-          backgroundDesign="Solid">
-          <customLayout>
-            <CarouselLayout visiblePagesCount="{settingsResponsive>/carouselItemsPerPage}" scrollMode="VisiblePages"/>
-          </customLayout>
-          
-        </Carousel>
-      </content>
-    </Panel>
-
-
-
-    </content>
-     <core:Fragment fragmentName="com.geonosis.shop.e.shop.geonosis.view.fragments.Footer" type="XML"/>
+            <Panel 
+              backgroundDesign="Transparent"
+              class="sapUiSmallMarginTopBottom">
+              <headerToolbar>
+                <OverflowToolbar 
+                  height="3rem" >
+                  <Title  text="{i18n>mainPromoted}"/>
+                  <ToolbarSpacer ></ToolbarSpacer>
+                </OverflowToolbar>
+              </headerToolbar>
+              <content>
+                <Carousel
+                  id="Promoted"
+                  height="37rem"
+                  showPageIndicator="false"
+                  loop="true"
+                  backgroundDesign="Solid">
+                  <customLayout>
+                    <CarouselLayout visiblePagesCount="{settingsResponsive>/carouselItemsPerPage}" scrollMode="VisiblePages"/>
+                  </customLayout>
+                  
+                </Carousel>
+              </content>
+            </Panel>
+        </content>
+      <core:Fragment fragmentName="com.geonosis.shop.e.shop.geonosis.view.fragments.Footer" type="XML"/>
     </Page>
 
 </mvc:View>

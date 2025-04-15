@@ -9,12 +9,22 @@
             contentWidth="80%" 
             contentHeight="80%">
         <content>
-            <VBox height="100%" width="100%" alignItems="Center" justifyContent="Center" class="zoomDialogContent">
-                <Image src="{product>/product/mainImage}" class="zoomedImage" width="auto" height="90%" />
+            <VBox height="100%"
+                width="100%"
+                alignItems="Center"
+                justifyContent="Center"
+                class="zoomDialogContent">
+                <Image src="{product>/product/mainImage}"
+                    class="zoomedImage"
+                    width="auto"
+                    height="90%" />
             </VBox>
         </content>
         <buttons>
-            <Button text="Cerrar" press="onCloseImageZoom" type="Emphasized" class="closeZoomBtn" />
+            <Button text="{i18n>dialogBtnClose}"
+                press="onCloseImageZoom"
+                type="Emphasized"
+                class="closeZoomBtn" />
         </buttons>
     </Dialog>
     

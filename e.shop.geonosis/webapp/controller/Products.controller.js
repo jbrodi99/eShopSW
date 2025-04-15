@@ -14,7 +14,6 @@ sap.ui.define([
         this.setModel(this.getComponentModel("products"),"filteredProducts");
         
 			  this.getRouteFor("Products").attachPatternMatched(this._onObjectMatched, this);
-      
       },
 
       _onObjectMatched: function (oEvent) {
@@ -90,10 +89,8 @@ sap.ui.define([
         const aOriginal = oModel.getProperty("/_originalProducts");
       
         if (aOriginal) {
-          // Restaurar los productos originales
           oModel.setProperty("/products", [...aOriginal]);
-      
-          // Vuelve a regenerar los fragments
+
           this._loadFilteredProductCards();
         }
       }

@@ -7,156 +7,134 @@
     xmlns:layout="sap.ui.layout"
     xmlns="sap.m">
     <Page showHeader="false">
-
-    <ScrollContainer id="detail-header-container" class="mySticky"></ScrollContainer>
-
-    <content>
-      <VBox class="sapUiSmallMargin">
-            
-                <Breadcrumbs currentLocationText="{product>/product/name}">
-                    <Link text="Inicio" press="onNavToHome" />
-                    <Link text="{product>/product/category}" press="onNavTo" />
-                    <Link text="{product>/product/subcategory}" press="onNavTo" />
-                </Breadcrumbs>
+      <ScrollContainer id="detail-header-container" class="mySticky"></ScrollContainer>
+        <content>
+          <VBox class="sapUiSmallMargin">
+            <Breadcrumbs currentLocationText="{product>/product/name}">
+              <Link text="{i18n>detailHome}" press="onNavToHome" />
+              <Link text="{product>/product/category}" press="onNavTo" />
+              <Link text="{product>/product/subcategory}" press="onNavTo" />
+            </Breadcrumbs>
                 
              
-                <Panel backgroundDesign="Transparent" class="productDetailPanel"  >
-                    <grid:CSSGrid class="productDetailContainer" id="productDetailGrid">
-
-                        <grid:customLayout>
-                            <grid:GridResponsiveLayout containerQuery="true">
-                                <grid:layoutS>
-                                    <grid:GridSettings gridTemplateColumns="1fr" gridGap="1rem" />
-                                </grid:layoutS>
-                                <grid:layoutM>
-                                    <grid:GridSettings gridTemplateColumns="1fr 4fr" gridGap="1rem" />
-                                </grid:layoutM>
-                                <grid:layout>
-                                    <grid:GridSettings gridTemplateColumns="1fr 3fr 2fr" gridGap="1rem" />
-                                </grid:layout>
-                                <grid:layoutL>
-                                    <grid:GridSettings gridTemplateColumns="1fr 4fr 3fr" gridGap="1.5rem" />
-                                </grid:layoutL>
-                            </grid:GridResponsiveLayout>
-                        </grid:customLayout>
-
-
-                        <VBox width="80%" alignItems="Center" class="imageCarouselContainer">
-                            <Carousel
-                                id="productImageCarousel"
-                                pages="{product>/product/allImages}"
-                                loop="true"
-                                pageIndicatorPlacement="Bottom"
-                                height="400px"
-                                width="100%"
-                                class="productImageCarousel">
-
-                                <Image 
-                                    src="{product>}" 
-                                    width="100%" 
-                                    height="100%" 
-                                    class="carouselImage" 
-                                    press="onOpenImageZoom" />
-                            </Carousel>
-
-                            <Text text="Desliza para ver más imágenes" class="clickInstructionText sapUiTinyMarginTop" />
-                        </VBox>
-                        
-                      
-                        <VBox width="80%" class="productInfo">
-                            <ObjectHeader
-                                title="{product>/product/name}"
-                                number="$ {product>/product/price}"
-                                numberUnit="{product>/product/currency}"
-                                class="productHeader">
-                                <statuses>
-                                    <ObjectStatus text="Nuevo" state="Success" />
-                                </statuses>
-                            </ObjectHeader>
-                            
-                            
-                            <Text text="{product>/product/description}" class="sapUiSmallMarginTop productDescription" />
-                            
-                            <HBox alignItems="Center" class="sapUiSmallMarginTop ratingContainer">
-                                <RatingIndicator value="{product>/product/rating}" maxValue="5" iconSize="1.5rem" class="starRating" editable="false"/>
-                                <Text text="{= '(' + ${product>/product/rating} + ')' }" class="sapUiTinyMarginBegin ratingText" />
-                                
-                                
-                            </HBox>
-                            <Text text="Tags:" class="sapUiSmallMarginBottom sapUiTinyMarginTop" />
-                            <HBox wrap="Wrap" justifyContent="Start" class="tagContainer" items="{product>/product/tags}">
-                                <items>
-                                    <Text text="{product>}" class="tagChip" />
-                                </items>
-                            </HBox>
-                            
-                      
-                            <Title text="Características" level="H3" class="sapUiSmallMarginTop characteristicsTitle" />
-                            <Table items="{product>/productDetails}" showSeparators="Inner" class="specsTable">
-                                <columns >
-                                    <Column width="40%">
-                                        <Text text="" />
-                                    </Column>
-                                    <Column width="60%">
-                                        <Text text="" />
-                                    </Column>
-                                </columns>
-                                <items>
-                                    <ColumnListItem>
-                                        <Text text="{product>key}" class="specKey" />
-                                        <Text text="{product>value}" class="specValue" />
-                                    </ColumnListItem>
-                                </items>
-                            </Table>
-                        </VBox>
+            <Panel backgroundDesign="Transparent" class="productDetailPanel"  >
+              <grid:CSSGrid class="productDetailContainer" id="productDetailGrid">
+                  <grid:customLayout>
+                    <grid:GridResponsiveLayout containerQuery="true">
+                      <grid:layoutS>
+                        <grid:GridSettings gridTemplateColumns="1fr" gridGap="1rem" />
+                      </grid:layoutS>
+                      <grid:layoutM>
+                        <grid:GridSettings gridTemplateColumns="1fr 4fr" gridGap="1rem" />
+                      </grid:layoutM>
+                      <grid:layout>
+                        <grid:GridSettings gridTemplateColumns="1fr 3fr 2fr" gridGap="1rem" />
+                      </grid:layout>
+                      <grid:layoutL>
+                        <grid:GridSettings gridTemplateColumns="1fr 4fr 3fr" gridGap="1.5rem" />
+                      </grid:layoutL>
+                    </grid:GridResponsiveLayout>
+                  </grid:customLayout>
+                    <VBox width="80%" alignItems="Center" class="imageCarouselContainer">
+                        <Carousel
+                          id="productImageCarousel"
+                          pages="{product>/product/allImages}"
+                          loop="true"
+                          pageIndicatorPlacement="Bottom"
+                          height="400px"
+                          width="100%"
+                          class="productImageCarousel">
+                          <Image 
+                              src="{product>}" 
+                              width="100%" 
+                              height="100%" 
+                              class="carouselImage" 
+                              press="onOpenImageZoom" />
+                        </Carousel>
+                        <Text text="{i18n>detailDeslice}" class="clickInstructionText sapUiTinyMarginTop" />
+                    </VBox>
+                    <VBox width="80%" class="productInfo">
+                      <ObjectHeader
+                          title="{product>/product/name}"
+                          number="$ {product>/product/price}"
+                          numberUnit="{product>/product/currency}"
+                          >
+                          <statuses>
+                              <ObjectStatus text="{i18n>detailStatus}" state="Success" />
+                          </statuses>
+                      </ObjectHeader>      
+                      <Text text="{product>/product/description}" class="sapUiSmallMarginTop productDescription" />    
+                      <HBox alignItems="Center" class="sapUiSmallMarginTop ">
+                          <RatingIndicator value="{product>/product/rating}" maxValue="5" iconSize="1.5rem" class="starRating" editable="false"/>
+                          <Text text="{= '(' + ${product>/product/rating} + ')' }" class="sapUiTinyMarginBegin ratingText" />
+                      </HBox>
+                      <Text text="Tags:" class="sapUiSmallMarginBottom sapUiTinyMarginTop" />
+                      <HBox wrap="Wrap" justifyContent="Start" class="tagContainer" items="{product>/product/tags}">
+                          <items>
+                              <Text text="{product>}" class="tagChip" />
+                          </items>
+                      </HBox>
+                      <Title text="{i18n>detailCarac}" level="H3" class="sapUiSmallMarginTop " />
+                      <Table items="{product>/productDetails}" showSeparators="Inner" >
+                          <columns >
+                              <Column width="40%">
+                                  <Text text="" />
+                              </Column>
+                              <Column width="60%">
+                                  <Text text="" />
+                              </Column>
+                          </columns>
+                          <items>
+                              <ColumnListItem>
+                                  <Text text="{product>key}" />
+                                  <Text text="{product>value}"  />
+                              </ColumnListItem>
+                          </items>
+                      </Table>
+                    </VBox>
                         
                   
-                        <VBox width="80%" class="buyBoxContainer">
-                            <Panel class="buyBoxPanel">
-                                <VBox class="buyBoxContent" alignItems="Start">
-                           
-                                    <HBox alignItems="Center" class="stockStatus">
-                                        <core:Icon src="sap-icon://accept" color="#107e3e" />
-                                        <Text text="Stock disponible" class="sapUiTinyMarginBegin" />
-                                    </HBox>
-                                    
-                            
-                                    <HBox alignItems="Center" class="shippingInfo sapUiSmallMarginTop">
-                                        <core:Icon src="sap-icon://shipping-status" />
-                                        <Text text="Envío gratis" class="sapUiTinyMarginBegin" />
-                                    </HBox>
+                    <VBox width="80%" class="buyBoxContainer">
+                      <Panel class="buyBoxPanel">
+                        <VBox class="buyBoxContent" alignItems="Start">
+                          <HBox alignItems="Center" class="stockStatus">
+                              <core:Icon src="sap-icon://accept" color="#107e3e" />
+                              <Text text="{i18n>detailStock}" class="sapUiTinyMarginBegin" />
+                          </HBox>   
+                          <HBox alignItems="Center" class="sapUiSmallMarginTop">
+                              <core:Icon src="sap-icon://shipping-status" />
+                              <Text text="{i18n>detailShipping}" class="sapUiTinyMarginBegin" />
+                          </HBox>
                                     
                                 
-                                    <VBox class="sapUiSmallMarginTop quantitySelector" width="100%">
-                                        <Label text="Cantidad" />
-                                        <HBox alignItems="Center" width="100%">
-                                            <StepInput id="stepQty"
-                                                value="1"
-                                                min="1"
-                                                max="{product>/product/stock}"
-                                                width="6rem"
-                                                textAlign="Center"/>
-                                            <Text text="(+{product>/product/stock} disponibles)" class="sapUiTinyMarginBegin availableText" />
-                                        </HBox>
-                                    </VBox>
-                                    
-                        
-                                    <VBox width="100%" class="actionButtons sapUiSmallMarginTop">
-                                        <Button text="Comprar ahora" type="Emphasized" width="100%" class="buyNowBtn sapUiTinyMarginBottom" press="onBuyNowPress" />
-                                        <Button text="Agregar al carrito" type="Default" width="100%" class="addCartBtn" press="onAddCartPress" />
-                                    </VBox>
+                          <VBox class="sapUiSmallMarginTop quantitySelector" width="100%">
+                            <Label text="{i18n>detailQuantity}" />
+                            <HBox alignItems="Center" width="100%">
+                              <StepInput id="stepQty"
+                                  value="1"
+                                  min="1"
+                                  max="{product>/product/stock}"
+                                  width="6rem"
+                                  textAlign="Center"/>
+                              <Text text="(+{product>/product/stock} {i18n>detailDisponibility})" class="sapUiTinyMarginBegin availableText" />
+                            </HBox>
+                          </VBox>
+                          <VBox width="100%" class="actionButtons sapUiSmallMarginTop">
+                              <Button text="{i18n>detailBtnBuyNow}" type="Emphasized" width="100%" class="buyNowBtn sapUiTinyMarginBottom" press="onBuyNowPress" />
+                              <Button text="{i18n>detailBtnAddCart}" type="Default" width="100%" class="addCartBtn" press="onAddCartPress" />
+                          </VBox>
                                
-                                    <HBox alignItems="Center" class="secureInfo sapUiSmallMarginTop">
-                                        <core:Icon src="sap-icon://shield" />
-                                        <Text text="Compra segura" class="sapUiTinyMarginBegin secureText" />
-                                    </HBox>
-                                </VBox>
-                            </Panel>
-                        </VBox>
-                    </grid:CSSGrid>
-                </Panel>
-            </VBox>
-    </content>
-    <core:Fragment fragmentName="com.geonosis.shop.e.shop.geonosis.view.fragments.Footer" type="XML"/>
-  </Page>
+                          <HBox alignItems="Center" class="secureInfo sapUiSmallMarginTop">
+                              <core:Icon src="sap-icon://shield" />
+                              <Text text="{i18n>detailSecurity}" class="sapUiTinyMarginBegin secureText" />
+                          </HBox>
+                    </VBox>
+                  </Panel>
+                </VBox>
+              </grid:CSSGrid>
+            </Panel>
+          </VBox>
+        </content>
+      <core:Fragment fragmentName="com.geonosis.shop.e.shop.geonosis.view.fragments.Footer" type="XML"/>
+    </Page>
 </mvc:View>

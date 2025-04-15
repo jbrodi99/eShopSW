@@ -7,33 +7,28 @@
   <Page showHeader="false">
     
     <ScrollContainer id="headerProdContainer" class="mySticky"></ScrollContainer>
-    <content>
-
-
-      <Panel id="panelForGridList" backgroundDesign="Transparent">
-        <headerToolbar>
-          <Toolbar height="3rem">
-            <Text text="{filteredProducts>/totalStock} productos encontrados"></Text>
-            <ToolbarSpacer ></ToolbarSpacer>
-            <Button icon="sap-icon://sort" press="onSortPress"/>
-            <Button icon="sap-icon://reset" press="onResetPress"/>
-          </Toolbar>
-        </headerToolbar>
-
-        <!-- Envolver en HBox para centrar -->
-        <HBox justifyContent="Center" >
-          <!-- VBox con ancho limitado -->
-          <VBox width="80%">
-            <f:GridList id="gridList">
-              <f:customLayout>
-                <grid:GridBoxLayout boxMinWidth="15rem" />
-              </f:customLayout>
-            </f:GridList>
-          </VBox>
-        </HBox>
-      </Panel>
-
-    </content>
+      <content>
+        <Panel id="panelForGridList" backgroundDesign="Transparent">
+          <headerToolbar>
+            <Toolbar height="3rem">
+              <Text text="{filteredProducts>/totalStock} {i18n>productQuantitySearch}"></Text>
+              <ToolbarSpacer ></ToolbarSpacer>
+              <Button icon="sap-icon://sort" press="onSortPress"/>
+              <Button icon="sap-icon://reset" press="onResetPress"/>
+            </Toolbar>
+          </headerToolbar>
+        
+          <HBox justifyContent="Center" >
+            <VBox width="80%">
+              <f:GridList id="gridList">
+                <f:customLayout>
+                  <grid:GridBoxLayout boxMinWidth="15rem" />
+                </f:customLayout>
+              </f:GridList>
+            </VBox>
+          </HBox>
+        </Panel>
+      </content>
     <core:Fragment fragmentName="com.geonosis.shop.e.shop.geonosis.view.fragments.Footer" type="XML"/>
   </Page>
 </mvc:View>

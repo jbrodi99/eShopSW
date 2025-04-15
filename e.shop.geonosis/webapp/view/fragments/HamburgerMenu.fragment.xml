@@ -9,13 +9,13 @@
     
     <VBox class="sapUiSmallPadding">
       <Button
-        text="Categorías"
+        text="{i18n>headerCategorieBtn}"
         icon="sap-icon://grid"
         press=".onOpenMenu"
         type="Transparent"
         class="sapUiTinyMarginBottom" />
       <Button
-        text="Mi carrito"
+        text="{i18n>headerMyCart}"
         icon="sap-icon://cart"
         press="onCartPress"
         type="Transparent" />

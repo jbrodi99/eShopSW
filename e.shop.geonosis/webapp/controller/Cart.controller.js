@@ -9,36 +9,29 @@ sap.ui.define([
 
         this.loadHeader(this.getView().getViewName(), "cart-header-container");
 
-        let oView = this.getView();
-        let oScrollContainer = oView.byId("myScrollContainer");
-        oScrollContainer.addStyleClass("stickyBottom");
-
         this.setComponentModel(Cart.createCnfModel(), "cfnTable");
 
         this._selectAllCartItems();
         this.byId("cartTable").attachSelectionChange(this._updateCartSummary, this);
-
       },
 
       onCartDelete: function (oEvent) {
-        const oDeletedItem = oEvent.getParameter("listItem");
+        let oDeletedItem = oEvent.getParameter("listItem");
         
-        const oProduct = oDeletedItem.getBindingContext("cart").getObject();
+        let oProduct = oDeletedItem.getBindingContext("cart").getObject();
         
         Cart.removeFromCart(this.getResourceBundle(),oProduct,this.getComponentModel("cart"));
-
-       
       },
 
-      onEditCartPress: function(oEvent) {
-        const oCfnTableModel = this.getView().getModel("cfnTable");
+      onEditCartPress: function() {
+        let oCfnTableModel = this.getModel("cfnTable");
         oCfnTableModel.setProperty("/tableMode", "Delete");
         this.byId("cartEditClose").setVisible(true);
         this.byId("cartEdit").setVisible(false);
       },
 
       onDoneEditingCartPress: function () {
-        const oCfnTableModel = this.getView().getModel("cfnTable");
+        let oCfnTableModel = this.getModel("cfnTable");
         oCfnTableModel.setProperty("/tableMode", "MultiSelect");
         this.byId("cartEditClose").setVisible(false);
         this.byId("cartEdit").setVisible(true);
@@ -51,9 +44,9 @@ sap.ui.define([
       },
 
       onBuyNowPress: function (oEvent) {
-        const oTable = this.byId("cartTable");
-        const oCartModel = this.getComponentModel("cart");
-        const aSelectedItems = oTable.getSelectedItems();
+        let oTable = this.byId("cartTable");
+        let oCartModel = this.getComponentModel("cart");
+        let aSelectedItems = oTable.getSelectedItems();
 
         if (aSelectedItems.length === 0) {
           sap.m.MessageToast.show("No hay productos seleccionados para comprar.");
@@ -62,28 +55,25 @@ sap.ui.define([
 
         let aCartEntries = oCartModel.getProperty("/cartEntries");
 
-       
-        const aUpdatedEntries = aCartEntries.filter(entry => {
+        let aUpdatedEntries = aCartEntries.filter(entry => {
           return !aSelectedItems.some(oItem => {
-            const oItemData = oItem.getBindingContext("cart").getObject();
+            let oItemData = oItem.getBindingContext("cart").getObject();
             return oItemData.id === entry.id;
           });
         });
 
-        
         oCartModel.setProperty("/cartEntries", aUpdatedEntries);
-
         
         oTable.removeSelections(true);
 
         this._updateCartSummary();
 
-        sap.m.MessageToast.show("¡Compra realizada con éxito!");
+        sap.m.MessageToast.show("{i18n>msgToastBuy}");
       },
 
       _selectAllCartItems: function () {
-        const oTable = this.byId("cartTable");
-        const aItems = oTable.getItems();
+        let oTable = this.byId("cartTable");
+        let aItems = oTable.getItems();
     
         aItems.forEach(oItem => {
             oTable.setSelectedItem(oItem, true);
@@ -91,17 +81,17 @@ sap.ui.define([
       },
 
       _updateCartSummary: function () {
-        const oTable = this.byId("cartTable");
-        const aSelectedItems = oTable.getSelectedItems();
-        const oCartModel = this.getComponentModel("cart");
+        let oTable = this.byId("cartTable");
+        let aSelectedItems = oTable.getSelectedItems();
+        let oCartModel = this.getComponentModel("cart");
       
         let iTotalProducts = 0;
         let fTotalPrice = 0;
       
         aSelectedItems.forEach(oItem => {
-          const oData = oItem.getBindingContext("cart").getObject();
-          const iQuantity = parseInt(oData.quantity, 10);
-          const fPrice = parseFloat(oData.price);
+          let oData = oItem.getBindingContext("cart").getObject();
+          let iQuantity = parseInt(oData.quantity, 10);
+          let fPrice = parseFloat(oData.price);
       
           iTotalProducts += iQuantity;
           fTotalPrice += iQuantity * fPrice;
@@ -110,7 +100,5 @@ sap.ui.define([
         oCartModel.setProperty("/summary/products", iTotalProducts);
         oCartModel.setProperty("/summary/total", fTotalPrice.toFixed(2));
       }
-    
-      
     });
   });
